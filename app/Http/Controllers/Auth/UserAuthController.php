@@ -15,7 +15,7 @@ class UserAuthController extends Controller
 
     public function registerPost(UserRegisterRequest $request)
     {
-        # code...
+        dd($request->name);
     }
 
     public function loginGet()
