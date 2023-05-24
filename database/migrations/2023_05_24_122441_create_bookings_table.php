@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('status')->default('pending');
             $table->dateTime('arrival_time');
         });
     }
