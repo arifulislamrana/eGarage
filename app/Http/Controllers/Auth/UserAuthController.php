@@ -130,8 +130,8 @@ class UserAuthController extends Controller
                 {
                     return redirect()->route('user.tempDashboard');
                 }
-                dd('redirect to user dashboard');
-                //return redirect()->route('user.dashboard');
+
+                return redirect()->route('user.dashboard');
             }
 
             return redirect()->back()
@@ -177,13 +177,13 @@ class UserAuthController extends Controller
                 $user->is_verified = true;
                 $user->email_verified_at = now();
                 $user->save();
-                $message = "Your e-mail is verified. You can now login.";
+                $message = "Your e-mail is verified.";
             } else {
-                $message = "Your e-mail is already verified. You can now login.";
+                $message = "Your e-mail is already verified.";
             }
         }
-        dd('redirect to user dashboard');
-        //return redirect()->route('user.dashboard')->with('message', $message);
+
+        return redirect()->route('user.dashboard')->with('message', $message);
     }
 
     public function resendVerificationMail()

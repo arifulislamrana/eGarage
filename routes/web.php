@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\User\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,9 @@ Route::get('/resend/verification/mail', [UserAuthController::class, 'resendVerif
 Route::get('/temp/dashboard', function () {
     return view('user_dashboard.temp_dashboard');
 })->name('user.tempDashboard')->middleware('auth');
+
+Route::middleware(['auth', 'verify_email'])->group(function () {
+
+    Route::get('/user/dashboard', [DashboardController::class, 'dashboard'])->name('user.dashboard');
+});
 
