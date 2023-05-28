@@ -75,7 +75,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary"><i class="fa fa-motorcycle me-3"></i>{{ env('APP_NAME') }}</h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -83,7 +83,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
                 <a href="about.html" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Services</a>
                 <div class="nav-item dropdown">
@@ -97,7 +97,20 @@
                 </div>
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>
+            <div class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+                @if (Route::has('login'))
+                    @auth
+                        <i class="fas fa-user fa-lg ms-3" style="color: #07a226;"></i>
+                        <a style="color: white" href="{{route('logout')}}">Logout</a>
+                    @else
+                        <a style="color: white" href="{{ route('login') }}">Login</a> /
+
+                        @if (Route::has('register'))
+                            <a style="color: white" href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+                @endif
+            </div>
         </div>
     </nav>
     <!-- Navbar End -->
