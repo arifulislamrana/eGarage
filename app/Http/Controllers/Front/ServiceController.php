@@ -6,7 +6,7 @@ use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AboutController extends Controller
+class ServiceController extends Controller
 {
     public $logger;
 
@@ -17,6 +17,6 @@ class AboutController extends Controller
 
     public function index()
     {
-        return view('about');
+        return view('service');
     }
 }
