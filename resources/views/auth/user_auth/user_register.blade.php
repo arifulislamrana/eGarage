@@ -61,6 +61,7 @@
                             <div class="col-12">
                                 <button class="btn btn-secondary w-100 py-3" type="submit">Register</button>
                             </div>
+                            <h6 class="text-white mb-4">Already have an account. <button><a href="{{ Route('login') }}">login Here</a></button> </h6>
                         </div>
                     </form>
                 </div>

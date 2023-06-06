@@ -31,7 +31,15 @@ Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
 
 Route::get('/user/verify/{token}', [UserAuthController::class, 'verifyUser'])->name('user.verify');
 
-Route::get('/resend/verification/mail', [UserAuthController::class, 'resendVerificationMail'])->name('user.resendVerification')->middleware('auth');
+Route::get('/resend/verification/mail', [UserAuthController::class, 'resendVerificationMail'])->name('user.resendVerification')->middleware('auth', 'throttle:5,10');
+
+Route::get('/forget/password', [UserAuthController::class, 'forgetPassGet'])->name('pass.forget');
+
+Route::post('/forget/password/post', [UserAuthController::class, 'forgetPassPost'])->name('pass.forget.post')->middleware('throttle:5,10');
+
+Route::get('/password/reset/{token}', [UserAuthController::class, 'resetPassGet'])->name('pass.reset');
+
+Route::post('/password/reset/post', [UserAuthController::class, 'resetPassPost'])->name('pass.reset.post');
 
 Route::get('/temp/dashboard', function () {
     return view('user_dashboard.temp_dashboard');

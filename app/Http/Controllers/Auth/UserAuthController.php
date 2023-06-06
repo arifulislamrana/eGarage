@@ -10,7 +10,9 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ForgetPass;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\ResetPassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\UserRegisterRequest;
@@ -212,5 +214,86 @@ class UserAuthController extends Controller
 
             return redirect()->back()->withErrors(['invalid' => 'Failed to resend verification mail']);
         }
+    }
+
+    public function forgetPassGet()
+    {
+        try
+        {
+            if (Auth::check())
+            {
+                return redirect()->back();
+            }
+
+            return view('auth.user_auth.forget_pass');
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show forget password Form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show forget password Form']);
+        }
+    }
+
+    public function forgetPassPost(ForgetPass $request)
+    {
+        try
+        {
+            $user = $this->userRepository->getUserByEmail($request->email);
+
+            if (isset($user))
+            {
+                $this->userRepository->userPassRecoverMail([
+                    'token' => $user->emailVerification->token,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ]);
+
+                return redirect()->back()->with('success','Password recovery mail has been sent. Check your inbox');
+            }
+
+            return redirect()->back()->withErrors(['invalid' => 'Invalid data']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Something wrong in forgetPassPost function", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Invalid data']);
+        }
+    }
+
+    public function resetPassGet($token)
+    {
+        try
+        {
+            return view('auth.user_auth.set_pass', ['token' => $token]);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show reset Form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show register Form']);
+        }
+    }
+
+    public function resetPassPost(ResetPassword $request)
+    {
+        $userToken = $this->emailVerificationRepository->getItemByToken($request->token);
+
+        if ($request->password != $request->cpassword)
+        {
+            return redirect()->back()->withErrors(['invalid' => 'Password and Confirm Password Mismatch']);
+        }
+        if(!is_null($userToken) )
+        {
+            $user = $userToken->user;
+            $user->password = bcrypt($request->password);
+            $user->updated_at = now();
+            $user->save();
+
+            return redirect()->route('login')->with('success', 'Password Update. Try to Login now.');
+        }
+
+        return redirect()->back()->withErrors(['invalid' => 'invalid user token']);
     }
 }
