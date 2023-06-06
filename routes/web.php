@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Front\AboutController;
+use App\Http\Controllers\Front\BookingController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ServiceController;
+use App\Http\Controllers\Front\TechnicianController;
 use App\Http\Controllers\User\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +26,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Route::get('/services', [ServiceController::class, 'index'])->name('service');
+
+Route::get('/bookings', [BookingController::class, 'index'])->name('booking');
+
+Route::get('/technicians', [TechnicianController::class, 'index'])->name('technician');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 

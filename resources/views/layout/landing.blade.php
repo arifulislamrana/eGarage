@@ -89,12 +89,11 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu fade-up m-0">
-                        <a href="booking.html" class="dropdown-item">Booking</a>
-                        <a href="team.html" class="dropdown-item">Technicians</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
+                        <a href="{{ route('booking') }}" class="dropdown-item">Booking</a>
+                        <a href="{{ route('technician') }}" class="dropdown-item">Technicians</a>
                     </div>
                 </div>
+                <a href="#" class="nav-item nav-link">Shop</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
             </div>
             <div class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
