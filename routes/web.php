@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BookingController;
@@ -33,6 +34,7 @@ Route::get('/technicians', [TechnicianController::class, 'index'])->name('techni
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
+/////////////////////////////////////// User Routes /////////////////////////////////////////////////////////////////////////////////
 Route::get('/register', [UserAuthController::class, 'registerGet'])->name('register');
 
 Route::post('/registerPost', [UserAuthController::class, 'registerPost'])->name('register.post');
@@ -63,4 +65,15 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
 
     Route::get('/user/dashboard', [DashboardController::class, 'dashboard'])->name('user.dashboard');
 });
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+///////////////////////////////////////////// Admin Routes /////////////////////////////////////////////////////////////////////////
+Route::get('/admin/login', [AdminAuthController::class, 'loginGet'])->name('admin.login');
+
+Route::group(['middleware' => ['auth:admin']], function() {
+
+    Route::get('/admin/profile', []);
+
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

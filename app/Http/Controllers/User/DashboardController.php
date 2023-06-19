@@ -9,6 +9,7 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return view('user_dashboard.user_dashboard');
+        $targetDate = '2023-06-30 00:00:00';
+        return view('user_dashboard.user_dashboard', compact('targetDate'));
     }
 }
