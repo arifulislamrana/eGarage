@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Front\AboutController;
@@ -75,9 +76,8 @@ Route::post('/admin/login/post', [AdminAuthController::class, 'loginPost'])->nam
 
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
-// Route::group(['middleware' => ['auth:admin']], function() {
+Route::group(['middleware' => ['auth:admin']], function() {
 
-//     Route::get('/admin/profile', []);
-
-// });
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
+});
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
