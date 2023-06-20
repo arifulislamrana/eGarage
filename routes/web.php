@@ -71,9 +71,13 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
 ///////////////////////////////////////////// Admin Routes /////////////////////////////////////////////////////////////////////////
 Route::get('/admin/login', [AdminAuthController::class, 'loginGet'])->name('admin.login');
 
-Route::group(['middleware' => ['auth:admin']], function() {
+Route::post('/admin/login/post', [AdminAuthController::class, 'loginPost'])->name('admin.login.post');
 
-    Route::get('/admin/profile', []);
+Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
-});
+// Route::group(['middleware' => ['auth:admin']], function() {
+
+//     Route::get('/admin/profile', []);
+
+// });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

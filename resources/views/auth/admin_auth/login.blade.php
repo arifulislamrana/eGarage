@@ -1,116 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/BackTheme/images/favicon.ico">
+  <title>{{ config('app.name') }}</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, #41035e, #7a0569);
+      font-family: Arial, sans-serif;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    <title>{{ config('app.name') }} </title>
+    .login-container {
+      width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-    <!-- Vendors Style-->
-    <link rel="stylesheet" href="/BackTheme/css/vendors_css.css">
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-    <!-- Style-->
-    <link rel="stylesheet" href="/BackTheme/css/style.css">
-    <link rel="stylesheet" href="/BackTheme/css/skin_color.css">
+    .form-group {
+      margin-bottom: 20px;
+    }
 
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #41035e;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #7a0569;
+    }
+  </style>
 </head>
-
-<body class="hold-transition dark-skin sidebar-mini theme-primary">
-    <div class="wrapper">
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <div class="container-full">
-                <!-- Content Header (Page header) -->
-                <div class="content-header">
-                    <div class="d-flex align-items-center">
-                        <div class="mr-auto">
-                            <h3 class="page-title">{{ config('app.name') }} Admin</h3>
-                            <div class="d-inline-block align-items-center">
-                                <nav>
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#"><i
-                                                    class="mdi mdi-home-outline"></i></a></li>
-                                        <li class="breadcrumb-item" aria-current="page">Admin</li>
-                                        <li class="breadcrumb-item active" aria-current="page">Validation</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Main content -->
-                <section class="content col-8">
-                    <!-- Basic Forms -->
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h4 class="box-title">Admin Login</h4>
-                            <h6 class="box-subtitle">Login to monitor your stuff and activities</h6>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col">
-                                    <form novalidate>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <h5>Email: <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input placeholder="Enter your email" type="email" name="email" class="form-control"
-                                                            required
-                                                            data-validation-required-message="This field is required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <h5>Password: <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input placeholder="Enter your password" type="password" name="password" class="form-control"
-                                                            required
-                                                            data-validation-required-message="This field is required">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="text-xs-right">
-                                            <button type="submit" class="btn btn-rounded btn-info">Submit</button>
-                                        </div>
-                                    </form>
-
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-
-                </section>
-                <!-- /.content -->
-            </div>
-        </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- Vendor JS -->
-    <script src="/BackTheme/js/vendors.min.js"></script>
-    <script src="/BackTheme/assets/icons/feather-icons/feather.min.js"></script>
-    <script src="/BackTheme/js/pages/validation.js"></script>
-    <script src="/BackTheme/js/pages/form-validation.js"></script>
-
-    <!-- Sunny Admin App -->
-    <script src="/BackTheme/js/template.js"></script>
-
+<body>
+  <div class="login-container">
+    @if(count($errors) > 0 )
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<ul class="p-0 m-0" style="list-style: none;">
+			@foreach($errors->all() as $error)
+			<li>{{$error}}</li>
+			@endforeach
+		</ul>
+		</div>
+	@endif
+    <h2>Login</h2>
+    <form action="{{ route('admin.login.post') }}" method="POST">
+        @csrf
+      <div class="form-group">
+        <label for="User Email">User Email:</label>
+        <input type="text" id="userEmail" name="email" placeholder="Enter your email" value="{{ old('email') }}" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
 </body>
-
 </html>
