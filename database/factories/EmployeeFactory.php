@@ -17,7 +17,9 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'password' => bcrypt('123456'), // password
         ];
     }
 }

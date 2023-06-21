@@ -11,6 +11,8 @@ class Employee extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public $timestamps = false;
+
     protected $guard = 'employee';
 
     protected $fillable = [
