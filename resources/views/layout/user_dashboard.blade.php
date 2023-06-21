@@ -143,7 +143,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0"
                                 data-toggle="dropdown" title="User">
-                                <img src="/BackTheme/images/avatar/1.jpg" alt="">
+                                <img src="/BackTheme/images/avatar/avatar-13.png" alt="">
                             </a>
                             <ul class="dropdown-menu animated flipInX">
                                 <li class="user-body">

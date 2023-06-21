@@ -9,7 +9,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class AdminAuthController extends Controller
+class EmployeeAuthController extends Controller
 {
     public $logger;
 
@@ -22,15 +22,15 @@ class AdminAuthController extends Controller
     {
         try
         {
-            if (Auth::guard('admin')->check())
+            if (Auth::guard('employee')->check())
             {
                 return redirect()->back();
             }
-            return view('auth.admin_auth.login');
+            return view('auth.employee_auth.login');
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to show login Form for admin", "error", $e);
+            $this->logger->write("Failed to show login Form for employee", "error", $e);
 
             return redirect()->back()->withErrors(['invalid' => 'Failed to show login Form']);
         }
@@ -42,11 +42,11 @@ class AdminAuthController extends Controller
             $email = $request->email;
             $pass = $request->password;
 
-            if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $pass]))
+            if (Auth::guard('employee')->attempt(['email' => $email, 'password' => $pass]))
             {
                 $request->session()->regenerate();
 
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('employee.dashboard');
             }
 
             return redirect()->back()
@@ -55,7 +55,7 @@ class AdminAuthController extends Controller
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to log-in admin", "error", $e);
+            $this->logger->write("Failed to log-in employee", "error", $e);
 
             return redirect()->back()->withErrors(['error' => 'Failed to login'], 403);
         }
@@ -69,13 +69,13 @@ class AdminAuthController extends Controller
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
-            return redirect()->route('admin.login');
+            return redirect()->route('employee.login');
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to log-out admin", "error", $e);
+            $this->logger->write("Failed to log-out employee", "error", $e);
 
-            return redirect()->back()->withErrors(['invalid' => 'Failed to logout admin']);
+            return redirect()->back()->withErrors(['invalid' => 'Failed to logout employee']);
         }
     }
 }

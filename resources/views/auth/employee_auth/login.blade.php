@@ -74,8 +74,8 @@
 		</ul>
 		</div>
 	@endif
-    <h2>Admin Login</h2>
-    <form action="{{ route('admin.login.post') }}" method="POST">
+    <h2>Employee Login</h2>
+    <form action="{{ route('employee.login.post') }}" method="POST">
         @csrf
       <div class="form-group">
         <label for="User Email">User Email:</label>

@@ -150,7 +150,7 @@
                                     <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i>
                                         Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="ti-lock text-muted mr-2"></i>
+                                    <a class="dropdown-item" href="{{ route('employee.logout') }}"><i class="ti-lock text-muted mr-2"></i>
                                         Logout</a>
                                 </li>
                             </ul>
@@ -168,11 +168,11 @@
 
                 <div class="user-profile">
                     <div class="ulogo">
-                        <a href="{{ route('admin.dashboard') }}">
+                        <a href="{{ route('employee.dashboard') }}">
                             <!-- logo for regular state and mobile devices -->
                             <div class="d-flex align-items-center justify-content-center">
                                 <img src="/BackTheme/images/logo-dark.png" alt="">
-                                <h3><b>{{ config('app.name') }}</b> Admin</h3>
+                                <h3><b>{{ config('app.name') }}</b> Employee</h3>
                             </div>
                         </a>
                     </div>
@@ -182,7 +182,7 @@
                 <ul class="sidebar-menu" data-widget="tree">
 
                     <li>
-                        <a href="{{ route('admin.dashboard') }}">
+                        <a href="{{ route('employee.dashboard') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Dashboard</span>
                         </a>
@@ -217,7 +217,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('admin.logout') }}">
+                        <a href="{{ route('employee.logout') }}">
                             <i data-feather="lock"></i>
                             <span>Log Out</span>
                         </a>

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\Auth\EmployeeAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BookingController;
 use App\Http\Controllers\Front\ContactController;
@@ -79,5 +81,19 @@ Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin
 Route::group(['middleware' => ['auth:admin']], function() {
 
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////// Employee Routes /////////////////////////////////////////////////////////////////////////
+Route::get('/employee/login', [EmployeeAuthController::class, 'loginGet'])->name('employee.login');
+
+Route::post('/employee/login/post', [EmployeeAuthController::class, 'loginPost'])->name('employee.login.post');
+
+Route::get('/employee/logout', [EmployeeAuthController::class, 'logout'])->name('employee.logout');
+
+Route::group(['middleware' => ['auth:employee']], function() {
+
+    Route::get('/employee/dashboard', [EmployeeDashboardController::class, 'dashboard'])->name('employee.dashboard');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
