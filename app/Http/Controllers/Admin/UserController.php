@@ -7,7 +7,7 @@ use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class UserController extends Controller
 {
     public $logger;
 
@@ -16,17 +16,17 @@ class DashboardController extends Controller
         $this->logger = $logger;
     }
 
-    public function dashboard()
+    public function userList()
     {
        try
         {
-            return view('admin_dashboard.admin_dashboard');
+            return view('admin_dashboard.user_list');
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to show admin dashboard", "error", $e);
+            $this->logger->write("Failed to show users", "error", $e);
 
-            return redirect()->back()->withErrors(['invalid' => 'Failed to show admin dashboard']);
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show users']);
         }
     }
 }

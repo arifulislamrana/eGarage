@@ -189,14 +189,14 @@
                     </li>
 
                     <li>
-                      <a href="">
+                      <a href="{{ route('admin.profile') }}">
                           <i data-feather="pie-chart"></i>
                           <span>Profile</span>
                       </a>
                     </li>
 
                     <li>
-                      <a href="">
+                      <a href="{{ route('admin.booking') }}">
                           <i data-feather="pie-chart"></i>
                           <span>Bookings</span>
                       </a>
@@ -211,8 +211,8 @@
                           </span>
                         </a>
                         <ul class="treeview-menu">
-                          <li><a href="chat.html"><i class="ti-more"></i>Employee List</a></li>
-                          <li><a href="calendar.html"><i class="ti-more"></i>Add Employee</a></li>
+                          <li><a href="{{ route('employees.index') }}"><i class="ti-more"></i>Employee List</a></li>
+                          <li><a href="{{ route('employees.create') }}"><i class="ti-more"></i>Add Employee</a></li>
                         </ul>
                     </li>
 
@@ -225,13 +225,13 @@
                           </span>
                         </a>
                         <ul class="treeview-menu">
-                          <li><a href="chat.html"><i class="ti-more"></i>Product List</a></li>
-                          <li><a href="calendar.html"><i class="ti-more"></i>Add Product</a></li>
+                          <li><a href="{{ route('products.index') }}"><i class="ti-more"></i>Product List</a></li>
+                          <li><a href="{{ route('products.create') }}"><i class="ti-more"></i>Add Product</a></li>
                         </ul>
                     </li>
 
                     <li>
-                      <a href="">
+                      <a href="{{ route('admin.users') }}">
                           <i data-feather="pie-chart"></i>
                           <span>Users</span>
                       </a>

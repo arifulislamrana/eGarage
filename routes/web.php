@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\EmployeeAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
@@ -78,9 +83,22 @@ Route::post('/admin/login/post', [AdminAuthController::class, 'loginPost'])->nam
 
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
+Route::prefix('admin')->group(function () {
+
 Route::group(['middleware' => ['auth:admin']], function() {
 
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('admin.profile');
+
+    Route::get('/bookings', [AdminBookingController::class, 'booking'])->name('admin.booking');
+
+    Route::get('/users', [UserController::class, 'userList'])->name('admin.users');
+
+    Route::resource('employees', EmployeeController::class);
+
+    Route::resource('products', ProductController::class);
+});
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
