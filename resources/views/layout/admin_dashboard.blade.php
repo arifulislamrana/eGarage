@@ -198,21 +198,42 @@
                     <li>
                       <a href="">
                           <i data-feather="pie-chart"></i>
-                          <span>Booking</span>
+                          <span>Bookings</span>
                       </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                          <i data-feather="message-circle"></i>
+                          <span>Employees</span>
+                          <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                          </span>
+                        </a>
+                        <ul class="treeview-menu">
+                          <li><a href="chat.html"><i class="ti-more"></i>Employee List</a></li>
+                          <li><a href="calendar.html"><i class="ti-more"></i>Add Employee</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                          <i data-feather="message-circle"></i>
+                          <span>Products</span>
+                          <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                          </span>
+                        </a>
+                        <ul class="treeview-menu">
+                          <li><a href="chat.html"><i class="ti-more"></i>Product List</a></li>
+                          <li><a href="calendar.html"><i class="ti-more"></i>Add Product</a></li>
+                        </ul>
                     </li>
 
                     <li>
                       <a href="">
                           <i data-feather="pie-chart"></i>
-                          <span>Orders</span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="">
-                          <i data-feather="pie-chart"></i>
-                          <span>My shopping</span>
+                          <span>Users</span>
                       </a>
                     </li>
 
