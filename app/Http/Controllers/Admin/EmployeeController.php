@@ -6,6 +6,7 @@ use Exception;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateEmployee;
 use App\Repository\EmployeeRepository\IEmployeeRepository;
 
 class EmployeeController extends Controller
@@ -57,9 +58,42 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateEmployee $request)
     {
-        //
+        try
+        {
+            if ($request->password != $request->cpassword)
+            {
+                return redirect()->back()->withErrors(['invalid' => 'PassWord and Confirm PassWord Should Be Same']);
+            }
+
+            if ($this->employeeRepo->getEmployeeByEmail($request->email) != null)
+            {
+                return redirect()->back()->withErrors(['invalid' => 'This email already been used']);
+            }
+
+            $temp = explode('@', $request->email)[0];
+            $imageName = $temp.time().rand(99, 100000000).'.'.$request->file('image')->extension();
+            $imagePath = "\\".str_replace('/', "\\",config('app.employeeImagePath'))."\\".$imageName;
+
+            $this->employeeRepo->create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'image' => $imagePath,
+                'phone' => $request->phone,
+            ]);
+
+            $request->file('image')->move(public_path(config('app.employeeImagePath')), $imageName);
+
+            return redirect()->route('employees.index')->with(['message' => 'Employee data stored successfully']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("error", "Failed to Strore Employee Data", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'data could not be saved. Please try again']);
+        }
     }
 
     /**

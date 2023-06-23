@@ -20,6 +20,7 @@ class EmployeeFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'password' => bcrypt('123456'), // password
+            'phone' => fake()->phoneNumber(),
         ];
     }
 }

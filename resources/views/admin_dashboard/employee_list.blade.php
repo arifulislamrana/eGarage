@@ -52,7 +52,7 @@
                 @if(!empty($employees) && $employees->count())
                 <table class="table table-hover">
                   <tr>
-                    <th>SL.</th>
+                    <th>ID.</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
@@ -64,9 +64,9 @@
                         <td><a>{{ $employee->id }}</a></td>
                         <td><a href="javascript:void(0)">{{ $employee->name }}</a></td>
                         <td>{{ $employee->email }}</td>
-                        <td><span class="text-muted"><i class="fa fa-clock-o"></i> 01720180683</span> </td>
-                        @if (isset($employee->image))
-                        <td><img src="{{$employee->image}}" alt=""></td>
+                        <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $employee->phone }}</span> </td>
+                        @if ($employee->image != null)
+                        <td><img style="height: 40px; width: 45px; border-radius: 50%" src="{{$employee->image}}" alt=""></td>
                         @else
                         <td><img style="height: 40px; width: 45px; border-radius: 50%" src="/BackTheme/images/avatar/avatar-13.png" alt=""></td>
                         @endif
@@ -84,7 +84,9 @@
                     </tr>
                     @endforeach
                 </table>
-                {{ $employees->links() }}
+                <div class="float-right">
+                    {{ $employees->links() }}
+                </div>
                 @else
                     <h4 style="text-align: center">No Employee Exists</h4>
                 @endif

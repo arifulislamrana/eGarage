@@ -16,11 +16,15 @@ class EmployeeRepository extends BaseRepository implements IEmployeeRepository {
     {
         if ($search != null)
         {
-            //dd( $this->model->where('name','LIKE','%'.$search.'%')->get());
             $employees = $this->model->where('name','LIKE','%'.$search.'%')->paginate(10);
 
             return $employees;
         }
-        return $this->model->paginate(15);
+        return $this->model->orderBy('id', 'desc')->paginate(10);
+    }
+
+    public function getEmployeeByEmail($email)
+    {
+        return $this->model->where('email', $email)->first();
     }
 }

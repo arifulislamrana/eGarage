@@ -19,6 +19,10 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'employeeImagePath' => env('EMPLOYEE_IMAGE_PATH', 'Uploads/Employee'),
+
+    'adminImagePath' => env('ADMIN_IMAGE_PATH', 'Uploads/Admin'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

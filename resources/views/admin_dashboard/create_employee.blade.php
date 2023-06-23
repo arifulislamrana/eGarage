@@ -29,19 +29,32 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body wizard-content">
-            <form action="#" class="tab-wizard wizard-circle">
+            @if(count($errors) > 0 )
+              <div class="alert alert-danger alert-dismissible fade show col-md-12" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <ul class="p-0 m-0" style="list-style: none;">
+                    @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+              </div>
+            @endif
+            <form method="POST" action="{{ route('employees.store') }}" enctype="multipart/form-data">
+                @csrf
                 <section>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="firstName5">Name :</label>
-                                <input type="text" class="form-control" id="firstName5">
+                                <input type="text" name="name" class="form-control" id="firstName5" value="{{ old('name') }}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="emailAddress1">Email Address :</label>
-                                <input type="email" class="form-control" id="emailAddress1">
+                                <input type="email" name="email" class="form-control" id="emailAddress1" value="{{ old('email') }}" required>
                             </div>
                         </div>
                     </div>
@@ -49,13 +62,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="phoneNumber1">Phone Number :</label>
-                                <input type="tel" class="form-control" id="phoneNumber1">
+                                <input type="text" name="phone" class="form-control" id="phoneNumber1" value="{{ old('phone') }}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
 							<div class="form-group">
 								<label for="image">Image :</label>
-								<input name="photo" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="image" name="image" class="form-control" required>
+								<input name="image" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" id="image" class="form-control" required>
 							</div>
 						</div>
                     </div>
@@ -63,20 +76,17 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="pass">Password :</label>
-                                <input type="text" class="form-control" id="pass">
+                                <input type="password" name="password" class="form-control" id="pass">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="cpass">Confirm Password:</label>
-                                <input type="text" class="form-control" id="cpass">
+                                <input type="password" name="cpassword" class="form-control" id="cpass">
                             </div>
                         </div>
                     </div>
                     <div class="box-footer text-right">
-                        <button type="button" class="btn btn-rounded btn-warning btn-outline mr-1">
-                          <i class="ti-trash"></i> Cancel
-                        </button>
                         <button type="submit" class="btn btn-rounded btn-primary btn-outline">
                           <i class="ti-save-alt"></i> Save
                         </button>
