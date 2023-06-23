@@ -71,10 +71,10 @@
                         <td><img style="height: 40px; width: 45px; border-radius: 50%" src="/BackTheme/images/avatar/avatar-13.png" alt=""></td>
                         @endif
                         <td>
-                            <a class="btn btn-rounded btn-primary" href="">
+                            <a class="btn btn-rounded btn-primary" href="{{ route('employees.show', ['employee' => $employee->id]) }}">
                                 <i class="fa fa-eye"></i>
                             </a>
-                            <a class="btn btn-rounded btn-info" href="#">
+                            <a class="btn btn-rounded btn-info" href="{{ route('employees.edit', ['employee' => $employee->id]) }}">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a class="btn btn-rounded btn-danger" onclick="showModal({{$employee->id}})" data-toggle="modal" href="#">
