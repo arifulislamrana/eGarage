@@ -84,6 +84,8 @@ class EmployeeController extends Controller
                 'password' => bcrypt($request->password),
                 'image' => $imagePath,
                 'phone' => $request->phone,
+                'designation' => $request->designation,
+                'address' => $request->address,
             ]);
 
             $request->file('image')->move(public_path(config('app.employeeImagePath')), $imageName);
@@ -103,7 +105,8 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        dd($this->employeeRepo->find($id));
+       // dd($this->employeeRepo->find($id));
+       return view('admin_dashboard.employee_profile');
     }
 
     /**
@@ -155,6 +158,8 @@ class EmployeeController extends Controller
                     'email' => $request->email,
                     'image' => $imagePath,
                     'phone' => $request->phone,
+                    'designation' => $request->designation,
+                    'address' => $request->address,
                 ]);
 
                 $request->file('image')->move(public_path(config('app.employeeImagePath')), $imageName);
@@ -166,6 +171,8 @@ class EmployeeController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
+                'designation' => $request->designation,
+                'address' => $request->address,
             ]);
 
             return redirect()->route('employees.index', ['search' => $request->name])->with(['message' => 'Employee data updated successfully']);

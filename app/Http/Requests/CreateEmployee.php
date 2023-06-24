@@ -28,6 +28,8 @@ class CreateEmployee extends FormRequest
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'password' => 'required|min:6',
             'cpassword' => 'required|min:6',
+            'designation' => 'required|string',
+            'address' => 'required|string',
         ];
     }
 }

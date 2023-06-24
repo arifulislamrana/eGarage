@@ -26,6 +26,8 @@ class UpdateEmployee extends FormRequest
             'email' => 'required|email',
             'phone' => 'required|string',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'designation' => 'required|string',
+            'address' => 'required|string',
         ];
     }
 }

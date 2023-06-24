@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('employees', function (Blueprint $table) {
             $table->string('phone')->unique();
+            $table->string('designation');
+            $table->string('address');
         });
     }
 
@@ -23,6 +25,8 @@ return new class extends Migration
     {
         Schema::table('employees', function (Blueprint $table) {
             $table->dropColumn('phone');
+            $table->dropColumn('designation');
+            $table->dropColumn('address');
         });
     }
 };

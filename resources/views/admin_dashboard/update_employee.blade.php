@@ -76,6 +76,29 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                              <label>Designation:</label>
+                              <select class="form-control" name="designation" required>
+                                <option value="{{ $employee->designation }}" selected>{{ $employee->designation }}</option>
+                                <option value="Senior Engineer">Senior Engineer</option>
+                                <option value="junior Engineer">junior Engineer</option>
+                                <option value="Senior Mechanic">Senior Mechanic</option>
+                                <option value="Junior Mechanic">Junior Mechanic</option>
+                                <option value="Trainee">Trainee</option>
+                                <option value="Cashier">Cashier</option>
+                                <option value="Cleaner">Cleaner</option>
+                              </select>
+                            </div>
+                          </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cpass">Address:</label>
+                                <input type="text" name="address" value="{{ $employee->address }}" class="form-control" id="cpass" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="old">Old Image</label>
                                 <img id="old" src="{{ $employee->image }}" width="100" height="100">
                             </div>

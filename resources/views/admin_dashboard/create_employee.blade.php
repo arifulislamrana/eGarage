@@ -86,6 +86,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Designation:</label>
+                              <select class="form-control" name="designation" required>
+                                <option>Select Designation</option>
+                                <option value="Senior Engineer">Senior Engineer</option>
+                                <option value="junior Engineer">junior Engineer</option>
+                                <option value="Senior Mechanic">Senior Mechanic</option>
+                                <option value="Junior Mechanic">Junior Mechanic</option>
+                                <option value="Trainee">Trainee</option>
+                                <option value="Cashier">Cashier</option>
+                                <option value="Cleaner">Cleaner</option>
+                              </select>
+                            </div>
+                          </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cpass">Address:</label>
+                                <input type="text" name="address" class="form-control" id="cpass" required>
+                            </div>
+                        </div>
+                    </div>
                     <div class="box-footer text-right">
                         <button type="submit" class="btn btn-rounded btn-primary btn-outline">
                           <i class="ti-save-alt"></i> Save
