@@ -105,8 +105,23 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-       // dd($this->employeeRepo->find($id));
-       return view('admin_dashboard.employee_profile');
+       try
+        {
+            $employee = $this->employeeRepo->find($id);
+
+            if (empty($employee))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Employee does not exist']);
+            }
+
+            return view('admin_dashboard.employee_profile', compact('employee'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show employee profile", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show employee profile']);
+        }
     }
 
     /**
@@ -192,6 +207,13 @@ class EmployeeController extends Controller
     {
         try
         {
+            $employee = $this->employeeRepo->find($id);
+
+            if(File::exists(public_path($employee->image)))
+            {
+                File::delete(public_path($employee->image));
+            }
+
             $this->employeeRepo->destroy($id);
 
             return redirect()->route('employees.index')->with(['message' => 'Employee deleted']);

@@ -37,7 +37,7 @@
                                 <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Learn More<i class="fa fa-arrow-right ms-3"></i></a>
                             </div>
                             <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
-                                <img class="/FrontTheme/img-fluid" src="/FrontTheme/img/carousel-2.png" alt="">
+                                <img class="/FrontTheme/img-fluid" src="/FrontTheme/img/carousel.png" alt="">
                             </div>
                         </div>
                     </div>

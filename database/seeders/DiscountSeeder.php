@@ -12,6 +12,9 @@ class DiscountSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Discount::factory()->create([
+            'name' => 'eid',
+            'percentage' => 10,
+        ]);
     }
 }

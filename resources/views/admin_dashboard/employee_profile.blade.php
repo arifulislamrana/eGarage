@@ -13,7 +13,7 @@
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                            <li class="breadcrumb-item" aria-current="page">Extra</li>
+                            <li class="breadcrumb-item" aria-current="page">Employee</li>
                             <li class="breadcrumb-item active" aria-current="page">Profile</li>
                         </ol>
                     </nav>
@@ -28,46 +28,35 @@
         <div class="row">
             <div class="row-12 col-lg-5 col-xl-4">
 
-                <div class="box box-inverse bg-img" style="background-image: url(/BackTheme/images/gallery/full/1.jpg);"
+                <div class="box box-inverse bg-img" style="background-image: url(/BackTheme/images/auth-bg/bg-4.jpg);"
                     data-overlay="2">
                     <div class="flexbox px-20 pt-20">
                         <label class="toggler toggler-danger text-white">
                             <input type="checkbox">
                             <i class="fa fa-heart"></i>
                         </label>
-                        <div class="dropdown">
-                            <a data-toggle="dropdown" href="#"><i class="ti-more-alt rotate-90 text-white"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-picture-o"></i> Shots</a>
-                                <a class="dropdown-item" href="#"><i class="ti-check"></i> Follow</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fa fa-ban"></i> Block</a>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="box-body text-center pb-50">
                         <a href="#">
-                            <img class="avatar avatar-xxl avatar-bordered" src="/BackTheme/images/avatar/5.jpg"
-                                alt="">
+                            @if ($employee->image != null)
+                                <img class="avatar avatar-xxl avatar-bordered" src="{{$employee->image}}" alt="">
+                            @else
+                                <img class="avatar avatar-xxl avatar-bordered" src="/BackTheme/images/avatar/avatar-13.png" alt="">
+                            @endif
                         </a>
-                        <h4 class="mt-2 mb-0"><a class="hover-primary text-white" href="#">Roben Parkar</a></h4>
-                        <span><i class="fa fa-map-marker w-20"></i> Miami</span>
+                        <h4 class="mt-2 mb-0"><a class="hover-primary text-white" href="#">{{$employee->name}}</a></h4>
+                        <span><i class="fa fa-map-marker w-20"></i> {{$employee->designation}}</span>
                     </div>
 
                     <ul class="box-body flexbox flex-justified text-center" data-overlay="4">
                         <li>
-                            <span class="opacity-60">Followers</span><br>
-                            <span class="font-size-20">8.6K</span>
+                            <span class="opacity-60">Pending</span><br>
+                            <span class="font-size-20">8457 Task</span>
                         </li>
                         <li>
-                            <span class="opacity-60">Following</span><br>
-                            <span class="font-size-20">8457</span>
-                        </li>
-                        <li>
-                            <span class="opacity-60">Tweets</span><br>
-                            <span class="font-size-20">2154</span>
+                            <span class="opacity-60">Completed</span><br>
+                            <span class="font-size-20">2154 Task</span>
                         </li>
                     </ul>
                 </div>
@@ -78,9 +67,10 @@
                         <div class="row">
                             <div class="col-12">
                                 <div>
-                                    <p>Email :<span class="text-gray pl-10">David@yahoo.com</span> </p>
-                                    <p>Phone :<span class="text-gray pl-10">+11 123 456 7890</span></p>
-                                    <p>Address :<span class="text-gray pl-10">123, Lorem Ipsum, Florida, USA</span></p>
+                                    <p>Email :<span class="text-gray pl-10">{{$employee->email}}</span> </p>
+                                    <p>Phone :<span class="text-gray pl-10">{{$employee->phone}}</span></p>
+                                    <p>Address :<span class="text-gray pl-10">{{$employee->address}}</span></p>
+                                    <p>Joinning :<span class="text-gray pl-10">23-05-2023</span></p>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -105,59 +95,94 @@
                 <div class="nav-tabs-custom box-profile">
                     <div>
                         <div>
-
                             <div class="box p-15">
-                                <form class="form-horizontal form-element col-12">
-                                    <div class="form-group row">
-                                        <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputName" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="inputEmail" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
-
-                                        <div class="col-sm-10">
-                                            <input type="tel" class="form-control" id="inputPhone" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" id="inputExperience" placeholder=""></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputSkills" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="ml-auto col-sm-10">
-                                            <div class="checkbox">
-                                                <input type="checkbox" id="basic_checkbox_1" checked="">
-                                                <label for="basic_checkbox_1"> I agree to the</label>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Terms and Conditions</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="ml-auto col-sm-10">
-                                            <button type="submit" class="btn btn-rounded btn-success">Submit</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <h4>Table: Task status of {{ $employee->name }}</h4>
+                                <table class="table table-hover">
+                                    <tr>
+                                      <th>Task ID.</th>
+                                      <th>Assigned at</th>
+                                      <th>Total Fee</th>
+                                      <th>User</th>
+                                      <th>Status</th>
+                                    </tr>
+                                      <tr>
+                                          <td>1</td>
+                                          <td>12-05-2023</td>
+                                          <td>1500</td>
+                                          <td>Xenon</td>
+                                          <td>pending</td>
+                                      </tr>
+                                      <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>pending</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>pending</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>pending</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>completed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>completed</td>
+                                    </tr>
+                                  </table>
                             </div>
                         </div>
                         <!-- /.tab-pane -->

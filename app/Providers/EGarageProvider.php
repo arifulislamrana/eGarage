@@ -10,6 +10,8 @@ use App\Repository\EmailVerificationRepository\EmailVerificationRepository;
 use App\Repository\EmailVerificationRepository\IEmailVerificationRepository;
 use App\Repository\EmployeeRepository\IEmployeeRepository;
 use App\Repository\EmployeeRepository\EmployeeRepository;
+use App\Repository\ProductRepository\IProductRepository;
+use App\Repository\ProductRepository\ProductRepository;
 use App\Repository\UserRepository\IUserRepository;
 use App\Utility\ILogger;
 use App\Utility\Logger;
@@ -28,6 +30,7 @@ class EGarageProvider extends ServiceProvider
         $this->app->bind(ILogger::class, Logger::class);
         $this->app->bind(IEmailVerificationRepository::class, EmailVerificationRepository::class);
         $this->app->bind(IEmployeeRepository::class, EmployeeRepository::class);
+        $this->app->bind(IProductRepository::class, ProductRepository::class);
     }
 
     /**

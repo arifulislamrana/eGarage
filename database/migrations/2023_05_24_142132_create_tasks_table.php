@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade')->onUpdate('cascade');
             $table->string('status')->default('inreview');
             $table->dateTime('service_time');
+            $table->timestamps();
         });
     }
 
