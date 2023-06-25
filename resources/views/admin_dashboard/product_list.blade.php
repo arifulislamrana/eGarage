@@ -36,7 +36,7 @@
         @endif
         <div class="box">
           <div class="box-header with-border">
-            <h4 class="box-title">Product Table</h4>
+            <h4 class="box-title">Active Product Table</h4>
             <div class="box-controls pull-right btn btn-secondary">
               <form method="GET" action="{{ route('products.index') }}" id="search-form">
                 @csrf
@@ -95,6 +95,58 @@
           <!-- /.box-body -->
         </div>
         <!-- /.box -->
+        <div class="box">
+            <div class="box-header with-border">
+              <h4 class="box-title">Deactive Product Table</h4>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+                <div class="table-responsive">
+                  @if(!empty($deactiveProducts) && $deactiveProducts->count())
+                  <table class="table table-hover">
+                    <tr>
+                      <th>ID.</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                      <th>Image</th>
+                      <th>Action</th>
+                    </tr>
+                      @foreach ($deactiveProducts as $product)
+                      <tr>
+                          <td><a>{{ $product->id }}</a></td>
+                          <td><a href="javascript:void(0)">{{ $product->name }}</a></td>
+                          <td>{{ $product->price }}</td>
+                          <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $product->status }}</span> </td>
+                          @if ($product->image != null)
+                          <td><img style="height: 40px; width: 45px; border-radius: 50%" src="{{$product->image}}" alt="null"></td>
+                          @else
+                          <td><img style="height: 40px; width: 45px; border-radius: 50%" src="/BackTheme/images/avatar/avatar-13.png" alt=""></td>
+                          @endif
+                          <td>
+                              <a class="btn btn-rounded btn-primary" href="{{ route('products.show', ['product' => $product->id]) }}">
+                                  <i class="fa fa-eye"></i>
+                              </a>
+                              <a class="btn btn-rounded btn-info" href="{{ route('products.edit', ['product' => $product->id]) }}">
+                                  <i class="fa fa-edit"></i>
+                              </a>
+                              <a class="btn btn-rounded btn-danger" onclick="showModal({{$product->id}})" data-toggle="modal" href="#">
+                                  <i class="fa fa-trash"></i>
+                              </a>
+                          </td>
+                      </tr>
+                      @endforeach
+                  </table>
+                  <div class="float-right">
+                      {{ $deactiveProducts->links() }}
+                  </div>
+                  @else
+                      <h4 style="text-align: center">No Product Exists</h4>
+                  @endif
+                </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
       </div>
     </div>
     <!-- /.row -->

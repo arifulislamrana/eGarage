@@ -23,6 +23,8 @@ return [
 
     'adminImagePath' => env('ADMIN_IMAGE_PATH', 'Uploads/Admin'),
 
+    'productImagePath' => env('PRODUCT_IMAGE_PATH', 'Uploads/Product'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
