@@ -37,4 +37,15 @@ class UserRepository extends BaseRepository implements IUserRepository {
         //data array must have [email, token, name]
        return  Mail::to($data['email'])->send(new ForgetPassword($data));
     }
+
+    public function getPagiantedUsers($search)
+    {
+        if ($search != null)
+        {
+            $employees = $this->model->where('name','LIKE','%'.$search.'%')->paginate(10);
+
+            return $employees;
+        }
+        return $this->model->orderBy('id', 'desc')->paginate(10);
+    }
 }

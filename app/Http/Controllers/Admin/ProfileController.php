@@ -6,6 +6,7 @@ use Exception;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -20,7 +21,8 @@ class ProfileController extends Controller
     {
        try
         {
-            return view('admin_dashboard.profile');
+            $admin = Auth::guard('admin')->user();
+            return view('admin_dashboard.admin_profile', compact('admin'));
         }
         catch (Exception $e)
         {

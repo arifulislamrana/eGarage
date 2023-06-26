@@ -95,6 +95,10 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
     Route::get('/users', [UserController::class, 'userList'])->name('admin.users');
 
+    Route::get('/users/profile/{id}', [UserController::class, 'show'])->name('admin.users.show');
+
+    Route::delete('/users/{id}', [UserController::class, 'delete'])->name('admin.users.delete');
+
     Route::resource('employees', EmployeeController::class);
 
     Route::resource('products', ProductController::class);
