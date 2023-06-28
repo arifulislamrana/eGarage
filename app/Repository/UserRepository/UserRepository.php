@@ -32,6 +32,11 @@ class UserRepository extends BaseRepository implements IUserRepository {
         return $this->model->where('email', $email)->first();
     }
 
+    public function getUserByPhone($phone)
+    {
+        return $this->model->where('phone', $phone)->first();
+    }
+
     public function userPassRecoverMail(Array $data)
     {
         //data array must have [email, token, name]

@@ -189,7 +189,7 @@
                     </li>
 
                     <li>
-                      <a href="">
+                      <a href="{{ route('user.profile') }}">
                           <i data-feather="pie-chart"></i>
                           <span>Profile</span>
                       </a>

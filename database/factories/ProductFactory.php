@@ -27,6 +27,10 @@ class ProductFactory extends Factory
             'image' => 'dfd/hjgh/gghf',
             'category_id' => $category[rand(0, count($category)-1)],
             'discount_id' => $category[rand(0, count($discount)-1)],
+            'buying_price' => rand(10, 1000),
+            'dealer' => 'Mr. Dealer',
+            'quantity' => rand(50, 100),
+            'sold' => rand(10, 30),
         ];
     }
 }

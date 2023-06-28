@@ -17,6 +17,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\Front\TechnicianController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,6 +73,12 @@ Route::get('/temp/dashboard', function () {
 Route::middleware(['auth', 'verify_email'])->group(function () {
 
     Route::get('/user/dashboard', [DashboardController::class, 'dashboard'])->name('user.dashboard');
+
+    Route::get('/user/profile', [UserProfileController::class, 'show'])->name('user.profile');
+
+    Route::get('/user/profile/edit', [UserProfileController::class, 'edit'])->name('user.edit');
+
+    Route::put('/user/profile/update', [UserProfileController::class, 'update'])->name('user.update');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
