@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('arrival_time');
+            $table->string('special_request')->nullable();
         });
 
         Schema::create('booking_service', function (Blueprint $table) {

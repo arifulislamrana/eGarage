@@ -16,6 +16,7 @@ use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\Front\TechnicianController;
+use App\Http\Controllers\User\BookingController as UserBookingController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\UserProfileController;
 use Illuminate\Support\Facades\Route;
@@ -79,6 +80,10 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
     Route::get('/user/profile/edit', [UserProfileController::class, 'edit'])->name('user.edit');
 
     Route::put('/user/profile/update', [UserProfileController::class, 'update'])->name('user.update');
+
+    Route::get('/user/service/booking', [UserBookingController::class, 'create'])->name('booking.create');
+
+    Route::post('user/service/booking/post', [UserBookingController::class, 'store'])->name('booking.store');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
