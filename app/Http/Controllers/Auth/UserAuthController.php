@@ -124,6 +124,13 @@ class UserAuthController extends Controller
             $email = $request->email;
             $pass = $request->password;
 
+            $user = $this->userRepository->getUserByEmail($email);
+
+            if (empty($user))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'User does not exist']);
+            }
+
             if (Auth::attempt(['email' => $email, 'password' => $pass]))
             {
                 $request->session()->regenerate();
