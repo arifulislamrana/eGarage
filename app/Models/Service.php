@@ -20,8 +20,8 @@ class Service extends Model
         return $this->belongsToMany(Task::class, 'task_service');
     }
 
-    public function booking()
+    public function bookings()
     {
-        return $this->belongsTo(Booking::class);
+        return $this->belongsToMany(Booking::class, 'booking_service');
     }
 }
