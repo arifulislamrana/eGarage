@@ -12,4 +12,9 @@ class ServiceRepository extends BaseRepository implements IServiceRepository
     {
         parent::__construct($model);
     }
+
+    public function findServices($servicesId)
+    {
+        return $this->model->find($servicesId);
+    }
 }

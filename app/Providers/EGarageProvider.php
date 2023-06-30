@@ -9,6 +9,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Repository\BaseRepository\BaseRepository;
 use App\Repository\UserRepository\UserRepository;
 use App\Repository\BaseRepository\IBaseRepository;
+use App\Repository\BookingRepository\BookingRepository;
+use App\Repository\BookingRepository\IBookingRepository;
 use App\Repository\UserRepository\IUserRepository;
 use App\Repository\ProductRepository\ProductRepository;
 use App\Repository\ServiceRepository\ServiceRepository;
@@ -34,6 +36,7 @@ class EGarageProvider extends ServiceProvider
         $this->app->bind(IEmployeeRepository::class, EmployeeRepository::class);
         $this->app->bind(IProductRepository::class, ProductRepository::class);
         $this->app->bind(IServiceRepository::class, ServiceRepository::class);
+        $this->app->bind(IBookingRepository::class, BookingRepository::class);
     }
 
     /**
