@@ -196,11 +196,18 @@
                     </li>
 
                     <li>
-                      <a href="">
+                      <a href="{{ route('user.booking') }}">
                           <i data-feather="pie-chart"></i>
-                          <span>Booking</span>
+                          <span>My Booking</span>
                       </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('booking.create') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Create Booking</span>
+                        </a>
+                      </li>
 
                     <li>
                       <a href="">

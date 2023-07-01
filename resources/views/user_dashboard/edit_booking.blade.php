@@ -25,7 +25,7 @@
     <section class="content row justify-content-center align-items-center">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h4 class="box-title">Create Booking</h4>
+                <h4 class="box-title">Edit Booking Info.</h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body wizard-content">
@@ -41,8 +41,9 @@
                         </ul>
                     </div>
                 @endif
-                <form method="POST" action="{{ route('booking.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('booking.update', ['id' => $booking->id]) }}" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <section>
                         <div class="row">
                             <div class="col-md-6">
@@ -50,7 +51,13 @@
                                     <label for="exampleFormControlSelect1">Select Needed Services:</label>
                                     <select class="form-control js-example-basic-multiple" name="services[]" multiple="multiple" required>
                                         @foreach ($services as $service)
-                                            <option value="{{ $service->id }}">{{ $service->name }}: {{ $service->fee }}tk</option>
+                                            @foreach ($selectedServices as $selectedService)
+                                                @if ($service->id == $selectedService->id)
+                                                    <option value="{{ $service->id }}" selected>{{ $service->name }}: {{ $service->fee }}tk</option>
+                                                @else
+                                                    <option value="{{ $service->id }}">{{ $service->name }}: {{ $service->fee }}tk</option>
+                                                @endif
+                                            @endforeach
                                         @endforeach
                                     </select>
                                 </div>
@@ -58,7 +65,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Time of Service:</label>
-                                    <input class="form-control" name="arrival_time" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                    <input class="form-control" name="arrival_time" type="datetime-local" value="{{ $booking->arrival_time }}" id="example-datetime-local-input">
                                 </div>
                             </div>
                         </div>
@@ -66,7 +73,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="phoneNumber1">Special Request :</label>
-                                    <textarea name="special_request" class="form-control" id="phoneNumber1" value="{{ old('special_request') }}" required cols="10" rows="2"></textarea>
+                                    <textarea name="special_request" class="form-control" id="phoneNumber1" value="{{ old('special_request') }}" required cols="10" rows="2">{{ $booking->special_request }}</textarea>
                                 </div>
                             </div>
                         </div>

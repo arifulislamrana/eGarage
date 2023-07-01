@@ -84,6 +84,12 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
     Route::get('/user/service/booking', [UserBookingController::class, 'create'])->name('booking.create');
 
     Route::post('user/service/booking/post', [UserBookingController::class, 'store'])->name('booking.store');
+
+    Route::get('/user/booked/service', [UserBookingController::class, 'myBooking'])->name('user.booking');
+
+    Route::get('/user/booking/edit/{id}', [UserBookingController::class, 'edit'])->name('booking.edit');
+
+    Route::put('/user/booking/update/{id}', [UserBookingController::class, 'update'])->name('booking.update');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
