@@ -46,4 +46,15 @@ class BookingRepository extends BaseRepository implements IBookingRepository
     {
         return Auth::user()->booking;
     }
+
+    public function getPagiantedBookings($search)
+    {
+        if ($search != null)
+        {
+            $bookings = $this->model->where('name','LIKE','%'.$search.'%')->paginate(10);
+
+            return $bookings;
+        }
+        return $this->model->orderBy('id', 'desc')->paginate(10);
+    }
 }

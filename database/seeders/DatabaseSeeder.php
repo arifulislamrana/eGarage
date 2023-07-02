@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             EmployeeSeeder::class,
             ServiceSeeder::class,
+            BookingSeeder::class,
         ]);
     }
 }
