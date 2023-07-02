@@ -35,7 +35,7 @@
           <div class="box-header with-border">
             <h4 class="box-title">booking Table</h4>
             <div class="box-controls pull-right btn btn-secondary">
-              <form method="GET" action="{{ route('admin.bookings') }}" id="search-form">
+              <form method="GET" action="{{ route('admin.booking') }}" id="search-form">
                 @csrf
                 <div class="lookup lookup-circle lookup-right">
                     <input type="text" id="search-text" name="search" placeholder="search">
@@ -50,27 +50,23 @@
                 <table class="table table-hover">
                   <tr>
                     <th>User</th>
-                    <th>Services</th>
                     <th>Time</th>
                     <th>fee</th>
                     <th>Action</th>
                   </tr>
                     @foreach ($bookings as $booking)
                     <tr>
-                        <td><a href="javascript:void(0)">{{ $booking->user->name }}</a></td>
-                        <td>{{ $booking->email }}</td>
-                        <td><span class="text-muted"><i class="fa fa-clock-o"></i>@foreach ($booking->services as $service)
-                            {{ $service->name }}{{ ,  }}
-                        @endforeach</span> </td>
+                        <td><a href="{{ route('admin.users.show', ['id' => $booking->user->id]) }}">{{ $booking->user->name }}</a></td>
                         <td>{{ $booking->arrival_time }}</td>
                         <td>
-                            @foreach ($booking->services as $service)
-                                {{  }}
-                            @endforeach
+                            {{ $fees[$booking->id] }}
                         </td>
                         <td>
-                            <a class="btn btn-rounded btn-primary" href="{{ route('admin.bookings.show', ['id' => $booking->id]) }}">
+                            <a class="btn btn-rounded btn-primary" href="{{ route('admin.booking.show', ['id' => $booking->user->id]) }}">
                                 <i class="fa fa-eye"></i>
+                            </a>
+                            <a class="btn btn-rounded btn-info" href="{{ route('admin.booking.show', ['id' => $booking->user->id]) }}">
+                                <i class="fa fa-check"></i>
                             </a>
                             <a class="btn btn-rounded btn-danger" onclick="showModal('{{$booking->id}}')" data-toggle="modal" href="#">
                                 <i class="fa fa-trash"></i>
@@ -124,7 +120,7 @@
 @section('script')
 <script>
     function showModal(id) {
-      $("#delForm").attr('action', 'bookings/' + id);
+      $("#delForm").attr('action', 'user/booking/delete/' + id);
       $(`#modal-danger`).modal('show');
     }
 
