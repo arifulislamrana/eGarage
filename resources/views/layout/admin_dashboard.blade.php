@@ -202,6 +202,14 @@
                             <span>Bookings</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('tasks.index') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+
                     <li>
                         <a href="{{ route('employees.index') }}">
                             <i data-feather="pie-chart"></i>

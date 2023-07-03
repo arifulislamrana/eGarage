@@ -13,13 +13,33 @@ class TaskRepository extends BaseRepository implements ITaskRepository
         parent::__construct($model);
     }
 
-    public function approvedTasks()
+    public function approvedTasks($search)
     {
-        return $this->model->where('status', 'approved');
+        if ($search != null)
+        {
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+        }
+
+        return $this->model->where('status', 'approved')->paginate(10);
     }
 
-    public function doneTasks()
+    public function doneTasks($search)
     {
-        return $this->model->where('status', 'done');
+        if ($search != null)
+        {
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+        }
+
+        return $this->model->where('status', 'done')->paginate(10);
+    }
+
+    public function undoneTasks($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+        }
+
+        return $this->model->where('status', 'undone')->paginate(10);
     }
 }

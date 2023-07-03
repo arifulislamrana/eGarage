@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\EmployeeAuthController;
@@ -122,6 +123,16 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/users/profile/{id}', [UserController::class, 'show'])->name('admin.users.show');
 
     Route::delete('/users/{id}', [UserController::class, 'delete'])->name('admin.users.delete');
+
+    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+
+    Route::get('/task/{id}', [TaskController::class, 'show'])->name('tasks.show');
+
+    Route::get('/task/edit/{id}', [TaskController::class, 'edit'])->name('tasks.edit');
+
+    Route::put('/task/update/{id}', [TaskController::class, 'update'])->name('tasks.update');
+
+    Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
     Route::resource('employees', EmployeeController::class);
 

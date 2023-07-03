@@ -5,7 +5,9 @@ use App\Repository\BaseRepository\IBaseRepository;
 
 interface ITaskRepository extends IBaseRepository
 {
-    public function approvedTasks();
+    public function approvedTasks($search);
 
-    public function doneTasks();
+    public function doneTasks($search);
+
+    public function undoneTasks($search);
 }
