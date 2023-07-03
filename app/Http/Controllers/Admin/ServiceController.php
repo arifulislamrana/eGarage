@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Exception;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,10 +23,19 @@ class ServiceController extends Controller
      */
     public function index(Request $request)
     {
-        $closedServices = $this->serviceRepository->getPagiantedClosedServices($request->search);
-        $availableServices = $this->serviceRepository->getPagiantedAvailableServices($request->search);
+        try
+        {
+            $closedServices = $this->serviceRepository->getPagiantedClosedServices($request->search);
+            $availableServices = $this->serviceRepository->getPagiantedAvailableServices($request->search);
 
-        return view('admin_dashboard.service_list', compact('closedServices', 'availableServices'));
+            return view('admin_dashboard.service_list', compact('closedServices', 'availableServices'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show service list", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show service list']);
+        }
     }
 
     /**
@@ -73,6 +83,17 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try
+        {
+            $this->serviceRepository->destroy($id);
+
+            return redirect()->route('services.index')->with(['message' => 'Service deleted']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to delete Service", "error", $e);
+
+            return redirect()->back()->with(['message' => 'Service can not be deleted']);
+        }
     }
 }
