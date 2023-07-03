@@ -6,17 +6,20 @@ use Exception;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repository\EmployeeRepository\IEmployeeRepository;
 use App\Repository\TaskRepository\ITaskRepository;
 
 class TaskController extends Controller
 {
     public $logger;
     public $taskRepository;
+    public $employeeRepository;
 
-    public function __construct(ILogger $logger, ITaskRepository $taskRepository)
+    public function __construct(ILogger $logger, ITaskRepository $taskRepository, IEmployeeRepository $employeeRepository)
     {
         $this->logger = $logger;
         $this->taskRepository = $taskRepository;
+        $this->employeeRepository = $employeeRepository;
     }
 
     public function index(Request $request)
@@ -60,12 +63,39 @@ class TaskController extends Controller
 
     public function edit($id)
     {
-        //
+        try
+        {
+            $task = $this->taskRepository->find($id);
+            $employees = $this->employeeRepository->getAll();
+
+            return view('admin_dashboard.update_task', compact('task', 'employees'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show update_task form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show update_task form']);
+        }
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        //
+        try
+        {
+            $this->taskRepository->update($id, [
+                'employee_id' => $request->employee_id,
+                'service_time' => $request->service_time,
+                'updated_at' => now(),
+            ]);
+
+            return redirect()->route('tasks.index')->with(['message' => 'Task data updated successfully']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("error", "Failed to update Task Data", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'data could not be updated. Please try again']);
+        }
     }
 
     public function destroy(string $id)
