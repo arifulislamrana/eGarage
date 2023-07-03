@@ -58,7 +58,30 @@ class TaskController extends Controller
 
     public function show($id)
     {
-        //
+        try
+        {
+            $task = $this->taskRepository->find($id);
+
+            if (empty($task))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Task does not exist']);
+            }
+
+            $totalFee = 0;
+
+            foreach ($task->services as $service)
+            {
+                $totalFee = $totalFee + $service->fee;
+            }
+
+            return view('admin_dashboard.show_task', compact('task', 'totalFee'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show task data", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show task data']);
+        }
     }
 
     public function edit($id)
