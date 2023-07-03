@@ -235,6 +235,19 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{ route('products.index') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Services</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('products.create') }}">
+                            <i data-feather="message-circle"></i>
+                            <span>Add Service</span>
+                        </a>
+                    </li>
+
                     {{-- <li class="treeview">
                         <a href="#">
                             <i data-feather="message-circle"></i>

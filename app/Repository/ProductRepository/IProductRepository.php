@@ -10,6 +10,10 @@ interface IProductRepository extends IBaseRepository
     public function getPagiantedDeactiveProduct($search);
 
     public function getallCategory();
-    
+
     public function getAllDiscount();
+
+    public function getActiveProduct();
+
+    public function getDeactiveProduct();
 }

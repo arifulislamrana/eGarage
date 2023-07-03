@@ -10,4 +10,6 @@ interface IEmployeeRepository extends IBaseRepository
     public function getEmployeeByEmail($email);
 
     public function getTaskAssignee();
+
+    public function getBestEmployee();
 }

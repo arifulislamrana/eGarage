@@ -2,6 +2,7 @@
 namespace App\Repository\EmployeeRepository;
 
 use App\Models\Employee;
+use Illuminate\Support\Facades\DB;
 use App\Repository\BaseRepository\BaseRepository;
 use App\Repository\EmployeeRepository\IEmployeeRepository;
 
@@ -31,5 +32,17 @@ class EmployeeRepository extends BaseRepository implements IEmployeeRepository {
     public function getTaskAssignee()
     {
         return $this->model->where('designation', 'Senior Engineer')->orWhere('designation', 'Junior Engineer')->orWhere('designation', 'Junior Mechanic')->orWhere('designation', 'Senior Mechanic')->orWhere('designation', 'Trainee')->get();
+    }
+
+    public function getBestEmployee()
+    {
+        $employeeWithMostTasks = $this->model
+                                    ->join('tasks', 'employees.id', '=', 'tasks.employee_id')
+                                    ->select('employees.id', 'employees.name', DB::raw('COUNT(tasks.id) as task_count'))
+                                    ->groupBy('employees.id', 'employees.name')
+                                    ->orderByDesc('task_count')
+                                    ->first();
+
+        return $employeeWithMostTasks;
     }
 }

@@ -42,4 +42,24 @@ class TaskRepository extends BaseRepository implements ITaskRepository
 
         return $this->model->where('status', 'undone')->paginate(10);
     }
+
+    public function approvedTasksCount()
+    {
+        return $this->model->where('status', 'approved')->count();
+    }
+
+    public function doneTasksCount()
+    {
+        return $this->model->where('status', 'done')->count();
+    }
+
+    public function undoneTasksCount()
+    {
+        return $this->model->where('status', 'undone')->count();
+    }
+
+    public function getDoneTaskWithoutPagination()
+    {
+        return $this->model->where('status', 'done')->get();
+    }
 }

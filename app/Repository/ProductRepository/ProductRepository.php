@@ -45,4 +45,14 @@ class ProductRepository extends BaseRepository implements IProductRepository {
     {
         return Discount::all();
     }
+
+    public function getActiveProduct()
+    {
+        return $this->model->where('status', 'active')->orderBy('id', 'desc');
+    }
+
+    public function getDeactiveProduct()
+    {
+        return $this->model->where('status', 'deactive')->orderBy('id', 'desc');
+    }
 }
