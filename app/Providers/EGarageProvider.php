@@ -18,9 +18,10 @@ use App\Repository\ProductRepository\IProductRepository;
 use App\Repository\ServiceRepository\IServiceRepository;
 use App\Repository\EmployeeRepository\EmployeeRepository;
 use App\Repository\EmployeeRepository\IEmployeeRepository;
-
 use App\Repository\EmailVerificationRepository\EmailVerificationRepository;
 use App\Repository\EmailVerificationRepository\IEmailVerificationRepository;
+use App\Repository\TaskRepository\ITaskRepository;
+use App\Repository\TaskRepository\TaskRepository;
 
 class EGarageProvider extends ServiceProvider
 {
@@ -37,6 +38,7 @@ class EGarageProvider extends ServiceProvider
         $this->app->bind(IProductRepository::class, ProductRepository::class);
         $this->app->bind(IServiceRepository::class, ServiceRepository::class);
         $this->app->bind(IBookingRepository::class, BookingRepository::class);
+        $this->app->bind(ITaskRepository::class, TaskRepository::class);
     }
 
     /**

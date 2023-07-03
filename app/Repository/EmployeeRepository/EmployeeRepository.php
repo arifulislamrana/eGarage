@@ -27,4 +27,9 @@ class EmployeeRepository extends BaseRepository implements IEmployeeRepository {
     {
         return $this->model->where('email', $email)->first();
     }
+
+    public function getTaskAssignee()
+    {
+        return $this->model->where('designation', 'Senior Engineer')->orWhere('designation', 'Junior Engineer')->orWhere('designation', 'Junior Mechanic')->orWhere('designation', 'Senior Mechanic')->orWhere('designation', 'Trainee')->get();
+    }
 }

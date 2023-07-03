@@ -62,10 +62,10 @@
                             {{ $fees[$booking->id] }}
                         </td>
                         <td>
-                            <a class="btn btn-rounded btn-primary" href="{{ route('admin.booking.show', ['id' => $booking->user->id]) }}">
+                            <a class="btn btn-rounded btn-primary" href="{{ route('admin.booking.show', ['id' => $booking->id]) }}">
                                 <i class="fa fa-eye"></i>
                             </a>
-                            <a class="btn btn-rounded btn-info" href="{{ route('admin.booking.show', ['id' => $booking->user->id]) }}">
+                            <a class="btn btn-rounded btn-info" onclick="showApproveForm('{{$booking->id}}')" ata-toggle="modal" href="#">
                                 <i class="fa fa-check"></i>
                             </a>
                             <a class="btn btn-rounded btn-danger" onclick="showModal('{{$booking->id}}')" data-toggle="modal" href="#">
@@ -114,6 +114,43 @@
         </div>
     </form>
 
+    <form id="approve" method="POST" class="remove-record-model">
+        @csrf
+        <div class="modal fade" id="modal-approve" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Approve Booking</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Approve This booking?!</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Assign Task To:</label>
+                                        <select class="form-control" name="employee_id" required>
+                                          <option selected>Select Employee</option>
+                                          @foreach ($employees as $employee)
+                                          <option value="{{ $employee->id }}" selected>{{ $employee->name }}::{{ $employee->designation }}</option>
+                                          @endforeach
+                                        </select>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-rounded btn-warning" data-dismiss="modal">No</button>
+                            <button type="submit" class="btn btn-rounded btn-primary float-right">Approve</button>
+                        </div>
+                </div>
+            <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </form>
+
   </section>
 @endsection
 
@@ -122,6 +159,11 @@
     function showModal(id) {
       $("#delForm").attr('action', 'user/booking/delete/' + id);
       $(`#modal-danger`).modal('show');
+    }
+
+    function showApproveForm(id) {
+      $("#approve").attr('action', 'user/booking/approve/' + id);
+      $(`#modal-approve`).modal('show');
     }
 
     var input = document.getElementById("search-text");

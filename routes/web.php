@@ -115,6 +115,8 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
     Route::delete('/user/booking/delete/{id}', [AdminBookingController::class, 'destroy'])->name('admin.booking.delete');
 
+    Route::post('/user/booking/approve/{id}', [AdminBookingController::class, 'approve'])->name('admin.booking.approve');
+
     Route::get('/users', [UserController::class, 'userList'])->name('admin.users');
 
     Route::get('/users/profile/{id}', [UserController::class, 'show'])->name('admin.users.show');

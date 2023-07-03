@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('status')->default('inreview');
+            $table->string('status')->default('approved');
             $table->dateTime('service_time');
             $table->timestamps();
         });
