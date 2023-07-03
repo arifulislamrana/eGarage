@@ -8,19 +8,19 @@
 <div class="content-header">
     <div class="d-flex align-items-center">
         <div class="mr-auto">
-            <h3 class="page-title">Product Table</h3>
+            <h3 class="page-title">Service Table</h3>
             <div class="d-inline-block align-items-center">
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
                         <li class="breadcrumb-item" aria-current="page">Tables</li>
-                        <li class="breadcrumb-item active" aria-current="page">Product</li>
+                        <li class="breadcrumb-item active" aria-current="page">Service</li>
                     </ol>
                 </nav>
             </div>
         </div>
-        <a class="btn btn-rounded btn-primary float-right" href="{{ route('products.create') }}">
-            Add Product
+        <a class="btn btn-rounded btn-primary float-right" href="{{ route('services.create') }}">
+            Add Service
         </a>
     </div>
 </div>
@@ -36,9 +36,9 @@
         @endif
         <div class="box">
           <div class="box-header with-border">
-            <h4 class="box-title">Active Product Table</h4>
+            <h4 class="box-title">Available Service Table</h4>
             <div class="box-controls pull-right btn btn-secondary">
-              <form method="GET" action="{{ route('products.index') }}" id="search-form">
+              <form method="GET" action="{{ route('services.index') }}" id="search-form">
                 @csrf
                 <div class="lookup lookup-circle lookup-right">
                     <input type="text" id="search-text" name="search" placeholder="search">
@@ -49,35 +49,33 @@
           <!-- /.box-header -->
           <div class="box-body no-padding">
               <div class="table-responsive">
-                @if(!empty($products) && $products->count())
+                @if(!empty($availableServices) && $availableServices->count())
                 <table class="table table-hover">
                   <tr>
-                    <th>ID.</th>
                     <th>Name</th>
-                    <th>Price</th>
+                    <th>Fee</th>
                     <th>Status</th>
                     <th>Image</th>
                     <th>Action</th>
                   </tr>
-                    @foreach ($products as $product)
+                    @foreach ($availableServices as $service)
                     <tr>
-                        <td><a>{{ $product->id }}</a></td>
-                        <td><a href="javascript:void(0)">{{ $product->name }}</a></td>
-                        <td>{{ $product->price }}</td>
-                        <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $product->status }}</span> </td>
-                        @if ($product->image != null)
-                        <td><img style="height: 40px; width: 45px; border-radius: 50%" src="{{$product->image}}" alt="null"></td>
+                        <td><a href="javascript:void(0)">{{ $service->name }}</a></td>
+                        <td>{{ $service->fee }}</td>
+                        <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $service->status }}</span> </td>
+                        @if ($service->image != null)
+                        <td><img style="height: 40px; width: 45px; border-radius: 50%" src="{{$service->image}}" alt="null"></td>
                         @else
                         <td><img style="height: 40px; width: 45px; border-radius: 50%" src="/BackTheme/images/avatar/avatar-13.png" alt=""></td>
                         @endif
                         <td>
-                            <a class="btn btn-rounded btn-primary" href="{{ route('products.show', ['product' => $product->id]) }}">
+                            <a class="btn btn-rounded btn-primary" href="{{ route('services.show', ['service' => $service->id]) }}">
                                 <i class="fa fa-eye"></i>
                             </a>
-                            <a class="btn btn-rounded btn-info" href="{{ route('products.edit', ['product' => $product->id]) }}">
+                            <a class="btn btn-rounded btn-info" href="{{ route('services.edit', ['service' => $service->id]) }}">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a class="btn btn-rounded btn-danger" onclick="showModal({{$product->id}})" data-toggle="modal" href="#">
+                            <a class="btn btn-rounded btn-danger" onclick="showModal({{$service->id}})" data-toggle="modal" href="#">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>
@@ -85,10 +83,10 @@
                     @endforeach
                 </table>
                 <div class="float-right">
-                    {{ $products->links() }}
+                    {{ $availableServices->links() }}
                 </div>
                 @else
-                    <h4 style="text-align: center">No Product Exists</h4>
+                    <h4 style="text-align: center">No Service Exists</h4>
                 @endif
               </div>
           </div>
@@ -97,40 +95,38 @@
         <!-- /.box -->
         <div class="box">
             <div class="box-header with-border">
-              <h4 class="box-title">Deactive Product Table</h4>
+              <h4 class="box-title">Closed Service Table</h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
                 <div class="table-responsive">
-                  @if(!empty($deactiveProducts) && $deactiveProducts->count())
+                  @if(!empty($closedServices) && $closedServices->count())
                   <table class="table table-hover">
                     <tr>
-                      <th>ID.</th>
                       <th>Name</th>
-                      <th>Price</th>
+                      <th>Fee</th>
                       <th>Status</th>
                       <th>Image</th>
                       <th>Action</th>
                     </tr>
-                      @foreach ($deactiveProducts as $product)
+                      @foreach ($closedServices as $service)
                       <tr>
-                          <td><a>{{ $product->id }}</a></td>
-                          <td><a href="javascript:void(0)">{{ $product->name }}</a></td>
-                          <td>{{ $product->price }}</td>
-                          <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $product->status }}</span> </td>
-                          @if ($product->image != null)
-                          <td><img style="height: 40px; width: 45px; border-radius: 50%" src="{{$product->image}}" alt="null"></td>
+                          <td><a href="javascript:void(0)">{{ $service->name }}</a></td>
+                          <td>{{ $service->fee }} tk</td>
+                          <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $service->status }}</span> </td>
+                          @if ($service->image != null)
+                          <td><img style="height: 40px; width: 45px; border-radius: 50%" src="{{$service->image}}" alt="null"></td>
                           @else
                           <td><img style="height: 40px; width: 45px; border-radius: 50%" src="/BackTheme/images/avatar/avatar-13.png" alt=""></td>
                           @endif
                           <td>
-                              <a class="btn btn-rounded btn-primary" href="{{ route('products.show', ['product' => $product->id]) }}">
+                              <a class="btn btn-rounded btn-primary" href="{{ route('services.show', ['service' => $service->id]) }}">
                                   <i class="fa fa-eye"></i>
                               </a>
-                              <a class="btn btn-rounded btn-info" href="{{ route('products.edit', ['product' => $product->id]) }}">
+                              <a class="btn btn-rounded btn-info" href="{{ route('services.edit', ['service' => $service->id]) }}">
                                   <i class="fa fa-edit"></i>
                               </a>
-                              <a class="btn btn-rounded btn-danger" onclick="showModal({{$product->id}})" data-toggle="modal" href="#">
+                              <a class="btn btn-rounded btn-danger" onclick="showModal({{$service->id}})" data-toggle="modal" href="#">
                                   <i class="fa fa-trash"></i>
                               </a>
                           </td>
@@ -138,10 +134,10 @@
                       @endforeach
                   </table>
                   <div class="float-right">
-                      {{ $deactiveProducts->links() }}
+                      {{ $closedServices->links() }}
                   </div>
                   @else
-                      <h4 style="text-align: center">No Product Exists</h4>
+                      <h4 style="text-align: center">No service Exists</h4>
                   @endif
                 </div>
             </div>
@@ -181,7 +177,7 @@
 @section('script')
 <script>
     function showModal(id) {
-      $("#delForm").attr('action', 'products/' + id);
+      $("#delForm").attr('action', 'services/' + id);
       $(`#modal-danger`).modal('show');
     }
 

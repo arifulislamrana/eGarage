@@ -16,7 +16,8 @@ class Service extends Model
         'name',
         'description',
         'image',
-        'fee'
+        'fee',
+        'status',
     ];
 
     public function users()

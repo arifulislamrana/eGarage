@@ -2,17 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Utility\ILogger;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repository\ServiceRepository\IServiceRepository;
 
 class ServiceController extends Controller
 {
+    public $logger;
+    public $serviceRepository;
+
+    public function __construct(ILogger $logger, IServiceRepository $serviceRepository)
+    {
+        $this->logger = $logger;
+        $this->serviceRepository = $serviceRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        dd($request);
+        $closedServices = $this->serviceRepository->getPagiantedClosedServices($request->search);
+        $availableServices = $this->serviceRepository->getPagiantedAvailableServices($request->search);
+
+        return view('admin_dashboard.service_list', compact('closedServices', 'availableServices'));
     }
 
     /**
