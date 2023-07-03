@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AdminAuthController;
@@ -137,6 +138,8 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('employees', EmployeeController::class);
 
     Route::resource('products', ProductController::class);
+
+    Route::resource('services', AdminServiceController::class);
 });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

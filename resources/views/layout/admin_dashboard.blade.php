@@ -236,13 +236,13 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('products.index') }}">
+                        <a href="{{ route('services.index') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Services</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('products.create') }}">
+                        <a href="{{ route('services.create') }}">
                             <i data-feather="message-circle"></i>
                             <span>Add Service</span>
                         </a>
