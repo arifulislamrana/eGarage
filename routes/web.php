@@ -94,6 +94,12 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
     Route::put('/user/booking/update/{id}', [UserBookingController::class, 'update'])->name('booking.update');
 
     Route::delete('/user/booking/delete/{id}', [UserBookingController::class, 'destroy'])->name('booking.delete');
+
+    Route::get('/user/bookings/approved', [UserBookingController::class, 'approvedBooking'])->name('booking.approved');
+
+    Route::get('/user/bookings/done', [UserBookingController::class, 'doneBooking'])->name('booking.done');
+
+    Route::get('/user/bookings/{id}', [UserBookingController::class, 'show'])->name('booking.show');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

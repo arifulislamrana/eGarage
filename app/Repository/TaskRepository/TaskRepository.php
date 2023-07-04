@@ -4,6 +4,7 @@ namespace App\Repository\TaskRepository;
 use App\Models\Task;
 use App\Repository\BaseRepository\BaseRepository;
 use App\Repository\TaskRepository\ITaskRepository;
+use Illuminate\Support\Facades\Auth;
 
 class TaskRepository extends BaseRepository implements ITaskRepository
 {
@@ -61,5 +62,25 @@ class TaskRepository extends BaseRepository implements ITaskRepository
     public function getDoneTaskWithoutPagination()
     {
         return $this->model->where('status', 'done')->get();
+    }
+
+    public function approvedTasksOfUser($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('user_id', Auth::id())->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+        }
+
+        return $this->model->where('user_id', Auth::id())->where('status', 'approved')->paginate(10);
+    }
+
+    public function doneTasksOfUser($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('user_id', Auth::id())->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+        }
+
+        return $this->model->where('user_id', Auth::id())->where('status', 'done')->paginate(10);
     }
 }

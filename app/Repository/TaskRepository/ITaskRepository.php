@@ -18,4 +18,8 @@ interface ITaskRepository extends IBaseRepository
     public function undoneTasksCount();
 
     public function getDoneTaskWithoutPagination();
+
+    public function approvedTasksOfUser($search);
+
+    public function doneTasksOfUser($search);
 }

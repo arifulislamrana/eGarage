@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateBooking;
 use App\Models\Booking;
 use App\Repository\BookingRepository\IBookingRepository;
 use App\Repository\ServiceRepository\IServiceRepository;
+use App\Repository\TaskRepository\ITaskRepository;
 use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
@@ -18,11 +19,14 @@ class BookingController extends Controller
     public $logger;
     public $serviceRepository;
     public $bookingRepository;
+    public $taskRepository;
 
-    public function __construct(ILogger $logger, IServiceRepository $serviceRepository, IBookingRepository $bookingRepository)
+    public function __construct(ILogger $logger, IServiceRepository $serviceRepository,
+                            IBookingRepository $bookingRepository, ITaskRepository $taskRepository)
     {
         $this->logger = $logger;
         $this->serviceRepository = $serviceRepository;
+        $this->taskRepository = $taskRepository;
         $this->bookingRepository = $bookingRepository;
     }
 
@@ -144,9 +148,101 @@ class BookingController extends Controller
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to delete Task", "error", $e);
+            $this->logger->write("Failed to delete booking", "error", $e);
 
-            return redirect()->back()->with(['message' => 'Product can not be Task']);
+            return redirect()->back()->with(['message' => 'booking can not be deleted']);
+        }
+    }
+
+    public function approvedBooking(Request $request)
+    {
+        try
+        {
+            $approvedBookings =  $this->taskRepository->approvedTasksOfUser($request->search);
+
+            $approvedBookingsFees = array();
+
+            foreach ($approvedBookings as $task)
+            {
+                $fee = 0;
+
+                foreach ($task->services as $service)
+                {
+                    $fee = $fee + $service->fee;
+                }
+
+                $approvedBookingsFees[$task->id] = $fee;
+
+                $fee = 0;
+            }
+
+            return view('user_dashboard.approved_booking', compact('approvedBookings', 'approvedBookingsFees'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to approved booking", "error", $e);
+
+            return redirect()->back()->with(['message' => 'Failed to approved booking']);
+        }
+    }
+
+    public function doneBooking(Request $request)
+    {
+        try
+        {
+            $doneServices =  $this->taskRepository->doneTasksOfUser($request->search);
+
+            $doneServicesFees = array();
+
+            foreach ($doneServices as $task)
+            {
+                $fee = 0;
+
+                foreach ($task->services as $service)
+                {
+                    $fee = $fee + $service->fee;
+                }
+
+                $doneServicesFees[$task->id] = $fee;
+
+                $fee = 0;
+            }
+
+            return view('user_dashboard.done_service', compact('doneServices', 'doneServicesFees'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to done services of user", "error", $e);
+
+            return redirect()->back()->with(['message' => 'Failed to show done services']);
+        }
+    }
+
+    public function show($id)
+    {
+        try
+        {
+            $task = $this->taskRepository->find($id);
+
+            if (empty($task))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Servicing data does not exist']);
+            }
+
+            $totalFee = 0;
+
+            foreach ($task->services as $service)
+            {
+                $totalFee = $totalFee + $service->fee;
+            }
+
+            return view('user_dashboard.show_service', compact('task', 'totalFee'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show servicing data", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show servicing data']);
         }
     }
 }

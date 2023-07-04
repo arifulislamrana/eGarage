@@ -150,7 +150,8 @@
                                     <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i>
                                         Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"><i class="ti-lock text-muted mr-2"></i>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"><i
+                                            class="ti-lock text-muted mr-2"></i>
                                         Logout</a>
                                 </li>
                             </ul>
@@ -189,17 +190,17 @@
                     </li>
 
                     <li>
-                      <a href="{{ route('user.profile') }}">
-                          <i data-feather="pie-chart"></i>
-                          <span>Profile</span>
-                      </a>
+                        <a href="{{ route('user.profile') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Profile</span>
+                        </a>
                     </li>
 
                     <li>
-                      <a href="{{ route('user.booking') }}">
-                          <i data-feather="pie-chart"></i>
-                          <span>My Booking</span>
-                      </a>
+                        <a href="{{ route('user.booking') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>My Booking</span>
+                        </a>
                     </li>
 
                     <li>
@@ -207,20 +208,34 @@
                             <i data-feather="pie-chart"></i>
                             <span>Create Booking</span>
                         </a>
-                      </li>
-
-                    <li>
-                      <a href="">
-                          <i data-feather="pie-chart"></i>
-                          <span>Orders</span>
-                      </a>
                     </li>
 
                     <li>
-                      <a href="">
-                          <i data-feather="pie-chart"></i>
-                          <span>My shopping</span>
-                      </a>
+                        <a href="{{ route('booking.approved') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Approved Bookings</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('booking.done') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Service Taken</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i data-feather="pie-chart"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i data-feather="pie-chart"></i>
+                            <span>My shopping</span>
+                        </a>
                     </li>
 
                     <li>
