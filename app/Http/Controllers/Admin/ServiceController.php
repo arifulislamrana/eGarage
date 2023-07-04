@@ -96,7 +96,23 @@ class ServiceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try
+        {
+            $service = $this->serviceRepository->find($id);
+
+            if (empty($service))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'service does not exist']);
+            }
+
+            return view('admin_dashboard.show_service', compact('service'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show service data", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show service data']);
+        }
     }
 
     /**
