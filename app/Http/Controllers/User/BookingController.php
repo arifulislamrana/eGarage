@@ -57,7 +57,7 @@ class BookingController extends Controller
             $services = $this->serviceRepository->findServices($request->services);
             $booking = $this->bookingRepository->storeBookingDataAndMakeRelationWithServices($request, $services);
 
-            return redirect()->route('user.profile')->with(['message' => 'booking data stored successfully']);
+            return redirect()->route('user.booking')->with(['message' => 'booking data stored successfully']);
         }
         catch (Exception $e)
         {
@@ -131,6 +131,22 @@ class BookingController extends Controller
             $this->logger->write("error", "Failed to update booking data", $e);
 
             return redirect()->back()->withErrors(['invalid' => 'Failed to update booking data']);
+        }
+    }
+
+    public function destroy(string $id)
+    {
+        try
+        {
+            $this->bookingRepository->destroy($id);
+
+            return redirect()->route('booking.create')->with(['message' => 'booking deleted. Create new booking']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to delete Task", "error", $e);
+
+            return redirect()->back()->with(['message' => 'Product can not be Task']);
         }
     }
 }

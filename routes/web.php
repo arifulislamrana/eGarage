@@ -92,6 +92,8 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
     Route::get('/user/booking/edit/{id}', [UserBookingController::class, 'edit'])->name('booking.edit');
 
     Route::put('/user/booking/update/{id}', [UserBookingController::class, 'update'])->name('booking.update');
+
+    Route::delete('/user/booking/delete/{id}', [UserBookingController::class, 'destroy'])->name('booking.delete');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

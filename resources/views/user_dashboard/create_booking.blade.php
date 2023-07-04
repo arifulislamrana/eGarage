@@ -41,6 +41,12 @@
                         </ul>
                     </div>
                 @endif
+                @if(session()->has('message'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ session()->get('message') }}
+                </div>
+                @endif
                 <form method="POST" action="{{ route('booking.store') }}" enctype="multipart/form-data">
                     @csrf
                     <section>

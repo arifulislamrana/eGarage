@@ -133,7 +133,7 @@ class TaskController extends Controller
         {
             $this->logger->write("Failed to delete Task", "error", $e);
 
-            return redirect()->back()->with(['message' => 'Product can not be Task']);
+            return redirect()->back()->with(['message' => 'Product can not be deleted']);
         }
     }
 }
