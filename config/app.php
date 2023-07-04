@@ -27,6 +27,8 @@ return [
 
     'productImagePath' => env('PRODUCT_IMAGE_PATH', 'Uploads/Product'),
 
+    'serviceImagePath' => env('SERVICE_IMAGE_PATH', 'Uploads/Service'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

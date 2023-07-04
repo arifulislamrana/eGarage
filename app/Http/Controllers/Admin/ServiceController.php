@@ -43,7 +43,16 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        try
+        {
+            return view('admin_dashboard.create_service');
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show create_service form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show create_service form']);
+        }
     }
 
     /**
@@ -51,7 +60,34 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try
+        {
+            $imageName = "";
+            $imagePath = "";
+
+            if (!empty($request->image))
+            {
+                $imageName = time().rand(99, 100000000).'.'.$request->file('image')->extension();
+                $imagePath = "\\".str_replace('/', "\\",config('app.serviceImagePath'))."\\".$imageName;
+                $request->file('image')->move(public_path(config('app.serviceImagePath')), $imageName);
+            }
+
+            $this->serviceRepository->create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'image' => $imagePath,
+                'fee' => $request->fee,
+                'status' => $request->status,
+            ]);
+
+            return redirect()->route('services.index')->with(['message' => 'Service data stored successfully']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("error", "Failed to Strore Service Data", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'data could not be saved. Please try again']);
+        }
     }
 
     /**
