@@ -14,4 +14,6 @@ interface IBookingRepository extends IBaseRepository
     public function getBooking();
 
     public function getPagiantedBookings($search);
+
+    public function doesBookingExist();
 }

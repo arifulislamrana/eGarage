@@ -49,6 +49,11 @@ class BookingController extends Controller
     {
         try
         {
+            if ($this->bookingRepository->doesBookingExist())
+            {
+                return redirect()->back()->withErrors(['invalid' => 'You already have a booking. To create new booking, delete previous one either update previous one.']);
+            }
+
             $services = $this->serviceRepository->findServices($request->services);
             $booking = $this->bookingRepository->storeBookingDataAndMakeRelationWithServices($request, $services);
 

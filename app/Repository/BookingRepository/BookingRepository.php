@@ -57,4 +57,9 @@ class BookingRepository extends BaseRepository implements IBookingRepository
         }
         return $this->model->orderBy('id', 'desc')->paginate(10);
     }
+
+    public function doesBookingExist()
+    {
+        return ($this->model->where('user_id', Auth::id())->count()) ? true : false;
+    }
 }
