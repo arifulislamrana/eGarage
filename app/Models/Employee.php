@@ -16,7 +16,7 @@ class Employee extends Authenticatable
     protected $guard = 'employee';
 
     protected $fillable = [
-        'name', 'email', 'password', 'image', 'phone', 'designation', 'address',
+        'name', 'email', 'password', 'image', 'phone', 'designation', 'address', 'joining_date',
     ];
 
     public function tasks()
