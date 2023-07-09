@@ -115,6 +115,18 @@ class BookingController extends Controller
             $booking = $this->bookingRepository->find($id);
             $services = $booking->services;
 
+            if (empty($booking))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Booking does not exist']);
+            }
+
+            $totalFee = 0;
+
+            foreach ($booking->services as $service)
+            {
+                $totalFee = $totalFee + $service->fee;
+            }
+
             DB::beginTransaction();
             $task = $this->taskRepository->create([
                         'user_id' => $booking->user->id,
@@ -123,6 +135,7 @@ class BookingController extends Controller
                         'service_time' => $booking->arrival_time,
                         'created_at' => now(),
                         'updated_at' => now(),
+                        'total_fee' => $totalFee,
                     ]);
 
             $task->services()->attach($services);

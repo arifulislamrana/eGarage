@@ -30,23 +30,7 @@ class TaskController extends Controller
             $doneTasks = $this->taskRepository->doneTasks($request->search);
             $undoneTasks = $this->taskRepository->undoneTasks($request->search);
 
-            $approvedTasksFees = array();
-
-            foreach ($approvedTasks as $task)
-            {
-                $fee = 0;
-
-                foreach ($task->services as $service)
-                {
-                    $fee = $fee + $service->fee;
-                }
-
-                $approvedTasksFees[$task->id] = $fee;
-
-                $fee = 0;
-            }
-
-            return view('admin_dashboard.task_list', compact(['approvedTasks', 'doneTasks', 'undoneTasks', 'approvedTasksFees']));
+            return view('admin_dashboard.task_list', compact(['approvedTasks', 'doneTasks', 'undoneTasks']));
         }
         catch (Exception $e)
         {

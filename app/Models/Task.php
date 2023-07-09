@@ -18,6 +18,7 @@ class Task extends Model
         'service_time',
         'created_at',
         'updated_at',
+        'total_fee',
     ];
 
     public function user()

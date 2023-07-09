@@ -62,7 +62,7 @@
                         <td>{{ $task->created_at }}</td>
                         <td><a href="{{ route('admin.users.show', ['id' => $task->user->id]) }}">{{ $task->user->name }}</a></td>
                         <td>{{ $task->service_time }}</td>
-                        <td>{{ $approvedTasksFees[$task->id]}}</td>
+                        <td>{{ $task->total_fee}}</td>
                         <td>
                             <a class="btn btn-rounded btn-primary" href="{{ route('tasks.show', ['id' => $task->id]) }}">
                                 <i class="fa fa-eye"></i>
@@ -112,7 +112,7 @@
                           <td><a href="javascript:void(0)">{{ $task->user->name }}</a></td>
 
                           <td>{{ $task->service_time }}</td>
-                          <td>4324</td>
+                          <td>{{ $task->total_fee}}</td>
                           <td>
                               <a class="btn btn-rounded btn-primary" href="{{ route('tasks.show', ['id' => $task->id]) }}">
                                   <i class="fa fa-eye"></i>
