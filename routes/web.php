@@ -182,6 +182,8 @@ Route::group(['middleware' => ['auth:employee']], function() {
     Route::get('/product/create', [EmployeeProductController::class, 'create'])->name('employee.product.create');
 
     Route::post('/product/store', [EmployeeProductController::class, 'store'])->name('employee.product.store');
+
+    Route::get('/product/show/{id}', [EmployeeProductController::class, 'show'])->name('employee.product.show');
 });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

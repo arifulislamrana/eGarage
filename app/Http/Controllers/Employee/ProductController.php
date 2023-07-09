@@ -103,7 +103,7 @@ class ProductController extends Controller
                 return redirect()->back()->withErrors(['invalid' => 'Product does not exist']);
             }
 
-            return view('admin_dashboard.product_details', compact('product'));
+            return view('employee_dashboard.show_product', compact('product'));
         }
         catch (Exception $e)
         {
