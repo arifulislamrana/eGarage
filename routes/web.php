@@ -171,6 +171,10 @@ Route::group(['middleware' => ['auth:employee']], function() {
     Route::get('/profile', [EmployeeProfileController::class, 'show'])->name('employee.profile');
 
     Route::get('/bookings', [EmployeeBookingController::class, 'booking'])->name('employee.booking');
+
+    Route::get('/booking/show/{id}', [EmployeeBookingController::class, 'show'])->name('employee.booking.show');
+
+    Route::get('/booking/approve/{id}', [EmployeeBookingController::class, 'approve'])->name('employee.booking.approve');
 });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

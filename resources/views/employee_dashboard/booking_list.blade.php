@@ -50,6 +50,7 @@
                 <table class="table table-hover">
                   <tr>
                     <th>User</th>
+                    <th>Prev. Services</th>
                     <th>Time</th>
                     <th>fee</th>
                     <th>Action</th>
@@ -57,12 +58,13 @@
                     @foreach ($bookings as $booking)
                     <tr>
                         <td><a>{{ $booking->user->name }}</a></td>
+                        <td><a>{{ $booking->user->tasks()->count() }}</a></td>
                         <td>{{ $booking->arrival_time }}</td>
                         <td>
                             {{ $fees[$booking->id] }}
                         </td>
                         <td>
-                            <a class="btn btn-rounded btn-primary">
+                            <a href="{{ route('employee.booking.show', ['id' => $booking->id]) }}" class="btn btn-rounded btn-primary">
                                 <i class="fa fa-eye"></i>
                             </a>
                             <a class="btn btn-rounded btn-info" onclick="showApproveForm('{{$booking->id}}')" ata-toggle="modal" href="#">
@@ -87,7 +89,7 @@
     </div>
     <!-- /.row -->
 
-    <form id="approve" method="POST" class="remove-record-model">
+    <form id="approve" method="get" class="remove-record-model">
         @csrf
         <div class="modal fade" id="modal-approve" aria-hidden="true" style="display: none;">
             <div class="modal-dialog">
@@ -98,7 +100,7 @@
                             <span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <h4>Approve This booking?!</h4>
+                            <h4>Add this task to your list?!</h4>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-rounded btn-warning" data-dismiss="modal">No</button>
@@ -117,7 +119,7 @@
 @section('script')
 <script>
     function showApproveForm(id) {
-    //   $("#approve").attr('action', 'user/booking/approve/' + id);
+      $("#approve").attr('action', 'booking/approve/' + id);
       $(`#modal-approve`).modal('show');
     }
 
