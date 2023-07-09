@@ -40,13 +40,15 @@
                     <div class="box-body text-center pb-50">
                         <a href="#">
                             @if ($employee->image != null)
-                                <img class="avatar avatar-xxl avatar-bordered" src="{{$employee->image}}" alt="">
+                                <img class="avatar avatar-xxl avatar-bordered" src="{{ $employee->image }}" alt="">
                             @else
-                                <img class="avatar avatar-xxl avatar-bordered" src="/BackTheme/images/avatar/avatar-13.png" alt="">
+                                <img class="avatar avatar-xxl avatar-bordered" src="/BackTheme/images/avatar/avatar-13.png"
+                                    alt="">
                             @endif
                         </a>
-                        <h4 class="mt-2 mb-0"><a class="hover-primary text-white" href="#">{{$employee->name}}</a></h4>
-                        <span><i class="fa fa-map-marker w-20"></i> {{$employee->designation}}</span>
+                        <h4 class="mt-2 mb-0"><a class="hover-primary text-white" href="#">{{ $employee->name }}</a>
+                        </h4>
+                        <span><i class="fa fa-map-marker w-20"></i> {{ $employee->designation }}</span>
                     </div>
 
                     <ul class="box-body flexbox flex-justified text-center" data-overlay="4">
@@ -67,9 +69,9 @@
                         <div class="row">
                             <div class="col-12">
                                 <div>
-                                    <p>Email :<span class="text-gray pl-10">{{$employee->email}}</span> </p>
-                                    <p>Phone :<span class="text-gray pl-10">{{$employee->phone}}</span></p>
-                                    <p>Address :<span class="text-gray pl-10">{{$employee->address}}</span></p>
+                                    <p>Email :<span class="text-gray pl-10">{{ $employee->email }}</span> </p>
+                                    <p>Phone :<span class="text-gray pl-10">{{ $employee->phone }}</span></p>
+                                    <p>Address :<span class="text-gray pl-10">{{ $employee->address }}</span></p>
                                     <p>Joinning :<span class="text-gray pl-10">23-05-2023</span></p>
                                 </div>
                             </div>
@@ -99,25 +101,11 @@
                                 <h4>Table: Task status of {{ $employee->name }}</h4>
                                 <table class="table table-hover">
                                     <tr>
-                                      <th>Task ID.</th>
-                                      <th>Assigned at</th>
-                                      <th>Total Fee</th>
-                                      <th>User</th>
-                                      <th>Status</th>
-                                    </tr>
-                                      <tr>
-                                          <td>1</td>
-                                          <td>12-05-2023</td>
-                                          <td>1500</td>
-                                          <td>Xenon</td>
-                                          <td>pending</td>
-                                      </tr>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>pending</td>
+                                        <th>Task ID.</th>
+                                        <th>Assigned at</th>
+                                        <th>Total Fee</th>
+                                        <th>User</th>
+                                        <th>Status</th>
                                     </tr>
                                     <tr>
                                         <td>1</td>
@@ -138,7 +126,14 @@
                                         <td>12-05-2023</td>
                                         <td>1500</td>
                                         <td>Xenon</td>
-                                        <td>completed</td>
+                                        <td>pending</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>pending</td>
                                     </tr>
                                     <tr>
                                         <td>1</td>
@@ -182,7 +177,14 @@
                                         <td>Xenon</td>
                                         <td>completed</td>
                                     </tr>
-                                  </table>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>12-05-2023</td>
+                                        <td>1500</td>
+                                        <td>Xenon</td>
+                                        <td>completed</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
                         <!-- /.tab-pane -->
