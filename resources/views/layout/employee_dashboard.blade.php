@@ -92,34 +92,11 @@
                                     <ul class="menu sm-scrol">
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc
-                                                suscipit blandit.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
                                                 <i class="fa fa-warning text-warning"></i> Duis malesuada justo eu
                                                 sapien elementum, in semper diam posuere.
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
-                                                <i class="fa fa-users text-danger"></i> Donec at nisi sit amet tortor
-                                                commodo porttitor pretium a erat.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart text-success"></i> In gravida mauris et
-                                                nisi
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user text-danger"></i> Praesent eu lacus in libero
-                                                dictum fermentum.
-                                            </a>
-                                        </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-user text-primary"></i> Nunc fringilla lorem
@@ -142,22 +119,23 @@
                         <!-- User Account-->
                         <li class="dropdown user user-menu">
                             @if (Auth::guard('employee')->user()->image != null)
-                            <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0"
-                                data-toggle="dropdown" title="User">
-                                <img src="{{ Auth::guard('employee')->user()->image }}" alt="">
-                            </a>
+                                <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0"
+                                    data-toggle="dropdown" title="User">
+                                    <img src="{{ Auth::guard('employee')->user()->image }}" alt="">
+                                </a>
                             @else
-                            <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0"
-                                data-toggle="dropdown" title="User">
-                                <img src="/BackTheme/images/avatar/avatar-13.png" alt="">
-                            </a>
+                                <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0"
+                                    data-toggle="dropdown" title="User">
+                                    <img src="/BackTheme/images/avatar/avatar-13.png" alt="">
+                                </a>
                             @endif
                             <ul class="dropdown-menu animated flipInX">
                                 <li class="user-body">
                                     <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i>
                                         Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('employee.logout') }}"><i class="ti-lock text-muted mr-2"></i>
+                                    <a class="dropdown-item" href="{{ route('employee.logout') }}"><i
+                                            class="ti-lock text-muted mr-2"></i>
                                         Logout</a>
                                 </li>
                             </ul>
@@ -196,31 +174,38 @@
                     </li>
 
                     <li>
-                      <a href="{{ route('employee.profile') }}">
-                          <i data-feather="pie-chart"></i>
-                          <span>Profile</span>
-                      </a>
+                        <a href="{{ route('employee.profile') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Profile</span>
+                        </a>
                     </li>
 
                     <li>
-                      <a href="{{ route('employee.booking') }}">
-                          <i data-feather="pie-chart"></i>
-                          <span>Bookings</span>
-                      </a>
+                        <a href="{{ route('employee.booking') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Bookings</span>
+                        </a>
                     </li>
 
                     <li>
-                      <a href="">
-                          <i data-feather="pie-chart"></i>
-                          <span>Orders</span>
-                      </a>
+                        <a href="">
+                            <i data-feather="pie-chart"></i>
+                            <span>Orders</span>
+                        </a>
                     </li>
 
                     <li>
-                      <a href="">
-                          <i data-feather="pie-chart"></i>
-                          <span>My shopping</span>
-                      </a>
+                        <a href="">
+                            <i data-feather="pie-chart"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="">
+                            <i data-feather="pie-chart"></i>
+                            <span>Add Product</span>
+                        </a>
                     </li>
 
                     <li>
