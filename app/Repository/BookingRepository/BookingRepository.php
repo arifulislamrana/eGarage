@@ -51,9 +51,7 @@ class BookingRepository extends BaseRepository implements IBookingRepository
     {
         if ($search != null)
         {
-            $bookings = $this->model->where('name','LIKE','%'.$search.'%')->paginate(10);
-
-            return $bookings;
+            return $this->model->join('users', 'bookings.user_id', '=', 'users.id')->where('users.name','LIKE','%'.$search.'%')->select('bookings.*')->paginate(10);
         }
         return $this->model->orderBy('id', 'desc')->paginate(10);
     }

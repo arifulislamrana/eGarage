@@ -11,7 +11,9 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Auth\EmployeeAuthController;
 use App\Http\Controllers\Auth\UserAuthController;
+use App\Http\Controllers\Employee\BookingController as EmployeeBookingController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
+use App\Http\Controllers\Employee\EmployeeProfileController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BookingController;
 use App\Http\Controllers\Front\ContactController;
@@ -160,8 +162,15 @@ Route::post('/employee/login/post', [EmployeeAuthController::class, 'loginPost']
 
 Route::get('/employee/logout', [EmployeeAuthController::class, 'logout'])->name('employee.logout');
 
+Route::prefix('employee')->group(function () {
+
 Route::group(['middleware' => ['auth:employee']], function() {
 
-    Route::get('/employee/dashboard', [EmployeeDashboardController::class, 'dashboard'])->name('employee.dashboard');
+    Route::get('/dashboard', [EmployeeDashboardController::class, 'dashboard'])->name('employee.dashboard');
+
+    Route::get('/profile', [EmployeeProfileController::class, 'show'])->name('employee.profile');
+
+    Route::get('/bookings', [EmployeeBookingController::class, 'booking'])->name('employee.booking');
+});
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

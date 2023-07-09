@@ -11,7 +11,7 @@
             <div class="box overflow-hidden pull-up">
                 <div class="box-body">
                     <div class="icon bg-primary-light rounded w-60 h-60">
-                        <i class="text-primary mr-0 font-size-24 mdi mdi-account-multiple"></i>
+                        <i class="text-info mr-0 font-size-24 mdi mdi-sale"></i>
                     </div>
                     <div>
                         <p class="text-mute mt-20 mb-0 font-size-16">Task Completed</p>
@@ -37,7 +37,7 @@
             <div class="box overflow-hidden pull-up">
                 <div class="box-body">
                     <div class="icon bg-info-light rounded w-60 h-60">
-                        <i class="text-info mr-0 font-size-24 mdi mdi-sale"></i>
+                        <i class="fa fa-motorcycle me-3"></i>
                     </div>
                     <div>
                         <p class="text-mute mt-20 mb-0 font-size-16">Uncompleted Task</p>
@@ -80,13 +80,12 @@
                 <div class="box-body text-center">
                     <img src="/BackTheme/images//trophy.png" class="mt-50" alt="" />
                     <div class="max-w-500 mx-auto">
-                        <h2 class="text-white mb-20 font-weight-500">Best Employee mr. employee.</h2>
-                        <p class="text-white-50 mb-10 font-size-20">This employee has completed most tasks. Total completed 32 tasks.</p>
+                        <h2 class="text-white mb-20 font-weight-500">With this company for.</h2>
+                        <p class="text-white-50 mb-10 font-size-20">{{ $diff->y }} year, {{ $diff->m }} months, {{ $diff->d }} days.</p>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 @endsection

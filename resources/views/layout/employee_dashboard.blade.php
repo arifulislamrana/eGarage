@@ -141,10 +141,17 @@
 
                         <!-- User Account-->
                         <li class="dropdown user user-menu">
+                            @if (Auth::guard('employee')->user()->image != null)
+                            <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0"
+                                data-toggle="dropdown" title="User">
+                                <img src="{{ Auth::guard('employee')->user()->image }}" alt="">
+                            </a>
+                            @else
                             <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0"
                                 data-toggle="dropdown" title="User">
                                 <img src="/BackTheme/images/avatar/avatar-13.png" alt="">
                             </a>
+                            @endif
                             <ul class="dropdown-menu animated flipInX">
                                 <li class="user-body">
                                     <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i>
@@ -189,16 +196,16 @@
                     </li>
 
                     <li>
-                      <a href="">
+                      <a href="{{ route('employee.profile') }}">
                           <i data-feather="pie-chart"></i>
                           <span>Profile</span>
                       </a>
                     </li>
 
                     <li>
-                      <a href="">
+                      <a href="{{ route('employee.booking') }}">
                           <i data-feather="pie-chart"></i>
-                          <span>Booking</span>
+                          <span>Bookings</span>
                       </a>
                     </li>
 
