@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Employee\BookingController as EmployeeBookingController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Employee\EmployeeProfileController;
+use App\Http\Controllers\Employee\ProductController as EmployeeProductController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BookingController;
 use App\Http\Controllers\Front\ContactController;
@@ -175,6 +176,12 @@ Route::group(['middleware' => ['auth:employee']], function() {
     Route::get('/booking/show/{id}', [EmployeeBookingController::class, 'show'])->name('employee.booking.show');
 
     Route::get('/booking/approve/{id}', [EmployeeBookingController::class, 'approve'])->name('employee.booking.approve');
+
+    Route::get('/products', [EmployeeProductController::class, 'index'])->name('employee.product');
+
+    Route::get('/product/create', [EmployeeProductController::class, 'create'])->name('employee.product.create');
+
+    Route::post('/product/store', [EmployeeProductController::class, 'store'])->name('employee.product.store');
 });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

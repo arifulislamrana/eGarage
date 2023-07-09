@@ -195,14 +195,14 @@
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="{{ route('employee.product') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Products</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="{{ route('employee.product.create') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Add Product</span>
                         </a>
