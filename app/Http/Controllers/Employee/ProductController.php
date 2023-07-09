@@ -72,7 +72,6 @@ class ProductController extends Controller
                 'image' => $imagePath,
                 'status' => $request->status,
                 'category_id' => $request->category,
-                'discount_id' => $request->discount,
                 'buying_price' => $request->buying_price,
                 'dealer' => $request->dealer,
                 'quantity' => $request->quantity,
@@ -80,11 +79,11 @@ class ProductController extends Controller
 
             $request->file('image')->move(public_path(config('app.productImagePath')), $imageName);
 
-            return redirect()->route('products.index')->with(['message' => 'product data stored successfully']);
+            return redirect()->route('employee.product')->with(['message' => 'product data stored successfully']);
         }
         catch (Exception $e)
         {
-            $this->logger->write("error", "Failed to Strore product Data", $e);
+            $this->logger->write("error", "Failed to Strore product Data from Employee", $e);
 
             return redirect()->back()->withErrors(['invalid' => 'data could not be saved. Please try again']);
         }

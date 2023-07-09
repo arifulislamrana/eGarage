@@ -42,7 +42,7 @@
                 </ul>
               </div>
             @endif
-            <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('employee.product.store') }}" enctype="multipart/form-data">
                 @csrf
                 <section>
                     <div class="row">
@@ -93,6 +93,7 @@
                                 <label for="emailAddress1">Quantity :</label>
                                 <input type="number" name="quantity" class="form-control" id="emailAddress1" value="{{ old('quantity') }}" required>
                                 <input type="text" name="status" class="form-control" id="emailAddress1" value="deactive" required hidden>
+                                <input type="text" name="discount" class="form-control" id="emailAddress1" value="null" required hidden>
                             </div>
                         </div>
                         <div class="col-md-6">
