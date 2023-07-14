@@ -10,4 +10,6 @@ interface IServiceRepository extends IBaseRepository
     public function getPagiantedAvailableServices($search);
 
     public function getPagiantedClosedServices($search);
+
+    public function getBestFourServices();
 }

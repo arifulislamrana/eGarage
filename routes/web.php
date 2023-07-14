@@ -20,6 +20,7 @@ use App\Http\Controllers\Front\BookingController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\ServiceController;
+use App\Http\Controllers\Front\ShopController;
 use App\Http\Controllers\Front\TechnicianController;
 use App\Http\Controllers\User\BookingController as UserBookingController;
 use App\Http\Controllers\User\DashboardController;
@@ -48,6 +49,10 @@ Route::get('/bookings', [BookingController::class, 'index'])->name('booking');
 Route::get('/technicians', [TechnicianController::class, 'index'])->name('technician');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+
+Route::get('/shop/{category}/products', [ShopController::class, 'categoryProducts'])->name('category.product');
 
 /////////////////////////////////////// User Routes /////////////////////////////////////////////////////////////////////////////////
 Route::get('/register', [UserAuthController::class, 'registerGet'])->name('register');

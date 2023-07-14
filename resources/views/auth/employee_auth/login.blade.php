@@ -4,7 +4,7 @@
   <title>{{ config('app.name') }}</title>
   <style>
     body {
-      background: linear-gradient(45deg, #41035e, #7a0569);
+      background: linear-gradient(45deg, #0c011f, #044a68);
       font-family: Arial, sans-serif;
       background-repeat: no-repeat;
       background-attachment: fixed;

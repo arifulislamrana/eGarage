@@ -93,7 +93,7 @@
                         <a href="{{ route('technician') }}" class="dropdown-item">Technicians</a>
                     </div>
                 </div>
-                <a href="#" class="nav-item nav-link">Shop</a>
+                <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
             </div>
             <div class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">

@@ -45,4 +45,17 @@ class EmployeeRepository extends BaseRepository implements IEmployeeRepository {
 
         return $employeeWithMostTasks;
     }
+
+    public function getBestFourEmployee()
+    {
+        $bestFourEmployee = $this->model
+                                    ->join('tasks', 'employees.id', '=', 'tasks.employee_id')
+                                    ->select('employees.id', 'employees.name', 'employees.designation', 'employees.image' , DB::raw('COUNT(tasks.id) as task_count'))
+                                    ->groupBy('employees.id', 'employees.name', 'employees.designation', 'employees.image')
+                                    ->orderByDesc('task_count')
+                                    ->take(4)
+                                    ->get();
+
+        return $bestFourEmployee;
+    }
 }

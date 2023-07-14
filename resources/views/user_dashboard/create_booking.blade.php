@@ -64,7 +64,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-datetime-local-input">Time of Service:</label>
-                                    <input class="form-control" name="arrival_time" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                    <input class="form-control" name="arrival_time" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input" required>
                                 </div>
                             </div>
                         </div>

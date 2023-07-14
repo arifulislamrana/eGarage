@@ -12,4 +12,6 @@ interface IEmployeeRepository extends IBaseRepository
     public function getTaskAssignee();
 
     public function getBestEmployee();
+
+    public function getBestFourEmployee();
 }
