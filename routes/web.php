@@ -54,6 +54,8 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
 Route::get('/shop/{category}/products', [ShopController::class, 'categoryProducts'])->name('category.product');
 
+Route::get('/shop/{product}/details', [ShopController::class, 'productDetails'])->name('product.details');
+
 /////////////////////////////////////// User Routes /////////////////////////////////////////////////////////////////////////////////
 Route::get('/register', [UserAuthController::class, 'registerGet'])->name('register');
 

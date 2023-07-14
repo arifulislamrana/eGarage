@@ -34,8 +34,9 @@
                 <div class="team-item">
                     <div class="position-relative overflow-hidden">
                         <img style="height: 350px" class="/FrontTheme/img-fluid" src="{{ $category->products[$i]->image }}" alt="">
-                        <div style="color: whitesmoke; padding-left: 5%" class="team-overlay position-absolute start-0 top-0 w-100 h-100">
-                            {{$category->products[$i]->description}}
+                        <div class="team-overlay position-absolute start-0 top-0 w-100 h-100">
+                            <a class="btn mx-1" href="">Buy now</a>
+                            <a class="btn mx-1" href="{{ route('product.details', ['product' => $category->products[$i]->id]) }}">Details</a>
                         </div>
                     </div>
                     <div class="bg-light text-center p-4">
