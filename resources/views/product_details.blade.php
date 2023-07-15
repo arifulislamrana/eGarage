@@ -64,13 +64,8 @@
                                 <span class="fw-bold text-secondary">02</span>
                             </div>
                             <div class="ps-3">
-                                @if ($product->discount != null)
-                                <h6>Discount Percentage:</h6>
-                                <span>{{ $product->discount->percentage }}.00%</span>
-                                @else
-                                <h6>Discount Percentage:</h6>
-                                <span>00.00</span>
-                                @endif
+                                <h6>Price:</h6>
+                                <span>{{ $product->price }}tk</span>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 @extends('layout.landing')
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-@section('style')
 
+@section('style')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -280,7 +280,7 @@
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">
                                 <div class="date" id="date1" data-target-input="nearest">
-                                    <input type="text" name="arrival_time"
+                                    <input type="datetime-local" name="arrival_time"
                                         class="form-control border-0 datetimepicker-input"
                                         placeholder="Service Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;" required>
                                 </div>
@@ -291,7 +291,7 @@
                             <div class="col-12">
                                 <label for="serv" style="color: whitesmoke; font-size: 30px; font-weight: bold;">Select Needed Services:</label>
                                 <select id="serv" class="form-select border-0 form-control js-example-basic-multiple" name="services[]" multiple="multiple" required>
-                                    @foreach ($services as $service)
+                                    @foreach ($allServices as $service)
                                         <option value="{{ $service->id }}">{{ $service->name }}: {{ $service->fee }}tk</option>
                                     @endforeach
                                 </select>

@@ -27,16 +27,17 @@ class HomeController extends Controller
         {
             $services = $this->serviceRepository->getBestFourServices();
             $employees = $this->employeeRepository->getBestFourEmployee();
+            $allServices = $this->serviceRepository->getAll();
             $i = 0.1;
             $j = 0;
 
-            return view('welcome', compact('services', 'employees', 'i', 'j'));
+            return view('welcome', compact('allServices','services', 'employees', 'i', 'j'));
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to show create_booking form", "error", $e);
+            $this->logger->write("Failed to show home", "error", $e);
 
-            return redirect()->back()->withErrors(['invalid' => 'Failed to show create_booking form']);
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show data']);
         }
     }
 }
