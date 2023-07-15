@@ -96,20 +96,23 @@
                 <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
             </div>
-            <div class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+
                 @if (Route::has('login'))
                     @auth
                         <i class="fas fa-user fa-lg ms-3" style="color: #07a226;"></i>
                         <a style="color: white" href="{{route('logout')}}">Logout</a>
                     @else
-                        <a style="color: white" href="{{ route('login') }}">Login</a> /
-
+                    <div style="margin-right: 1%" class="btn btn-primary">
+                        <a style="color: white" href="{{ route('login') }}">Login</a>
+                    </div>
                         @if (Route::has('register'))
+                        <div class="btn btn-primary">
                             <a style="color: white" href="{{ route('register') }}">Register</a>
+                        </div>
                         @endif
                     @endauth
                 @endif
-            </div>
+
         </div>
     </nav>
     <!-- Navbar End -->

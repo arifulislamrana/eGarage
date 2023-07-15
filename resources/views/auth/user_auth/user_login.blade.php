@@ -61,10 +61,10 @@
                             <div class="col-12">
                                 <button class="btn btn-secondary w-100 py-3" type="submit">Login</button>
                             </div>
-                            <div class="col-12 col-sm-6">
-                                Create acount for free. <button><a href="{{ Route('pass.forget') }}">Click Here</a></button>
+                            <div style="color: whitesmoke" class="col-12 col-sm-6">
+                                Create acount for free. <button><a href="{{ Route('register') }}">Click Here</a></button>
                             </div>
-                            <div class="col-12 col-sm-6">
+                            <div style="color: whitesmoke" class="col-12 col-sm-6">
                                 Forget Your Password? <button><a href="{{ Route('pass.forget') }}">Click Here</a></button>
                             </div>
                         </div>
