@@ -322,9 +322,9 @@
                 <div class="team-item">
                     <div class="position-relative overflow-hidden">
                         @if ($employee->image == null)
-                        <img class="img-fluid" src="/FrontTheme/img/team-4.jpg" alt="">
+                        <img style="height: 350px" class="img-fluid" src="/FrontTheme/img/team-4.jpg" alt="">
                         @else
-                        <img class="img-fluid" src="{{ $employee->image }}" alt="">
+                        <img style="height: 350px" class="img-fluid" src="{{ $employee->image }}" alt="">
                         @endif
                         <div class="team-overlay position-absolute start-0 top-0 w-100 h-100">
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
