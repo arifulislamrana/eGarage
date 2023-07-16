@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Front;
 
 use Exception;
+use App\Models\Order;
 use App\Models\Category;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateOrder;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Repository\OrderRepository\IOrderRepository;
 use App\Repository\ProductRepository\IProductRepository;
 
 class ShopController extends Controller
@@ -14,12 +18,14 @@ class ShopController extends Controller
     public $logger;
     public $category;
     public $productRepository;
+    public $orderRepository;
 
-    public function __construct(ILogger $logger, Category $category, IProductRepository $productRepository)
+    public function __construct(ILogger $logger, IProductRepository $productRepository, IOrderRepository $orderRepository, Category $category)
     {
         $this->logger = $logger;
         $this->category = $category;
         $this->productRepository = $productRepository;
+        $this->orderRepository = $orderRepository;
     }
 
     public function index()
@@ -68,6 +74,48 @@ class ShopController extends Controller
             $this->logger->write("Failed to show product details", "error", $e);
 
             return redirect()->back()->withErrors(['invalid' => 'Failed to show product details']);
+        }
+    }
+
+    public function orderNow($product)
+    {
+        try
+        {
+            $product = $this->productRepository->find($product);
+            $category = $product->category;
+
+            return view('order', compact('product', 'category'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show product order form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show product order form']);
+        }
+    }
+
+    public function saveOrder(CreateOrder $request)
+    {
+        try
+        {
+            $this->orderRepository->create([
+                'product_id' => $request->product_id,
+                'user_id' => Auth::id(),
+                'quantity' => $request->quantity,
+                'status' => 'pending',
+                'phone' => $request->phone,
+                'delivery_address' => $request->delivery_address,
+                'employee_id' => null,
+                'order_date' => now(),
+            ]);
+
+            return redirect()->back()->with(['message' => 'Employee data stored successfully']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to save order details", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to save order details']);
         }
     }
 }

@@ -56,6 +56,8 @@ Route::get('/shop/{category}/products', [ShopController::class, 'categoryProduct
 
 Route::get('/shop/{product}/details', [ShopController::class, 'productDetails'])->name('product.details');
 
+Route::get('/shop/{product}/order', [ShopController::class, 'orderNow'])->name('product.order');
+
 /////////////////////////////////////// User Routes /////////////////////////////////////////////////////////////////////////////////
 Route::get('/register', [UserAuthController::class, 'registerGet'])->name('register');
 
@@ -110,6 +112,8 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
     Route::get('/user/bookings/done', [UserBookingController::class, 'doneBooking'])->name('booking.done');
 
     Route::get('/user/bookings/{id}', [UserBookingController::class, 'show'])->name('booking.show');
+
+    Route::post('user/product/order/post', [ShopController::class, 'saveOrder'])->name('order.store');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

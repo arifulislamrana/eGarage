@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             ServiceSeeder::class,
             BookingSeeder::class,
+            OrderSeeder::class,
         ]);
     }
 }

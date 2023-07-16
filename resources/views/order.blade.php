@@ -9,7 +9,7 @@
  <div class="container-fluid page-header mb-5 p-0" style="background-image: url(/FrontTheme/img/carousel-bg-1.jpg);">
     <div class="container-fluid page-header-inner py-5">
         <div class="container text-center">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">eGarage Shop</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">{{ $product->name }}</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center text-uppercase">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -38,50 +38,27 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <h6 class="text-primary text-uppercase">// About Product //</h6>
-                <h1 class="mb-4"><span class="text-primary">{{ $product->name }}</span></h1>
-                <p class="mb-4">{{ $product->description }}</p>
-                <div class="row g-4 mb-3 pb-3">
-                    <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="d-flex">
-                            <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style="width: 45px; height: 45px;">
-                                <span class="fw-bold text-secondary">01</span>
+                <div class="bg-primary h-100 d-flex flex-column justify-content-center text-center p-5 wow zoomIn" data-wow-delay="0.6s">
+                    <h1 class="text-white mb-4">Fill up the form to order</h1>
+                    <form action="{{ route('order.store') }}" method="POST">
+                        @csrf
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6">
+                                <input type="tel" name="phone" class="form-control border-0" placeholder="Your Phone" style="height: 55px;" required>
+                                <input name="product_id" value="{{ $product->id }}" type="text" class="form-control border-0" required placeholder="Your Phone" style="height: 55px;" hidden>
                             </div>
-                            <div class="ps-3">
-                                @if ($product->discount != null)
-                                <h6>Discount Type: </h6>
-                                <span>{{ $product->discount->name }}</span>
-                                @else
-                                <h6>Discount Type:</h6>
-                                <span>No Discount</span>
-                                @endif
+                            <div class="col-12 col-sm-6">
+                                <input type="number" name="quantity" class="form-control border-0" value="1" placeholder="Quantity" style="height: 55px;" required>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
-                        <div class="d-flex">
-                            <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style="width: 45px; height: 45px;">
-                                <span class="fw-bold text-secondary">02</span>
+                            <div class="col-12">
+                                <textarea name="delivery_address" class="form-control border-0" value={{ old('delivery_address') }} placeholder="Delivery Address" required></textarea>
                             </div>
-                            <div class="ps-3">
-                                <h6>Price:</h6>
-                                <span>{{ $product->price }}tk</span>
+                            <div class="col-12">
+                                <button class="btn btn-secondary w-100 py-3" type="submit">Confirm Order</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
-                        <div class="d-flex">
-                            <div class="bg-light d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style="width: 45px; height: 45px;">
-                                <span class="fw-bold text-secondary">03</span>
-                            </div>
-                            <div class="ps-3">
-                                <h6>Total sold unit:</h6>
-                                <span>{{ $product->sold + 10 }}</span>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-                <a href="{{ route('product.order', ['product' => $product->id]) }}" class="btn btn-primary py-3 px-5">Buy now<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </div>
     </div>
