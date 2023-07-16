@@ -96,14 +96,15 @@
                 <a href="{{ route('shop') }}" class="nav-item nav-link">Shop</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
             </div>
-
                 @if (Route::has('login'))
                     @auth
+                    <div class="btn btn-primary">
                         <i class="fas fa-user fa-lg ms-3" style="color: #07a226;"></i>
                         <a style="color: white" href="{{route('logout')}}">Logout</a>
+                    </div>
                     @else
                     <div style="margin-right: 1%" class="btn btn-primary">
-                        <a style="color: white" href="{{ route('login') }}">Login</a>
+                        <a style="color: white" onclick="showModal()" data-toggle="modal" href="#">Login</a>
                     </div>
                         @if (Route::has('register'))
                         <div class="btn btn-primary">
@@ -112,7 +113,6 @@
                         @endif
                     @endauth
                 @endif
-
         </div>
     </nav>
     <!-- Navbar End -->
@@ -182,7 +182,41 @@
     </div>
     <!-- Footer End -->
 
-
+    <form action="{{ route('login.post') }}" id="delForm" method="POST" class="remove-record-model">
+        @csrf
+        <div class="modal modal-danger fade" id="modal-danger" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content bg-danger">
+                    <div class="row gx-5">
+                        <div class="col-lg-12">
+                            <div class="bg-primary h-100 d-flex flex-column justify-content-center text-center p-5 wow zoomIn" data-wow-delay="0.6s">
+                                <h1 class="text-white mb-4">Login To Get Service</h1>
+                                    <div class="row g-3">
+                                        <div class="col-12 col-sm-6">
+                                            <input name="email" value="{{old('email')}}" required type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
+                                        </div>
+                                        <div class="col-12 col-sm-6">
+                                            <input name="password" type="password" class="form-control border-0" placeholder="Your Password" style="height: 55px;">
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-secondary w-100 py-3" type="submit">Login</button>
+                                        </div>
+                                        <div style="color: whitesmoke" class="col-12 col-sm-6">
+                                            Create acount for free. <button><a href="{{ Route('register') }}">Click Here</a></button>
+                                        </div>
+                                        <div style="color: whitesmoke" class="col-12 col-sm-6">
+                                            Forget Your Password? <button><a href="{{ Route('pass.forget') }}">Click Here</a></button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </form>
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
@@ -201,6 +235,11 @@
 
     <!-- Template Javascript -->
     <script src="/FrontTheme/js/main.js"></script>
+    <script>
+        function showModal() {
+          $(`#modal-danger`).modal('show');
+        }
+    </script>
     @yield('script')
 </body>
 
