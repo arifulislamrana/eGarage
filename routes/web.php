@@ -117,6 +117,16 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
     Route::post('user/product/order/post', [ShopController::class, 'saveOrder'])->name('order.store');
 
     Route::get('/user/orders', [ShoppingController::class, 'orders'])->name('order.index');
+
+    Route::get('/user/orders/completed', [ShoppingController::class, 'myShopping'])->name('order.completed');
+
+    Route::get('/user/order/{id}', [ShoppingController::class, 'show'])->name('order.show');
+
+    Route::get('/user/order/edit/{id}', [ShoppingController::class, 'edit'])->name('order.edit');
+
+    Route::put('/user/order/update/{id}', [ShoppingController::class, 'update'])->name('order.update');
+
+    Route::delete('/user/order/delete/{id}', [ShoppingController::class, 'destroy'])->name('order.destroy');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

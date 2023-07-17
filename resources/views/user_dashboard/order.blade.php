@@ -113,15 +113,15 @@
                                             @endif
                                             <td>
                                                 <a class="btn btn-rounded btn-primary"
-                                                    href="{{ route('products.show', ['product' => $order->product->id]) }}">
+                                                    href="{{ route('order.show', ['id' => $order->id]) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 <a class="btn btn-rounded btn-info"
-                                                    href="{{ route('products.edit', ['product' => $order->product->id]) }}">
+                                                    href="{{ route('order.edit', ['id' => $order->id]) }}">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a class="btn btn-rounded btn-danger"
-                                                    onclick="showModal({{ $order->product->id }})" data-toggle="modal"
+                                                    onclick="showModal({{ $order->id }})" data-toggle="modal"
                                                     href="#">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
@@ -173,7 +173,7 @@
 @section('script')
     <script>
         function showModal(id) {
-            $("#delForm").attr('action', 'products/' + id);
+            $("#delForm").attr('action', 'order/delete/' + id);
             $(`#modal-danger`).modal('show');
         }
 

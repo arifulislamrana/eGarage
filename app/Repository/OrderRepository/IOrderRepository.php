@@ -8,4 +8,6 @@ interface IOrderRepository extends IBaseRepository
     public function pendingOrders($search);
 
     public function processingOrders($search);
+
+    public function completedOrders($search);
 }

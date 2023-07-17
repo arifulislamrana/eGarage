@@ -209,7 +209,7 @@
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="{{ route('order.completed') }}">
                             <i data-feather="pie-chart"></i>
                             <span>My shopping</span>
                         </a>

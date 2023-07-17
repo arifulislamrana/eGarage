@@ -32,4 +32,14 @@ class OrderRepository extends BaseRepository implements IOrderRepository {
 
         return $this->model->where('user_id', Auth::id())->where('status', 'processing')->paginate(5);
     }
+
+    public function completedOrders($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('products', 'orders.product_id', '=', 'products.id')->where('orders.user_id', Auth::id())->where('orders.status', 'completed')->where('products.name','LIKE','%'.$search.'%')->select('orders.*')->paginate(5);
+        }
+
+        return $this->model->where('user_id', Auth::id())->where('status', 'completed')->paginate(5);
+    }
 }
