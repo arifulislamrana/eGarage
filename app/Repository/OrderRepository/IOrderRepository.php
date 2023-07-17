@@ -5,5 +5,7 @@ use App\Repository\BaseRepository\IBaseRepository;
 
 interface IOrderRepository extends IBaseRepository
 {
-    //
+    public function pendingOrders($search);
+
+    public function processingOrders($search);
 }

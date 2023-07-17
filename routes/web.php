@@ -24,6 +24,7 @@ use App\Http\Controllers\Front\ShopController;
 use App\Http\Controllers\Front\TechnicianController;
 use App\Http\Controllers\User\BookingController as UserBookingController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\ShoppingController;
 use App\Http\Controllers\User\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -114,6 +115,8 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
     Route::get('/user/bookings/{id}', [UserBookingController::class, 'show'])->name('booking.show');
 
     Route::post('user/product/order/post', [ShopController::class, 'saveOrder'])->name('order.store');
+
+    Route::get('/user/orders', [ShoppingController::class, 'orders'])->name('order.index');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

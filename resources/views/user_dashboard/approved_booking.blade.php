@@ -35,7 +35,7 @@
           <div class="box-header with-border">
             <h4 class="box-title">Approved Bookings Table</h4>
             <div class="box-controls pull-right btn btn-secondary">
-              <form method="GET" action="{{ route('tasks.index') }}" id="search-form">
+              <form method="GET" action="{{ route('booking.approved') }}" id="search-form">
                 @csrf
                 <div class="lookup lookup-circle lookup-right">
                     <input type="text" id="search-text" name="search" placeholder="search">

@@ -104,29 +104,6 @@
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-users text-danger"></i> Donec at nisi sit amet tortor
-                                                commodo porttitor pretium a erat.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart text-success"></i> In gravida mauris et
-                                                nisi
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user text-danger"></i> Praesent eu lacus in libero
-                                                dictum fermentum.
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-user text-primary"></i> Nunc fringilla lorem
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
                                                 <i class="fa fa-user text-success"></i> Nullam euismod dolor ut quam
                                                 interdum, at scelerisque ipsum imperdiet.
                                             </a>
@@ -225,7 +202,7 @@
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="{{ route('order.index') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Orders</span>
                         </a>
