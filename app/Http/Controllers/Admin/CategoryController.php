@@ -136,6 +136,17 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try
+        {
+            $this->categoryRepository->destroy($id);
+
+            return redirect()->route('categories.index')->with(['message' => 'category deleted']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to delete category", "error", $e);
+
+            return redirect()->back()->with(['message' => 'category can not be deleted']);
+        }
     }
 }
