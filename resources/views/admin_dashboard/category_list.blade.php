@@ -65,7 +65,7 @@
                         <td>{{ $category->products->count() }}</td>
                         <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $category->status }}</span> </td>
                         <td>
-                            <a class="btn btn-rounded btn-primary" href="{{ route('categories.show', ['category' => $category->id]) }}">
+                            <a class="btn btn-rounded btn-primary" href="#">
                                 <i class="fa fa-eye"></i>
                             </a>
                             <a class="btn btn-rounded btn-info" href="{{ route('categories.edit', ['category' => $category->id]) }}">
@@ -112,7 +112,7 @@
                           <td>{{ $category->products->count() }}</td>
                           <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $category->status }}</span> </td>
                           <td>
-                              <a class="btn btn-rounded btn-primary" href="{{ route('categories.show', ['category' => $category->id]) }}">
+                              <a class="btn btn-rounded btn-primary" href="#">
                                   <i class="fa fa-eye"></i>
                               </a>
                               <a class="btn btn-rounded btn-info" href="{{ route('categories.edit', ['category' => $category->id]) }}">

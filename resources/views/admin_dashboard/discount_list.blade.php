@@ -67,7 +67,7 @@
                                                         class="fa fa-clock-o"></i>{{ $discount->products->count() }} products</span> </td>
                                             <td>
                                                 <a class="btn btn-rounded btn-primary"
-                                                    href="{{ route('discounts.show', ['discount' => $discount->id]) }}">
+                                                    href="#">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 <a class="btn btn-rounded btn-info"
