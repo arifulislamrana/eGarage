@@ -11,6 +11,10 @@ use App\Repository\UserRepository\UserRepository;
 use App\Repository\BaseRepository\IBaseRepository;
 use App\Repository\BookingRepository\BookingRepository;
 use App\Repository\BookingRepository\IBookingRepository;
+use App\Repository\CategoryRepository\CategoryRepository;
+use App\Repository\CategoryRepository\ICategoryRepository;
+use App\Repository\DiscountRepository\DiscountRepository;
+use App\Repository\DiscountRepository\IDiscountRepository;
 use App\Repository\UserRepository\IUserRepository;
 use App\Repository\ProductRepository\ProductRepository;
 use App\Repository\ServiceRepository\ServiceRepository;
@@ -42,6 +46,8 @@ class EGarageProvider extends ServiceProvider
         $this->app->bind(IBookingRepository::class, BookingRepository::class);
         $this->app->bind(ITaskRepository::class, TaskRepository::class);
         $this->app->bind(IOrderRepository::class, OrderRepository::class);
+        $this->app->bind(ICategoryRepository::class, CategoryRepository::class);
+        $this->app->bind(IDiscountRepository::class, DiscountRepository::class);
     }
 
     /**
