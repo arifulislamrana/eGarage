@@ -54,25 +54,17 @@
                                     <tr>
                                         <th>ID.</th>
                                         <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Status</th>
-                                        <th>Image</th>
+                                        <th>Percentage</th>
+                                        <th>Applied on</th>
                                         <th>Action</th>
                                     </tr>
                                     @foreach ($discounts as $discount)
                                         <tr>
                                             <td><a>{{ $discount->id }}</a></td>
                                             <td><a href="javascript:void(0)">{{ $discount->name }}</a></td>
-                                            <td>{{ $discount->price }}</td>
+                                            <td>{{ $discount->percentage }}%</td>
                                             <td><span class="text-muted"><i
-                                                        class="fa fa-clock-o"></i>{{ $discount->status }}</span> </td>
-                                            @if ($discount->image != null)
-                                                <td><img style="height: 40px; width: 45px; border-radius: 50%"
-                                                        src="{{ $discount->image }}" alt="null"></td>
-                                            @else
-                                                <td><img style="height: 40px; width: 45px; border-radius: 50%"
-                                                        src="/BackTheme/images/avatar/avatar-13.png" alt=""></td>
-                                            @endif
+                                                        class="fa fa-clock-o"></i>{{ $discount->products->count() }} products</span> </td>
                                             <td>
                                                 <a class="btn btn-rounded btn-primary"
                                                     href="{{ route('discounts.show', ['discount' => $discount->id]) }}">
