@@ -33,4 +33,9 @@ class CategoryRepository extends BaseRepository implements ICategoryRepository {
 
         return $this->model->where('status', 'deactive')->orderBy('id', 'desc')->paginate(10);
     }
+
+    public function getCategoryByName($name)
+    {
+        return $this->model->where('name', $name)->first();
+    }
 }

@@ -12,6 +12,10 @@ class Discount extends Model
 
     public $timestamps = false;
 
+    protected $fillable = [
+        'name', 'percentage',
+    ];
+
     public function products()
     {
         return $this->hasMany(Product::class);

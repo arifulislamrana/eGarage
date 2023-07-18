@@ -6,6 +6,7 @@ use Exception;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateCategory;
 use App\Repository\CategoryRepository\ICategoryRepository;
 
 class CategoryController extends Controller
@@ -43,15 +44,42 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        try
+        {
+            return view('admin_dashboard.create_category');
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show create_category form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show create_category form']);
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateCategory $request)
     {
-        //
+        try
+        {
+            if (!empty($this->categoryRepository->getCategoryByName($request->name)))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'This discount type already exist']);
+            }
+            $this->categoryRepository->create([
+                'name' => $request->name,
+                'status' => $request->status,
+            ]);
+
+            return redirect()->route('categories.index')->with(['message' => 'category data stored successfully']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("error", "Failed to Strore category Data", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'data could not be saved. Please try again']);
+        }
     }
 
     /**

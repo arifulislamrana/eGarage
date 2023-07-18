@@ -8,4 +8,6 @@ interface ICategoryRepository extends IBaseRepository
     public function getPagiantedActiveCategory($search);
 
     public function getPagiantedDeactiveCategory($search);
+
+    public function getCategoryByName($name);
 }
