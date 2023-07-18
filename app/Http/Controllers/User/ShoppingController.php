@@ -6,6 +6,7 @@ use Exception;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateOrder;
 use App\Repository\OrderRepository\IOrderRepository;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,7 +58,14 @@ class ShoppingController extends Controller
     {
         try
         {
-            dd($id);
+            $order = $this->orderRepository->find($id);
+
+            if ($order->status != 'pending')
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Failed to edit order']);
+            }
+
+            return view('user_dashboard.edit_order', compact('order'));
         }
         catch (Exception $e)
         {
@@ -67,11 +75,17 @@ class ShoppingController extends Controller
         }
     }
 
-    public function update($id, Request $request)
+    public function update($id, UpdateOrder $request)
     {
         try
         {
-            dd($id);
+            $this->orderRepository->update($id, [
+                'phone' => $request->phone,
+                'quantity' => $request->quantity,
+                'delivery_address' => $request->delivery_address,
+            ]);
+
+            return redirect()->route('order.index')->with(['message' => 'Order data updated successfully']);
         }
         catch (Exception $e)
         {
