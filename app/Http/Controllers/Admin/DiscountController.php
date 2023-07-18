@@ -86,7 +86,7 @@ class DiscountController extends Controller
      */
     public function show(string $id)
     {
-        //
+        dd('not needed');
     }
 
     /**
@@ -94,15 +94,40 @@ class DiscountController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try
+        {
+            $discount = $this->discountRepository->find($id);
+
+            return view('admin_dashboard.update_discount', compact('discount'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show update_discount form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show update_discount form']);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateDiscount $request, string $id)
     {
-        //
+        try
+        {
+            $this->discountRepository->update($id, [
+                'name' => $request->name,
+                'percentage' => $request->percentage,
+            ]);
+
+            return redirect()->route('discounts.index')->with(['message' => 'discount data updated successfully']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("error", "Failed to update discount Data", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'data could not be updated. Please try again']);
+        }
     }
 
     /**
