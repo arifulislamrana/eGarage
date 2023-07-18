@@ -87,7 +87,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        dd('Its not needed');
     }
 
     /**
@@ -95,15 +95,40 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try
+        {
+            $category = $this->categoryRepository->find($id);
+
+            return view('admin_dashboard.update_category', compact('category'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show update_category form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show update_category form']);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CreateCategory $request, string $id)
     {
-        //
+        try
+        {
+            $this->categoryRepository->update($id, [
+                'name' => $request->name,
+                'status' => $request->status,
+            ]);
+
+            return redirect()->route('categories.index')->with(['message' => 'category data updated successfully']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("error", "Failed to updated category Data", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'data could not be updated. Please try again']);
+        }
     }
 
     /**
