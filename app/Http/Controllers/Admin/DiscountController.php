@@ -2,17 +2,39 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Exception;
+use App\Utility\ILogger;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repository\DiscountRepository\IDiscountRepository;
 
 class DiscountController extends Controller
 {
+    public $logger;
+    public $discountRepository;
+
+    public function __construct(ILogger $logger, IDiscountRepository $discountRepo)
+    {
+        $this->logger = $logger;
+        $this->discountRepository = $discountRepo;
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try
+        {
+            $discounts = $this->discountRepository->getPagiantedDiscounts($request->search);
+
+            return view('admin_dashboard.discount_list', compact('discounts'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show category list", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show category list']);
+        }
     }
 
     /**

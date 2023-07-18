@@ -12,4 +12,14 @@ class DiscountRepository extends BaseRepository implements IDiscountRepository {
     {
         parent::__construct($model);
     }
+
+    public function getPagiantedDiscounts($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->where('name','LIKE','%'.$search.'%')->paginate(10);
+        }
+
+        return $this->model->orderBy('id', 'desc')->paginate(10);
+    }
 }
