@@ -22,4 +22,9 @@ class DiscountRepository extends BaseRepository implements IDiscountRepository {
 
         return $this->model->orderBy('id', 'desc')->paginate(10);
     }
+
+    public function getDiscountByName($name)
+    {
+        return $this->model->where('name', $name)->first();
+    }
 }
