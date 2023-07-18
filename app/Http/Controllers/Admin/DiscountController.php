@@ -135,6 +135,17 @@ class DiscountController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try
+        {
+            $this->discountRepository->destroy($id);
+
+            return redirect()->route('discounts.index')->with(['message' => 'discount data deleted']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to delete discount data", "error", $e);
+
+            return redirect()->back()->with(['message' => 'discount data can not be deleted']);
+        }
     }
 }
