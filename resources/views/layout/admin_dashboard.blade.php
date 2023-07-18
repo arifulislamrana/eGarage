@@ -189,62 +189,80 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('employees.index') }}">
+                        <a href="{{ route('admin.users') }}">
                             <i data-feather="pie-chart"></i>
-                            <span>Employees</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('employees.create') }}">
-                            <i data-feather="message-circle"></i>
-                            <span>Add Employee</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('products.index') }}">
-                            <i data-feather="pie-chart"></i>
-                            <span>Products</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('products.create') }}">
-                            <i data-feather="message-circle"></i>
-                            <span>Add Product</span>
+                            <span>Users</span>
                         </a>
                     </li>
 
-                    <li>
-                        <a href="{{ route('services.index') }}">
-                            <i data-feather="pie-chart"></i>
-                            <span>Services</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('services.create') }}">
-                            <i data-feather="message-circle"></i>
-                            <span>Add Service</span>
-                        </a>
-                    </li>
-
-                    {{-- <li class="treeview">
+                    <li class="treeview">
                         <a href="#">
                             <i data-feather="message-circle"></i>
-                            <span>Products</span>
+                            <span>Employee</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-right pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ route('products.index') }}"><i class="ti-more"></i>Product List</a></li>
+                            <li><a href="{{ route('employees.index') }}"><i class="ti-more"></i>Employees</a></li>
+                            <li><a href="{{ route('employees.create') }}"><i class="ti-more"></i>Add Employee</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i data-feather="message-circle"></i>
+                            <span>Service</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('services.index') }}"><i class="ti-more"></i>Services</a></li>
+                            <li><a href="{{ route('services.create') }}"><i class="ti-more"></i>Add Service</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i data-feather="message-circle"></i>
+                            <span>Product</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('products.index') }}"><i class="ti-more"></i>Products</a></li>
                             <li><a href="{{ route('products.create') }}"><i class="ti-more"></i>Add Product</a></li>
                         </ul>
-                    </li> --}}
+                    </li>
 
-                    <li>
-                        <a href="{{ route('admin.users') }}">
-                            <i data-feather="pie-chart"></i>
-                            <span>Users</span>
+                    <li class="treeview">
+                        <a href="#">
+                            <i data-feather="message-circle"></i>
+                            <span>Category</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
                         </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('categories.index') }}"><i class="ti-more"></i>Categories</a></li>
+                            <li><a href="{{ route('categories.create') }}"><i class="ti-more"></i>Add Category</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i data-feather="message-circle"></i>
+                            <span>Discount</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-right pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('discounts.index') }}"><i class="ti-more"></i>Discounts</a></li>
+                            <li><a href="{{ route('discounts.create') }}"><i class="ti-more"></i>Add Discount</a></li>
+                        </ul>
                     </li>
 
                     <li>

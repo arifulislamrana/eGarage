@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -175,6 +177,10 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('products', ProductController::class);
 
     Route::resource('services', AdminServiceController::class);
+
+    Route::resource('categories', CategoryController::class);
+
+    Route::resource('discounts', DiscountController::class);
 });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

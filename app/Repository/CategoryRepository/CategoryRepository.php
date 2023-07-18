@@ -13,4 +13,24 @@ class CategoryRepository extends BaseRepository implements ICategoryRepository {
     {
         parent::__construct($model);
     }
+
+    public function getPagiantedActiveCategory($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->where('name','LIKE','%'.$search.'%')->where('status', 'active')->paginate(10);
+        }
+
+        return $this->model->where('status', 'active')->orderBy('id', 'desc')->paginate(10);
+    }
+
+    public function getPagiantedDeactiveCategory($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->where('name','LIKE','%'.$search.'%')->where('status', 'deactive')->paginate(10);
+        }
+
+        return $this->model->where('status', 'deactive')->orderBy('id', 'desc')->paginate(10);
+    }
 }

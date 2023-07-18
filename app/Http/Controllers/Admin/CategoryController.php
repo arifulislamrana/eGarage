@@ -25,16 +25,16 @@ class CategoryController extends Controller
     {
         try
         {
-            $products = $this->categoryRepository->getPagiantedActiveProduct($request->search);
-            $deactiveProducts = $this->productRepository->getPagiantedDeactiveProduct($request->search);
+            $deactivecategories = $this->categoryRepository->getPagiantedDeactiveCategory($request->search);
+            $categories = $this->categoryRepository->getPagiantedActiveCategory($request->search);
 
-            return view('admin_dashboard.product_list', ['products' => $products, 'deactiveProducts' => $deactiveProducts]);
+            return view('admin_dashboard.category_list', compact('categories', 'deactivecategories'));
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to show product list", "error", $e);
+            $this->logger->write("Failed to show category list", "error", $e);
 
-            return redirect()->back()->withErrors(['invalid' => 'Failed to show product list']);
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show category list']);
         }
     }
 
