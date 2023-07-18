@@ -65,7 +65,7 @@ class CategoryController extends Controller
         {
             if (!empty($this->categoryRepository->getCategoryByName($request->name)))
             {
-                return redirect()->back()->withErrors(['invalid' => 'This discount type already exist']);
+                return redirect()->back()->withErrors(['invalid' => 'This category type already exist']);
             }
             $this->categoryRepository->create([
                 'name' => $request->name,
