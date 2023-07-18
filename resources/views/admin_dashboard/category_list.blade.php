@@ -54,22 +54,16 @@
                   <tr>
                     <th>ID.</th>
                     <th>Name</th>
-                    <th>Price</th>
+                    <th>Total Products</th>
                     <th>Status</th>
-                    <th>Image</th>
                     <th>Action</th>
                   </tr>
                     @foreach ($categories as $category)
                     <tr>
                         <td><a>{{ $category->id }}</a></td>
                         <td><a href="javascript:void(0)">{{ $category->name }}</a></td>
-                        <td>{{ $category->price }}</td>
+                        <td>{{ $category->products->count() }}</td>
                         <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $category->status }}</span> </td>
-                        @if ($category->image != null)
-                        <td><img style="height: 40px; width: 45px; border-radius: 50%" src="{{$category->image}}" alt="null"></td>
-                        @else
-                        <td><img style="height: 40px; width: 45px; border-radius: 50%" src="/BackTheme/images/avatar/avatar-13.png" alt=""></td>
-                        @endif
                         <td>
                             <a class="btn btn-rounded btn-primary" href="{{ route('categories.show', ['category' => $category->id]) }}">
                                 <i class="fa fa-eye"></i>
@@ -107,22 +101,16 @@
                     <tr>
                       <th>ID.</th>
                       <th>Name</th>
-                      <th>Price</th>
+                      <th>Total Products</th>
                       <th>Status</th>
-                      <th>Image</th>
                       <th>Action</th>
                     </tr>
                       @foreach ($deactivecategories as $category)
                       <tr>
                           <td><a>{{ $category->id }}</a></td>
                           <td><a href="javascript:void(0)">{{ $category->name }}</a></td>
-                          <td>{{ $category->price }}</td>
+                          <td>{{ $category->products->count() }}</td>
                           <td><span class="text-muted"><i class="fa fa-clock-o"></i>{{ $category->status }}</span> </td>
-                          @if ($category->image != null)
-                          <td><img style="height: 40px; width: 45px; border-radius: 50%" src="{{$category->image}}" alt="null"></td>
-                          @else
-                          <td><img style="height: 40px; width: 45px; border-radius: 50%" src="/BackTheme/images/avatar/avatar-13.png" alt=""></td>
-                          @endif
                           <td>
                               <a class="btn btn-rounded btn-primary" href="{{ route('categories.show', ['category' => $category->id]) }}">
                                   <i class="fa fa-eye"></i>
