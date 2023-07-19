@@ -40,7 +40,7 @@
                     <div class="position-relative overflow-hidden">
                         <img style="height: 350px" class="img-fluid" src="{{ $category->products[$i]->image }}" alt="">
                         <div class="team-overlay position-absolute start-0 top-0 w-100 h-100">
-                            <a class="btn mx-1" href="">Buy now</a>
+                            <a class="btn mx-1" href="{{ route('product.order', ['product' => $category->products[$i]->id]) }}">Buy now</a>
                             <a class="btn mx-1" href="{{ route('product.details', ['product' => $category->products[$i]->id]) }}">Details</a>
                         </div>
                     </div>
