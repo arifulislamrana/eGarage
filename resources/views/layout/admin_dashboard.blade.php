@@ -119,7 +119,7 @@
                             @endif
                             <ul class="dropdown-menu animated flipInX">
                                 <li class="user-body">
-                                    <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i>
+                                    <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="ti-user text-muted mr-2"></i>
                                         Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('admin.logout') }}"><i
@@ -158,13 +158,6 @@
                         <a href="{{ route('admin.dashboard') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('admin.profile') }}">
-                            <i data-feather="pie-chart"></i>
-                            <span>Profile</span>
                         </a>
                     </li>
 
