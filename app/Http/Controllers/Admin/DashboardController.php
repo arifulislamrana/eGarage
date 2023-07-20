@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\BookingRepository\IBookingRepository;
 use App\Repository\EmployeeRepository\IEmployeeRepository;
+use App\Repository\OrderRepository\IOrderRepository;
 use App\Repository\ProductRepository\IProductRepository;
 use App\Repository\ServiceRepository\IServiceRepository;
 use App\Repository\TaskRepository\ITaskRepository;
@@ -22,11 +23,13 @@ class DashboardController extends Controller
     public $bookingRepository;
     public $productRepository;
     public $serviceRepository;
+    public $orderRepository;
 
     public function __construct(ILogger $logger,
                         IBookingRepository $bookingRepository, IUserRepository $userRepository,
                         IEmployeeRepository $employeeRepository, ITaskRepository $taskRepository,
-                        IProductRepository $productRepository, IServiceRepository $serviceRepository)
+                        IProductRepository $productRepository, IServiceRepository $serviceRepository,
+                        IOrderRepository $orderRepository)
     {
         $this->logger = $logger;
         $this->employeeRepository = $employeeRepository;
@@ -35,6 +38,7 @@ class DashboardController extends Controller
         $this->bookingRepository = $bookingRepository;
         $this->productRepository = $productRepository;
         $this->serviceRepository = $serviceRepository;
+        $this->orderRepository = $orderRepository;
     }
 
     public function dashboard()
@@ -49,10 +53,13 @@ class DashboardController extends Controller
             $ActiveProductsCount = $this->productRepository->getActiveProduct()->count();
             $DeactiveProductsCount = $this->productRepository->getDeactiveProduct()->count();
             $servicesCount = $this->serviceRepository->getAll()->count();
+            $totalOrders = $this->orderRepository->getAll()->count();
 
             $userCount = $this->userRepository->getAll()->count();
             $doneTasks = $this->taskRepository->getDoneTaskWithoutPagination();
             $earningsOfCurrentMonth = 0;
+            $OrdersStatusCount = $this->orderRepository->getOrdersCountOfEveryStatus();
+
             foreach ($doneTasks as $task)
             {
                 foreach ($task->services as $service)
@@ -74,7 +81,9 @@ class DashboardController extends Controller
                 'userCount',
                 'earningsOfCurrentMonth',
                 'servicesCount',
-                'bestEmployee'));
+                'bestEmployee',
+                'totalOrders',
+                'OrdersStatusCount'));
         }
         catch (Exception $e)
         {

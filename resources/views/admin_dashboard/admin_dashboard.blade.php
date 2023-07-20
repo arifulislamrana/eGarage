@@ -119,7 +119,7 @@
                     </div>
                     <div>
                         <p class="text-mute mt-20 mb-0 font-size-16">Total Orders</p>
-                        <h3 class="text-white mb-0 font-weight-500">{{ $servicesCount }} </h3>
+                        <h3 class="text-white mb-0 font-weight-500">{{ $totalOrders }} </h3>
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
                     </div>
                     <div>
                         <p class="text-mute mt-20 mb-0 font-size-16">Pending Orders</p>
-                        <h3 class="text-white mb-0 font-weight-500">{{ $servicesCount }} </h3>
+                        <h3 class="text-white mb-0 font-weight-500">{{ $OrdersStatusCount['pending'] }} </h3>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                     </div>
                     <div>
                         <p class="text-mute mt-20 mb-0 font-size-16">processing Orders</p>
-                        <h3 class="text-white mb-0 font-weight-500">{{ $servicesCount }} </h3>
+                        <h3 class="text-white mb-0 font-weight-500">{{ $OrdersStatusCount['processing'] }} </h3>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
                     </div>
                     <div>
                         <p class="text-mute mt-20 mb-0 font-size-16">Delivered Orders</p>
-                        <h3 class="text-white mb-0 font-weight-500">{{ $servicesCount }} </h3>
+                        <h3 class="text-white mb-0 font-weight-500">{{ $OrdersStatusCount['completed'] }} </h3>
                     </div>
                 </div>
             </div>

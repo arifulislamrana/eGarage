@@ -16,4 +16,6 @@ interface IOrderRepository extends IBaseRepository
     public function processingOrders($search);
 
     public function completedOrders($search);
+
+    public function getOrdersCountOfEveryStatus();
 }

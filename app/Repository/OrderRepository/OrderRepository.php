@@ -72,4 +72,13 @@ class OrderRepository extends BaseRepository implements IOrderRepository {
 
         return $this->model->where('status', 'completed')->paginate(5);
     }
+
+    public function getOrdersCountOfEveryStatus()
+    {
+        return array(
+            'pending' => $this->model->where('status', 'pending')->count(),
+            'completed' => $this->model->where('status', 'completed')->count(),
+            'processing' => $this->model->where('status', 'processing')->count(),
+        );
+    }
 }
