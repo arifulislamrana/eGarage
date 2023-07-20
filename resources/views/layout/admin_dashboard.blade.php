@@ -44,15 +44,9 @@
                             </a>
                         </li>
                         <li class="btn-group nav-item d-none d-xl-inline-block">
-                            <a href="#" class="waves-effect waves-light nav-link rounded svg-bt-icon"
+                            <a href="{{ route('home') }}" class="waves-effect waves-light nav-link rounded svg-bt-icon"
                                 title="">
-                                <i class="ti-check-box"></i>
-                            </a>
-                        </li>
-                        <li class="btn-group nav-item d-none d-xl-inline-block">
-                            <a href="calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon"
-                                title="">
-                                <i class="ti-calendar"></i>
+                                <i class="ti-home"></i>
                             </a>
                         </li>
                     </ul>
@@ -178,6 +172,13 @@
                         <a href="{{ route('admin.booking') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Bookings</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('orders.index') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Orders</span>
                         </a>
                     </li>
 

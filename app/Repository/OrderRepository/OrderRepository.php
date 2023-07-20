@@ -13,7 +13,7 @@ class OrderRepository extends BaseRepository implements IOrderRepository {
         parent::__construct($model);
     }
 
-    public function pendingOrders($search)
+    public function pendingOrdersOfAUser($search)
     {
         if ($search != null)
         {
@@ -23,7 +23,7 @@ class OrderRepository extends BaseRepository implements IOrderRepository {
         return $this->model->where('user_id', Auth::id())->where('status', 'pending')->paginate(5);
     }
 
-    public function processingOrders($search)
+    public function processingOrdersOfAUser($search)
     {
         if ($search != null)
         {
@@ -33,7 +33,7 @@ class OrderRepository extends BaseRepository implements IOrderRepository {
         return $this->model->where('user_id', Auth::id())->where('status', 'processing')->paginate(5);
     }
 
-    public function completedOrders($search)
+    public function completedOrdersOfAUser($search)
     {
         if ($search != null)
         {
@@ -41,5 +41,35 @@ class OrderRepository extends BaseRepository implements IOrderRepository {
         }
 
         return $this->model->where('user_id', Auth::id())->where('status', 'completed')->paginate(5);
+    }
+
+    public function pendingOrders($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('users', 'orders.user_id', '=', 'users.id')->where('orders.status', 'pending')->where('users.name','LIKE','%'.$search.'%')->select('orders.*')->paginate(5);
+        }
+
+        return $this->model->where('status', 'pending')->paginate(5);
+    }
+
+    public function processingOrders($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('users', 'orders.user_id', '=', 'users.id')->where('orders.status', 'processing')->where('users.name','LIKE','%'.$search.'%')->select('orders.*')->paginate(5);
+        }
+
+        return $this->model->where('status', 'processing')->paginate(5);
+    }
+
+    public function completedOrders($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('users', 'orders.user_id', '=', 'users.id')->where('orders.status', 'completed')->where('users.name','LIKE','%'.$search.'%')->select('orders.*')->paginate(5);
+        }
+
+        return $this->model->where('status', 'completed')->paginate(5);
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
@@ -181,6 +182,8 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('categories', CategoryController::class);
 
     Route::resource('discounts', DiscountController::class);
+
+    Route::resource('orders', OrderController::class);
 });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
