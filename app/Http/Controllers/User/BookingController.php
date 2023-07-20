@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\User;
 
 use Exception;
+use Carbon\Carbon;
+use App\Models\Booking;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateBooking;
 use App\Http\Requests\UpdateBooking;
-use App\Models\Booking;
+use Illuminate\Support\Facades\Auth;
+use App\Repository\TaskRepository\ITaskRepository;
 use App\Repository\BookingRepository\IBookingRepository;
 use App\Repository\ServiceRepository\IServiceRepository;
-use App\Repository\TaskRepository\ITaskRepository;
-use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -53,6 +54,13 @@ class BookingController extends Controller
     {
         try
         {
+            $dateToCompare = Carbon::parse($request->delivery_date);
+
+            if (!$dateToCompare->greaterThan(Carbon::now()))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Selected date and time invalid']);
+            }
+
             if ($this->bookingRepository->doesBookingExist())
             {
                 return redirect()->back()->withErrors(['invalid' => 'You already have a booking. To create new booking, delete previous one either update previous one.']);
