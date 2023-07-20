@@ -107,6 +107,7 @@ class ShopController extends Controller
                 'delivery_address' => $request->delivery_address,
                 'employee_id' => null,
                 'order_date' => now(),
+                'delivery_date' => null,
             ]);
 
             return redirect()->back()->with(['message' => 'Employee data stored successfully']);

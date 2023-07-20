@@ -13,7 +13,7 @@ class Order extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'product_id', 'user_id', 'quantity', 'status', 'phone', 'delivery_address', 'employee_id', 'order_date'
+        'product_id', 'user_id', 'quantity', 'status', 'phone', 'delivery_address', 'employee_id', 'order_date', 'delivery_date'
     ];
 
     public function user()

@@ -91,13 +91,18 @@ class OrderController extends Controller
                 return redirect()->back()->withErrors(['invalid' => 'Selected date invalid']);
             }
 
+            if ($this->orderRepository->find($id)->status != 'pending')
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Accept pending orders']);
+            }
+
             $this->orderRepository->update($id, [
                 'status' => 'processing',
                 'employee_id' => $request->employee_id,
                 'delivery_date' => $request->delivery_date,
             ]);
 
-            return redirect()->route('orders.index')->with(['message' => 'Order Accepted']);
+            return redirect()->route('orders.index')->with(['message' => 'Order Accepted. Now it is under processing']);
         }
         catch (Exception $e)
         {
@@ -112,6 +117,17 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        dd($id);
+        try
+        {
+            $this->orderRepository->destroy($id);
+
+            return redirect()->route('orders.index')->with(['message' => 'order data deleted']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to delete order data", "error", $e);
+
+            return redirect()->back()->with(['message' => 'orde data can not be deleted']);
+        }
     }
 }

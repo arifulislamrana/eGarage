@@ -25,8 +25,8 @@ class ShoppingController extends Controller
     {
         try
         {
-            $pendingOrders = $this->orderRepository->pendingOrdersOfAUser($request->search);
-            $processingOrders = $this->orderRepository->processingOrdersOfAUser($request->search);
+            $pendingOrders = $this->orderRepository->pendingOrders($request->search);
+            $processingOrders = $this->orderRepository->processingOrders($request->search);
 
             return view('user_dashboard.order', compact('pendingOrders', 'processingOrders'));
         }
@@ -119,7 +119,7 @@ class ShoppingController extends Controller
     {
         try
         {
-            $completedOrders = $this->orderRepository->completedOrdersOfAUser($request->search);
+            $completedOrders = $this->orderRepository->completedOrders($request->search);
 
             return view('user_dashboard.my_shopping', compact('completedOrders'));
         }

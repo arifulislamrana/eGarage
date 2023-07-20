@@ -138,15 +138,11 @@
                                                     {{ $order->employee->phone }}</a></td>
                                             <td>{{ $order->product->price }}</td>
                                             <td>{{ $order->status }}</td>
-                                            <td>12/12/2023</td>
+                                            <td>{{ $order->delivery_date }}</td>
                                             <td>
                                                 <a class="btn btn-rounded btn-primary"
                                                     href="{{ route('orders.show', ['order' => $order->id]) }}">
                                                     <i class="fa fa-eye"></i>
-                                                </a>
-                                                <a class="btn btn-rounded btn-info"
-                                                    onclick="showApproveForm('{{ $order->id }}')">
-                                                    <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a class="btn btn-rounded btn-danger"
                                                     onclick="showModal({{ $order->id }})" data-toggle="modal"
@@ -193,7 +189,7 @@
                                                     {{ $order->employee->phone }}</a></td>
                                             <td>{{ $order->product->price }}</td>
                                             <td>{{ $order->status }}</td>
-                                            <td>12-21-23</td>
+                                            <td>{{ $order->delivery_date }}</td>
                                             <td>
                                                 <a class="btn btn-rounded btn-primary"
                                                     href="{{ route('orders.show', ['order' => $order->id]) }}">
@@ -260,20 +256,26 @@
                             <h4>Approve This Order?!</h4>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Assign Order To:</label>
-                                        <select class="form-control" name="employee_id" required>
-                                            <option selected>Select Employee</option>
-                                            @foreach ($employees as $employee)
-                                                <option value="{{ $employee->id }}">
-                                                    {{ $employee->name }}::{{ $employee->designation }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Probable Delivery Date:</label>
-                                        <input class="form-control" name="delivery_date" type="datetime-local"
-                                            id="example-datetime-local-input" required>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Probable Delivery Date:</label>
+                                                <input class="form-control" name="delivery_date" type="datetime-local"
+                                                    id="example-datetime-local-input" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Assign Order To:</label>
+                                                <select class="form-control" name="employee_id" required>
+                                                    <option selected>Select Employee</option>
+                                                    @foreach ($employees as $employee)
+                                                        <option value="{{ $employee->id }}">
+                                                            {{ $employee->name }}::{{ $employee->designation }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
