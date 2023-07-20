@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Exception;
+use Carbon\Carbon;
 use App\Utility\ILogger;
 use Illuminate\Http\Request;
+use App\Http\Requests\AcceptOrder;
 use App\Http\Controllers\Controller;
 use App\Repository\OrderRepository\IOrderRepository;
 use App\Repository\EmployeeRepository\IEmployeeRepository;
@@ -48,7 +50,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        dd('not needed');
     }
 
     /**
@@ -56,7 +58,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('not needed');
     }
 
     /**
@@ -72,15 +74,37 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        dd('not needed');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AcceptOrder $request, string $id)
     {
-        //
+        try
+        {
+            $dateToCompare = Carbon::parse($request->delivery_date);
+
+            if (!$dateToCompare->greaterThan(Carbon::now()))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Selected date invalid']);
+            }
+
+            $this->orderRepository->update($id, [
+                'status' => 'processing',
+                'employee_id' => $request->employee_id,
+                'delivery_date' => $request->delivery_date,
+            ]);
+
+            return redirect()->route('orders.index')->with(['message' => 'Order Accepted']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to ccept order", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to accept order']);
+        }
     }
 
     /**
@@ -88,6 +112,6 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        dd($id);
     }
 }

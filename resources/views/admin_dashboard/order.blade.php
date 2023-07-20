@@ -18,9 +18,6 @@
                     </nav>
                 </div>
             </div>
-            <a class="btn btn-rounded btn-primary float-right" href="{{ route('orders.create') }}">
-                Add order
-            </a>
         </div>
     </div>
 
@@ -32,6 +29,18 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         {{ session()->get('message') }}
+                    </div>
+                @endif
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger alert-dismissible fade show col-md-12" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <ul class="p-0 m-0" style="list-style: none;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 @endif
                 <div class="box">
@@ -256,14 +265,15 @@
                                         <select class="form-control" name="employee_id" required>
                                             <option selected>Select Employee</option>
                                             @foreach ($employees as $employee)
-                                                <option value="{{ $employee->id }}" selected>
+                                                <option value="{{ $employee->id }}">
                                                     {{ $employee->name }}::{{ $employee->designation }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Probable Delivery Date:</label>
-                                        <input class="form-control" name="arrival_time" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input" required>
+                                        <input class="form-control" name="delivery_date" type="datetime-local"
+                                            id="example-datetime-local-input" required>
                                     </div>
                                 </div>
                             </div>
@@ -290,7 +300,7 @@
         }
 
         function showApproveForm(id) {
-            $("#approve").attr('action', 'orders/update/' + id);
+            $("#approve").attr('action', 'orders/' + id);
             $(`#modal-approve`).modal('show');
         }
 
