@@ -162,7 +162,7 @@
                           <td><a href="javascript:void(0)">{{ $task->user->name }}</a></td>
 
                           <td>{{ $task->service_time }}</td>
-                          <td>32423</td>
+                          <td>{{ $task->total_fee }}</td>
                           <td>
                               <a class="btn btn-rounded btn-primary" href="{{ route('tasks.show', ['id' => $task->id]) }}">
                                   <i class="fa fa-eye"></i>

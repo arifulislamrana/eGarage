@@ -66,7 +66,18 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try
+        {
+            $order = $this->orderRepository->find($id);
+
+            return view('admin_dashboard.show_order', compact('order'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show order", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show order']);
+        }
     }
 
     /**
