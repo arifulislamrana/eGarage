@@ -144,6 +144,10 @@
                                                     href="{{ route('orders.show', ['order' => $order->id]) }}">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
+                                                <a class="btn btn-rounded btn-info"
+                                                    href="{{ route('order.processing.edit', ['id' => $order->id]) }}">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
                                                 <a class="btn btn-rounded btn-danger"
                                                     onclick="showModal({{ $order->id }})" data-toggle="modal"
                                                     href="#">
@@ -194,6 +198,10 @@
                                                 <a class="btn btn-rounded btn-primary"
                                                     href="{{ route('orders.show', ['order' => $order->id]) }}">
                                                     <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a class="btn btn-rounded btn-info"
+                                                    href="{{ route('order.processing.edit', ['id' => $order->id]) }}">
+                                                    <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a class="btn btn-rounded btn-danger"
                                                     onclick="showModal({{ $order->id }})" data-toggle="modal"

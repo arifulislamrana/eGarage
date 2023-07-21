@@ -119,13 +119,22 @@
                             </div>
                         </div>
                     </div>
+                    @if ($order->status == 'processing')
+                    <div class="box-footer text-right">
+                        <a href="{{ route('order.processing.edit', ['id' => $order->id]) }}">
+                            <button type="submit" class="btn btn-rounded btn-primary btn-outline">
+                                <i class="ti-save-alt"></i> Edit
+                            </button>
+                        </a>
+                    </div>
+                    @endif
                 </section>
                 @else
                 <section>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <h3>Service data does not exist.</h3>
+                                <h3>Order data does not exist.</h3>
                             </div>
                         </div>
                     </div>

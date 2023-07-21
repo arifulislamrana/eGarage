@@ -117,7 +117,7 @@ class OrderController extends Controller
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to ccept order", "error", $e);
+            $this->logger->write("Failed to accept order", "error", $e);
 
             return redirect()->back()->withErrors(['invalid' => 'Failed to accept order']);
         }
@@ -139,6 +139,59 @@ class OrderController extends Controller
             $this->logger->write("Failed to delete order data", "error", $e);
 
             return redirect()->back()->with(['message' => 'orde data can not be deleted']);
+        }
+    }
+
+    public function editProcessingOrder($id)
+    {
+        try
+        {
+            $order = $this->orderRepository->find($id);
+            $employees = $this->employeeRepository->getAll();
+
+            return view('admin_dashboard.update_processing_order', compact('order', 'employees'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show update_processing_order form", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show update_processing_order form']);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function updateProcessingOrder(Request $request, $id)
+    {
+        try
+        {
+            $order = $this->orderRepository->find($id);
+            $dateToCompare = Carbon::parse($request->delivery_date);
+
+            if (!$dateToCompare->greaterThan(Carbon::now()))
+            {
+                return redirect()->back()->withErrors(['invalid' => 'Selected date invalid']);
+            }
+
+            if ($order->status == 'pending')
+            {
+                return redirect()->back()->withErrors(['invalid' => 'at accept the orders']);
+            }
+
+            $this->orderRepository->update($id, [
+                'status' => $request->status,
+                'employee_id' => $request->employee_id,
+                'delivery_date' => $request->delivery_date,
+            ]);
+
+            return redirect()->route('orders.show', ['order' => $order->id])->with(['message' => 'Order data updated.']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to update processing order", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to update processing order']);
         }
     }
 }

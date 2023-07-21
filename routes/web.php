@@ -173,6 +173,10 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
     Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 
+    Route::get('/order/edit/{id}', [OrderController::class, 'editProcessingOrder'])->name('order.processing.edit');
+
+    Route::put('/order/update/{id}', [OrderController::class, 'updateProcessingOrder'])->name('order.processing.update');
+
     Route::resource('employees', EmployeeController::class);
 
     Route::resource('products', ProductController::class);
