@@ -167,9 +167,6 @@
                               <a class="btn btn-rounded btn-primary" href="{{ route('tasks.show', ['id' => $task->id]) }}">
                                   <i class="fa fa-eye"></i>
                               </a>
-                              <a class="btn btn-rounded btn-info" href="{{ route('tasks.edit', ['id' => $task->id]) }}">
-                                  <i class="fa fa-edit"></i>
-                              </a>
                               <a class="btn btn-rounded btn-danger" onclick="showModal({{$task->id}})" data-toggle="modal" href="#">
                                   <i class="fa fa-trash"></i>
                               </a>

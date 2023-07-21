@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskRepository extends BaseRepository implements ITaskRepository
 {
+    public $paginate = 5;
 
     public function __construct(Task $model)
     {
@@ -18,30 +19,30 @@ class TaskRepository extends BaseRepository implements ITaskRepository
     {
         if ($search != null)
         {
-            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate($this->paginate);
         }
 
-        return $this->model->where('status', 'approved')->paginate(10);
+        return $this->model->where('status', 'approved')->paginate($this->paginate);
     }
 
     public function doneTasks($search)
     {
         if ($search != null)
         {
-            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate($this->paginate);
         }
 
-        return $this->model->where('status', 'done')->paginate(10);
+        return $this->model->where('status', 'done')->paginate($this->paginate);
     }
 
     public function undoneTasks($search)
     {
         if ($search != null)
         {
-            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate($this->paginate);
         }
 
-        return $this->model->where('status', 'undone')->paginate(10);
+        return $this->model->where('status', 'undone')->paginate($this->paginate);
     }
 
     public function approvedTasksCount()
@@ -68,19 +69,19 @@ class TaskRepository extends BaseRepository implements ITaskRepository
     {
         if ($search != null)
         {
-            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('user_id', Auth::id())->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('user_id', Auth::id())->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate($this->paginate);
         }
 
-        return $this->model->where('user_id', Auth::id())->where('status', 'approved')->paginate(10);
+        return $this->model->where('user_id', Auth::id())->where('status', 'approved')->paginate($this->paginate);
     }
 
     public function doneTasksOfUser($search)
     {
         if ($search != null)
         {
-            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('tasks.user_id', Auth::id())->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate(10);
+            return $this->model->join('employees', 'tasks.employee_id', '=', 'employees.id')->where('tasks.user_id', Auth::id())->where('employees.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate($this->paginate);
         }
 
-        return $this->model->where('user_id', Auth::id())->where('status', 'done')->paginate(10);
+        return $this->model->where('user_id', Auth::id())->where('status', 'done')->paginate($this->paginate);
     }
 }

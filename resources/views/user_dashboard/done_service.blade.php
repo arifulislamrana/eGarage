@@ -62,7 +62,7 @@
                         <td>{{ $task->employee->phone }}</td>
                         <td>{{ $task->created_at }}</td>
                         <td>{{ $task->service_time }}</td>
-                        <td>{{ $doneServicesFees[$task->id]}}</td>
+                        <td>{{ $task->total_fee}}</td>
                         <td>
                             <a class="btn btn-rounded btn-primary" href="{{ route('booking.show', ['id' => $task->id]) }}">
                                 <i class="fa fa-eye"></i>

@@ -90,6 +90,7 @@ class TaskController extends Controller
         try
         {
             $this->taskRepository->update($id, [
+                'status' => $request->status,
                 'employee_id' => $request->employee_id,
                 'service_time' => $request->service_time,
                 'updated_at' => now(),

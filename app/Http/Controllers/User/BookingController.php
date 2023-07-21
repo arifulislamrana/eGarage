@@ -168,23 +168,7 @@ class BookingController extends Controller
         {
             $approvedBookings =  $this->taskRepository->approvedTasksOfUser($request->search);
 
-            $approvedBookingsFees = array();
-
-            foreach ($approvedBookings as $task)
-            {
-                $fee = 0;
-
-                foreach ($task->services as $service)
-                {
-                    $fee = $fee + $service->fee;
-                }
-
-                $approvedBookingsFees[$task->id] = $fee;
-
-                $fee = 0;
-            }
-
-            return view('user_dashboard.approved_booking', compact('approvedBookings', 'approvedBookingsFees'));
+            return view('user_dashboard.approved_booking', compact('approvedBookings'));
         }
         catch (Exception $e)
         {
@@ -200,23 +184,7 @@ class BookingController extends Controller
         {
             $doneServices =  $this->taskRepository->doneTasksOfUser($request->search);
 
-            $doneServicesFees = array();
-
-            foreach ($doneServices as $task)
-            {
-                $fee = 0;
-
-                foreach ($task->services as $service)
-                {
-                    $fee = $fee + $service->fee;
-                }
-
-                $doneServicesFees[$task->id] = $fee;
-
-                $fee = 0;
-            }
-
-            return view('user_dashboard.done_service', compact('doneServices', 'doneServicesFees'));
+            return view('user_dashboard.done_service', compact('doneServices'));
         }
         catch (Exception $e)
         {
