@@ -52,11 +52,15 @@
                     <ul class="box-body flexbox flex-justified text-center" data-overlay="4">
                         <li>
                             <span class="opacity-60">Pending</span><br>
-                            <span class="font-size-20">8457 Task</span>
+                            <span class="font-size-20">{{ 1 }} Task</span>
                         </li>
                         <li>
                             <span class="opacity-60">Completed</span><br>
-                            <span class="font-size-20">2154 Task</span>
+                            <span class="font-size-20">{{ $employee->tasks()->count() - 1}} Task</span>
+                        </li>
+                        <li>
+                            <span class="opacity-60">Total</span><br>
+                            <span class="font-size-20">{{ $employee->tasks()->count() }} Task</span>
                         </li>
                     </ul>
                 </div>
@@ -99,89 +103,24 @@
                                 <h4>Table: Task status of {{ $employee->name }}</h4>
                                 <table class="table table-hover">
                                     <tr>
-                                      <th>Task ID.</th>
+                                      <th>Services</th>
                                       <th>Assigned at</th>
                                       <th>Total Fee</th>
                                       <th>User</th>
                                       <th>Status</th>
                                     </tr>
-                                      <tr>
-                                          <td>1</td>
-                                          <td>12-05-2023</td>
-                                          <td>1500</td>
-                                          <td>Xenon</td>
-                                          <td>pending</td>
-                                      </tr>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>pending</td>
-                                    </tr>
+
+                                    @foreach ($employee->tasks as $task)
                                     <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>pending</td>
+                                        <td>@foreach ($task->services as $service)
+                                            {{ $service->name }}-
+                                        @endforeach</td>
+                                        <td>{{ $task->created_at }}</td>
+                                        <td>{{ $task->total_fee }}</td>
+                                        <td>{{ $task->user->name }}</td>
+                                        <td>{{ $task->status }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>pending</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>completed</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>completed</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>completed</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>completed</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>completed</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>completed</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>12-05-2023</td>
-                                        <td>1500</td>
-                                        <td>Xenon</td>
-                                        <td>completed</td>
-                                    </tr>
+                                    @endforeach
                                   </table>
                             </div>
                         </div>

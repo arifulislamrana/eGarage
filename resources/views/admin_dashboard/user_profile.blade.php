@@ -48,17 +48,17 @@
                         </a>
                         <h4 class="mt-2 mb-0"><a class="hover-primary text-white" href="#">{{ $user->name }}</a>
                         </h4>
-                        <span><i class="fa fa-map-marker w-20"></i> silver user</span>
+                        <span><i class="fa fa-map-marker w-20"></i> @if ($user->tasks()->count() > 4) silver @else bronze @endif user</span>
                     </div>
 
                     <ul class="box-body flexbox flex-justified text-center" data-overlay="4">
                         <li>
                             <span class="opacity-60">Pending</span><br>
-                            <span class="font-size-20">1 service</span>
+                            <span class="font-size-20">2 service</span>
                         </li>
                         <li>
                             <span class="opacity-60">Total Taken</span><br>
-                            <span class="font-size-20">21 Service</span>
+                            <span class="font-size-20">{{ $user->tasks()->count() }} Service</span>
                         </li>
                     </ul>
                 </div>
@@ -113,83 +113,17 @@
                                         <th>Status</th>
                                         <th>Taken at</th>
                                     </tr>
+                                    @foreach ($user->tasks as $task)
                                     <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
+                                        <td>{{ $task->employee->name }}</td>
+                                        <td>@foreach ($task->services as $service)
+                                            {{ $service->name }}-
+                                        @endforeach</td>
+                                        <td>{{ $task->total_fee }}</td>
+                                        <td>{{ $task->status }}</td>
+                                        <td>{{ $task->service_time }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>pending</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mr. xenon</td>
-                                        <td>wash, engine clean</td>
-                                        <td>1500</td>
-                                        <td>completed</td>
-                                        <td>12-04-2023</td>
-                                    </tr>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
