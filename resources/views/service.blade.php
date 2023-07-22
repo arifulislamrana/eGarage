@@ -150,34 +150,34 @@
         <div class="owl-carousel testimonial-carousel position-relative">
             <div class="testimonial-item text-center">
                 <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="/FrontTheme/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Client Name</h5>
-                <p>Profession</p>
+                <h5 class="mb-0">Airsha Chowdhury</h5>
+                <p>Software Engineer</p>
                 <div class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-0">Outstanding service at Bike Garage! Knowledgeable staff, meticulous repairs, and genuine care for my bike. Highly recommend! ⭐⭐⭐⭐⭐ (5/5 stars)</p>
                 </div>
             </div>
             <div class="testimonial-item text-center">
                 <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="/FrontTheme/img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Client Name</h5>
-                <p>Profession</p>
+                <h5 class="mb-0">Galib Hasan</h5>
+                <p>Banker</p>
                 <div class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-0">Bike Garage exceeded my expectations! Prompt service, friendly team, and my bike rides like new again. A top-notch experience! ⭐⭐⭐⭐⭐ (5/5 stars)</p>
                 </div>
             </div>
             <div class="testimonial-item text-center">
                 <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="/FrontTheme/img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Client Name</h5>
-                <p>Profession</p>
+                <h5 class="mb-0">Rakib Chowdhury</h5>
+                <p>Software Engineer</p>
                 <div class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-0">Impressed with Bike Garage's expertise! They diagnosed and fixed the issue quickly, and their passion for cycling shines through. A must-visit for cyclists!" ⭐⭐⭐⭐⭐ (5/5 stars)</p>
                 </div>
             </div>
             <div class="testimonial-item text-center">
                 <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="/FrontTheme/img/testimonial-4.jpg" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Client Name</h5>
-                <p>Profession</p>
+                <h5 class="mb-0">Sarah</h5>
+                <p>Banker</p>
                 <div class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-0">Outstanding service at Bike Garage! Knowledgeable staff, meticulous repairs, and genuine care for my bike. Highly recommend! ⭐⭐⭐⭐⭐ (5/5 stars)</p>
                 </div>
             </div>
         </div>

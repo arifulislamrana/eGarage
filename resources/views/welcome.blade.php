@@ -68,8 +68,8 @@
                     <i class="fa fa-certificate fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
                         <h5 class="mb-3">Quality Servicing</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <p>You dont need to take headache again for your bike.</p>
+                        {{-- <a class="text-secondary border-bottom" href="#">Read More</a> --}}
                     </div>
                 </div>
             </div>
@@ -78,8 +78,8 @@
                     <i class="fa fa-users-cog fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
                         <h5 class="mb-3">Expert Workers</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <p>We have the certified, finest and excellent expert in town</p>
+                        {{-- <a class="text-secondary border-bottom" href="">Read More</a> --}}
                     </div>
                 </div>
             </div>
@@ -88,8 +88,8 @@
                     <i class="fa fa-tools fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
                         <h5 class="mb-3">Modern Equipment</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <p>Your bike will be diagnised by Ultra modern machines.</p>
+                        {{-- <a class="text-secondary border-bottom" href="">Read More</a> --}}
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
             <div class="col-lg-6">
                 <h6 class="text-primary text-uppercase">// About Us //</h6>
                 <h1 class="mb-4"><span class="text-primary">{{ config('app.name') }}</span> Is The Best Place For Your Auto Care</h1>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                <p class="mb-4">Rely on our 15 Years of Experience in Bike Servicing for unmatched quality and precision. Your bike is in the hands of seasoned professionals who know bikes inside out, ensuring optimal performance on every ride! 🚵‍♂️🛠️</p>
                 <div class="row g-4 mb-3 pb-3">
                     <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                         <div class="d-flex">
@@ -124,7 +124,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>Professional & Expert</h6>
-                                <span>Diam dolor diam ipsum sit amet diam et eos</span>
+                                <span>We have the finest expert in town</span>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                             </div>
                             <div class="ps-3">
                                 <h6>Quality Servicing Center</h6>
-                                <span>Diam dolor diam ipsum sit amet diam et eos</span>
+                                <span>You dont need to take headache again</span>
                             </div>
                         </div>
                     </div>
@@ -146,12 +146,12 @@
                             </div>
                             <div class="ps-3">
                                 <h6>Awards Winning Workers</h6>
-                                <span>Diam dolor diam ipsum sit amet diam et eos</span>
+                                <span>7 times best garage award winner</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a href="" class="btn btn-primary py-3 px-5">Read More<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="#" class="btn btn-primary py-3 px-5">Read More<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </div>
     </div>
@@ -165,22 +165,22 @@
         <div class="row g-4">
             <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
                 <i class="fa fa-check fa-2x text-white mb-3"></i>
-                <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
+                <h2 class="text-white mb-2" data-toggle="counter-up">15</h2>
                 <p class="text-white mb-0">Years Experience</p>
             </div>
             <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
                 <i class="fa fa-users-cog fa-2x text-white mb-3"></i>
-                <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
+                <h2 class="text-white mb-2" data-toggle="counter-up">24</h2>
                 <p class="text-white mb-0">Expert Technicians</p>
             </div>
             <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
                 <i class="fa fa-users fa-2x text-white mb-3"></i>
-                <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
+                <h2 class="text-white mb-2" data-toggle="counter-up">1000</h2>
                 <p class="text-white mb-0">Satisfied Clients</p>
             </div>
             <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
                 <i class="fa fa-motorcycle fa-2x text-white mb-3"></i>
-                <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
+                <h2 class="text-white mb-2" data-toggle="counter-up">1007</h2>
                 <p class="text-white mb-0">Compleate Projects</p>
             </div>
         </div>
@@ -355,34 +355,34 @@
         <div class="owl-carousel testimonial-carousel position-relative">
             <div class="testimonial-item text-center">
                 <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="/FrontTheme/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Client Name</h5>
-                <p>Profession</p>
+                <h5 class="mb-0">Airsha Chowdhury</h5>
+                <p>Software Engineer</p>
                 <div class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-0">Outstanding service at Bike Garage! Knowledgeable staff, meticulous repairs, and genuine care for my bike. Highly recommend! ⭐⭐⭐⭐⭐ (5/5 stars)</p>
                 </div>
             </div>
             <div class="testimonial-item text-center">
                 <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="/FrontTheme/img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Client Name</h5>
-                <p>Profession</p>
+                <h5 class="mb-0">Galib Hasan</h5>
+                <p>Banker</p>
                 <div class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-0">Bike Garage exceeded my expectations! Prompt service, friendly team, and my bike rides like new again. A top-notch experience! ⭐⭐⭐⭐⭐ (5/5 stars)</p>
                 </div>
             </div>
             <div class="testimonial-item text-center">
                 <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="/FrontTheme/img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Client Name</h5>
-                <p>Profession</p>
+                <h5 class="mb-0">Rakib Chowdhury</h5>
+                <p>Software Engineer</p>
                 <div class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-0">Impressed with Bike Garage's expertise! They diagnosed and fixed the issue quickly, and their passion for cycling shines through. A must-visit for cyclists!" ⭐⭐⭐⭐⭐ (5/5 stars)</p>
                 </div>
             </div>
             <div class="testimonial-item text-center">
                 <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="/FrontTheme/img/testimonial-4.jpg" style="width: 80px; height: 80px;">
-                <h5 class="mb-0">Client Name</h5>
-                <p>Profession</p>
+                <h5 class="mb-0">Sarah</h5>
+                <p>Banker</p>
                 <div class="testimonial-text bg-light text-center p-4">
-                <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                <p class="mb-0">Outstanding service at Bike Garage! Knowledgeable staff, meticulous repairs, and genuine care for my bike. Highly recommend! ⭐⭐⭐⭐⭐ (5/5 stars)</p>
                 </div>
             </div>
         </div>
