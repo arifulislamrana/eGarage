@@ -182,7 +182,7 @@
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="{{ route('employee.order') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Orders</span>
                         </a>

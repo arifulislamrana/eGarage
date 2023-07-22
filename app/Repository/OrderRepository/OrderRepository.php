@@ -13,6 +13,26 @@ class OrderRepository extends BaseRepository implements IOrderRepository {
         parent::__construct($model);
     }
 
+    public function processingOrdersOfAnEmployee($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('users', 'orders.user_id', '=', 'users.id')->where('orders.employee_id', Auth::guard('employee')->id())->where('orders.status', 'processing')->where('users.name','LIKE','%'.$search.'%')->select('orders.*')->paginate(5);
+        }
+
+        return $this->model->where('orders.employee_id', Auth::guard('employee')->id())->where('status', 'processing')->paginate(5);
+    }
+
+    public function completedOrdersOfAnEmployee($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('users', 'orders.user_id', '=', 'users.id')->where('orders.employee_id', Auth::guard('employee')->id())->where('orders.status', 'completed')->where('users.name','LIKE','%'.$search.'%')->select('orders.*')->paginate(5);
+        }
+
+        return $this->model->where('orders.employee_id', Auth::guard('employee')->id())->where('status', 'completed')->paginate(5);
+    }
+
     public function pendingOrdersOfAUser($search)
     {
         if ($search != null)
