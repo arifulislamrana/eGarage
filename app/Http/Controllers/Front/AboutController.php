@@ -30,7 +30,7 @@ class AboutController extends Controller
         }
         catch (Exception $e)
         {
-            $this->logger->write("Failed to show home", "error", $e);
+            $this->logger->write("Failed to show about", "error", $e);
 
             return redirect()->back()->withErrors(['invalid' => 'Failed to show data']);
         }
