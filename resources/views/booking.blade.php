@@ -31,8 +31,8 @@
                     <i class="fa fa-certificate fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
                         <h5 class="mb-3">Quality Servicing</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <p>You dont need to take headache again for your bike.</p>
+                        {{-- <a class="text-secondary border-bottom" href="#">Read More</a> --}}
                     </div>
                 </div>
             </div>
@@ -41,8 +41,8 @@
                     <i class="fa fa-users-cog fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
                         <h5 class="mb-3">Expert Workers</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <p>We have the certified, finest and excellent expert in town</p>
+                        {{-- <a class="text-secondary border-bottom" href="">Read More</a> --}}
                     </div>
                 </div>
             </div>
@@ -51,8 +51,8 @@
                     <i class="fa fa-tools fa-3x text-primary flex-shrink-0"></i>
                     <div class="ps-4">
                         <h5 class="mb-3">Modern Equipment</h5>
-                        <p>Diam dolor diam ipsum sit amet diam et eos erat ipsum</p>
-                        <a class="text-secondary border-bottom" href="">Read More</a>
+                        <p>Your bike will be diagnised by Ultra modern machines.</p>
+                        {{-- <a class="text-secondary border-bottom" href="">Read More</a> --}}
                     </div>
                 </div>
             </div>
@@ -133,12 +133,13 @@
             <div class="col-lg-8 col-md-6">
                 <h6 class="text-primary text-uppercase">// Call To Action //</h6>
                 <h1 class="mb-4">Have Any Pre Booking Question?</h1>
-                <p class="mb-0">Lorem diam ea sit dolor labore. Clita et dolor erat sed est lorem sed et sit. Diam sed duo magna erat et stet clita ea magna ea sed, sit labore magna lorem tempor justo rebum dolores. Eos dolor sea erat amet et, lorem labore lorem at dolores. Stet ea ut justo et, clita et et ipsum diam.</p>
+                <p class="mb-0">Is The Best Place For Your Auto Care</h1>
+                    <p class="mb-4">Rely on our 15 Years of Experience in Bike Servicing for unmatched quality and precision. Your bike is in the hands of seasoned professionals who know bikes inside out, ensuring optimal performance on every ride! 🚵‍♂️🛠️</p>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="bg-primary d-flex flex-column justify-content-center text-center h-100 p-4">
                     <h3 class="text-white mb-4"><i class="fa fa-phone-alt me-3"></i>+012 345 6789</h3>
-                    <a href="" class="btn btn-secondary py-3 px-5">Contact Us<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="#" class="btn btn-secondary py-3 px-5">Contact Us<i class="fa fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
         </div>
