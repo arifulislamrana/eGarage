@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Exception;
 use Carbon\Carbon;
 use App\Utility\ILogger;
+use App\Events\NotifyUser;
 use Illuminate\Http\Request;
 use App\Http\Requests\AcceptOrder;
 use App\Http\Controllers\Controller;
@@ -107,6 +108,9 @@ class OrderController extends Controller
                 return redirect()->back()->withErrors(['invalid' => 'Accept pending orders']);
             }
 
+            $order = $this->orderRepository->find($id);
+            $this->orderRepository->sendOrderApprovingMail($order);
+
             $this->orderRepository->update($id, [
                 'status' => 'processing',
                 'employee_id' => $request->employee_id,
@@ -130,6 +134,13 @@ class OrderController extends Controller
     {
         try
         {
+            $order = $this->orderRepository->find($id);
+
+            if ($order->status == "pending")
+            {
+                $this->orderRepository->sendOrderRejectionMail($order);
+            }
+
             $this->orderRepository->destroy($id);
 
             return redirect()->route('orders.index')->with(['message' => 'order data deleted']);

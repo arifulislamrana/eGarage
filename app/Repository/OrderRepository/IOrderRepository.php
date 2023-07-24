@@ -22,4 +22,8 @@ interface IOrderRepository extends IBaseRepository
     public function processingOrdersOfAnEmployee($search);
 
     public function completedOrdersOfAnEmployee($search);
+
+    public function sendOrderRejectionMail($order);
+
+    public function sendOrderApprovingMail($order);
 }

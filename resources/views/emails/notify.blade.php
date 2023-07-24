@@ -3,9 +3,11 @@
 
 {{ $data['body'] }}
 
-<x-mail::button :url="''">
-<a href="{{ route('home') }}"> Click here to visit site</a>
-</x-mail::button>
+<div style="text-align:center;">
+    <button>
+    <a style="text-decoration: none" href="{{ route('home') }}">click here to visit site</a>
+    </button>
+</div>
 
 Thanks,<br>
 {{ config('app.name') }}

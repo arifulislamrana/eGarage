@@ -2,9 +2,11 @@
 namespace App\Repository\OrderRepository;
 
 use App\Models\Order;
+use App\Events\NotifyUser;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Repository\BaseRepository\BaseRepository;
 use App\Repository\OrderRepository\IOrderRepository;
-use Illuminate\Support\Facades\Auth;
 
 class OrderRepository extends BaseRepository implements IOrderRepository {
 
@@ -100,5 +102,27 @@ class OrderRepository extends BaseRepository implements IOrderRepository {
             'completed' => $this->model->where('status', 'completed')->count(),
             'processing' => $this->model->where('status', 'processing')->count(),
         );
+    }
+
+    public function sendOrderRejectionMail($order)
+    {
+        $data = array();
+        $data['email'] = $order->user->email;
+        $data['subject'] = 'Order Rejected';
+        $data['user_name'] = $order->user->name;
+        $data['body'] = "We regret to inform you that your order has been rejected. We sincerely apologize for any inconvenience this may cause. If you have any questions or concerns, please don't hesitate to contact our customer support for further assistance. Thank you for considering us, and we hope to serve you better in the future.";
+
+        event(new NotifyUser($data));
+    }
+
+    public function sendOrderApprovingMail($order)
+    {
+        $data = array();
+        $data['email'] = $order->user->email;
+        $data['subject'] = 'Order Accepted';
+        $data['user_name'] = $order->user->name;
+        $data['body'] = 'Thank you for your order! We have accepted your request and the order status has been changed to Processing. Our team is diligently working to prepare your items for shipment. We will keep you updated on the progress and tracking details soon. If you have any questions, feel free to reach out to our customer support. Happy shopping!';
+
+        event(new NotifyUser($data));
     }
 }
