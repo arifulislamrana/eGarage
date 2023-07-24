@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\NotifyUser;
 use Exception;
 use App\Models\Task;
 use App\Models\Employee;
@@ -98,6 +99,13 @@ class BookingController extends Controller
 
             $this->bookingRepository->destroy($id);
 
+            $data = array();
+            $data['email'] = $booking->user->email;
+            $data['subject'] = 'Booking Rejection';
+            $data['user_name'] = $booking->user->name;
+            $data['body'] = 'We regret to inform you that we are unable to accommodate your bike service booking at this time due to our current high demand. We apologize for any inconvenience and hope to serve you in the future when availability opens up';
+            event(new NotifyUser($data));
+
             return redirect()->route('admin.booking')->with(['message' => 'Booking deleted']);
         }
         catch (Exception $e)
@@ -141,6 +149,13 @@ class BookingController extends Controller
             $task->services()->attach($services);
             $this->bookingRepository->destroy($id);
             DB::commit();
+
+            $data = array();
+            $data['email'] = $booking->user->email;
+            $data['subject'] = 'Booking Approved';
+            $data['user_name'] = $booking->user->name;
+            $data['body'] = 'Congratulations! Your bike service booking has been approved. We look forward to providing top-notch service and ensuring your bike is in excellent condition for your upcoming rides.';
+            event(new NotifyUser($data));
 
             return redirect()->route('admin.booking')->with(['message' => 'Booking approved']);
         }
