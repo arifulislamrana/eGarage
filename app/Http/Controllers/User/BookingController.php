@@ -54,7 +54,7 @@ class BookingController extends Controller
     {
         try
         {
-            $dateToCompare = Carbon::parse($request->delivery_date);
+            $dateToCompare = Carbon::parse($request->arrival_time);
 
             if (!$dateToCompare->greaterThan(Carbon::now()))
             {
