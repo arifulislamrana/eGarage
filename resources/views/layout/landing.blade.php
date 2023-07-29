@@ -98,6 +98,9 @@
             </div>
                 @if (Route::has('login'))
                     @auth
+                    <div style="margin-right: 1%" class="btn btn-primary">
+                        <a style="color: white" href="{{ route('user.dashboard') }}">Dashboard</a>
+                    </div>
                     <div class="btn btn-primary">
                         <i class="fas fa-user fa-lg ms-3" style="color: #07a226;"></i>
                         <a style="color: white" href="{{route('logout')}}">Logout</a>

@@ -55,6 +55,8 @@ Route::get('/technicians', [TechnicianController::class, 'index'])->name('techni
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
+Route::post('/contact/data', [ContactController::class, 'contact'])->name('contact.data');
+
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
 Route::get('/shop/{category}/products', [ShopController::class, 'categoryProducts'])->name('category.product');

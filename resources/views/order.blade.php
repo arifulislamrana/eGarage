@@ -51,7 +51,7 @@
                                 <input type="number" name="quantity" class="form-control border-0" value="1" placeholder="Quantity" style="height: 55px;" required>
                             </div>
                             <div class="col-12">
-                                <textarea name="delivery_address" class="form-control border-0" value={{ old('delivery_address') }} placeholder="Delivery Address" required></textarea>
+                                <textarea name="delivery_address" class="form-control border-0" placeholder="Delivery Address" value={{ old('delivery_address') }} required></textarea>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-secondary w-100 py-3" type="submit">Confirm Order</button>
