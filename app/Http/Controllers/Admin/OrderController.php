@@ -97,18 +97,23 @@ class OrderController extends Controller
         try
         {
             $dateToCompare = Carbon::parse($request->delivery_date);
+            $order = $this->orderRepository->find($id);
 
             if (!$dateToCompare->greaterThan(Carbon::now()))
             {
                 return redirect()->back()->withErrors(['invalid' => 'Selected date invalid']);
             }
 
-            if ($this->orderRepository->find($id)->status != 'pending')
+            if ($order->status != 'pending')
             {
                 return redirect()->back()->withErrors(['invalid' => 'Accept pending orders']);
             }
 
-            $order = $this->orderRepository->find($id);
+            if ($order->quantity > $order->product->quantity)
+            {
+                return redirect()->back()->withErrors(['invalid' => 'You dont have sufficient products to deliver '.$order->user->name]);
+            }
+
             $this->orderRepository->sendOrderApprovingMail($order);
 
             $this->orderRepository->update($id, [

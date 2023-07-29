@@ -109,7 +109,11 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Delivery Incharge:</label>
+                                @if ($order->employee != null)
                                 <h5>{{ $order->employee->name }}</h5>
+                                @else
+                                <h5>Not Assigned</h5>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
