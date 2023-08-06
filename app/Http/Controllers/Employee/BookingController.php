@@ -144,4 +144,23 @@ class BookingController extends Controller
             return redirect()->back()->withErrors(['invalid' => 'Failed to show tasks.']);
         }
     }
+
+    public function markTaskAsDone($id)
+    {
+        try
+        {
+            $tasks = $this->taskRepository->find($id);
+            $this->taskRepository->update($id, [
+                'status' => 'done'
+            ]);
+
+            return redirect()->route('employee.task')->with(['message' => 'Task marked as done']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("error", "Failed to update tasks", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to update tasks.']);
+        }
+    }
 }

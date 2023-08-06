@@ -219,6 +219,8 @@ Route::group(['middleware' => ['auth:employee']], function() {
 
     Route::get('/tasks', [EmployeeBookingController::class, 'tasks'])->name('employee.task');
 
+    Route::get('/tasks/done/{id}', [EmployeeBookingController::class, 'markTaskAsDone'])->name('employee.task.done');
+
     Route::get('/booking/show/{id}', [EmployeeBookingController::class, 'show'])->name('employee.booking.show');
 
     Route::get('/booking/approve/{id}', [EmployeeBookingController::class, 'approve'])->name('employee.booking.approve');

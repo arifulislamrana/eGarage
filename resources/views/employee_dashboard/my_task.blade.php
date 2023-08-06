@@ -99,7 +99,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-rounded btn-warning" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-rounded btn-primary float-right">Approve</button>
+                            <button type="submit" class="btn btn-rounded btn-primary float-right">Completed</button>
                         </div>
                 </div>
             <!-- /.modal-content -->
@@ -114,7 +114,7 @@
 @section('script')
 <script>
     function showApproveForm(id) {
-      $("#approve").attr('action', 'task/approve/' + id);
+      $("#approve").attr('action', 'tasks/done/' + id);
       $(`#modal-approve`).modal('show');
     }
 
