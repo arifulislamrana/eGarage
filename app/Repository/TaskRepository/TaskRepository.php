@@ -84,4 +84,14 @@ class TaskRepository extends BaseRepository implements ITaskRepository
 
         return $this->model->where('user_id', Auth::id())->where('status', 'done')->paginate($this->paginate);
     }
+
+    public function getAssignedTaskOfEmployee($search)
+    {
+        if ($search != null)
+        {
+            return $this->model->join('users', 'tasks.user_id', '=', 'users.id')->where('users.name','LIKE','%'.$search.'%')->select('tasks.*')->paginate($this->paginate);
+        }
+
+        return $this->model->where('employee_id', Auth::guard('employee')->id())->where('status', 'approved')->paginate($this->paginate);
+    }
 }

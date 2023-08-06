@@ -150,7 +150,7 @@
                         <a href="{{ route('employee.dashboard') }}">
                             <!-- logo for regular state and mobile devices -->
                             <div class="d-flex align-items-center justify-content-center">
-                                <img src="/BackTheme/images/logo-dark.png" alt="">
+                                <img style="height: 30px; width: 50px" src="/FrontTheme/img/eGarage.png" alt="">
                                 <h3><b>{{ config('app.name') }}</b> Employee</h3>
                             </div>
                         </a>
@@ -178,6 +178,13 @@
                         <a href="{{ route('employee.booking') }}">
                             <i data-feather="pie-chart"></i>
                             <span>Bookings</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('employee.task') }}">
+                            <i data-feather="pie-chart"></i>
+                            <span>Tasks</span>
                         </a>
                     </li>
 

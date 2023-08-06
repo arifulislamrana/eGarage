@@ -213,6 +213,8 @@ Route::group(['middleware' => ['auth:employee']], function() {
 
     Route::get('/bookings', [EmployeeBookingController::class, 'booking'])->name('employee.booking');
 
+    Route::get('/tasks', [EmployeeBookingController::class, 'tasks'])->name('employee.task');
+
     Route::get('/booking/show/{id}', [EmployeeBookingController::class, 'show'])->name('employee.booking.show');
 
     Route::get('/booking/approve/{id}', [EmployeeBookingController::class, 'approve'])->name('employee.booking.approve');

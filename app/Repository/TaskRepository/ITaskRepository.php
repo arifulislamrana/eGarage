@@ -22,4 +22,6 @@ interface ITaskRepository extends IBaseRepository
     public function approvedTasksOfUser($search);
 
     public function doneTasksOfUser($search);
+
+    public function getAssignedTaskOfEmployee($search);
 }

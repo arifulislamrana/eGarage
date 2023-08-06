@@ -126,4 +126,22 @@ class BookingController extends Controller
             return redirect()->back()->with(['message' => 'Booking can not be approved']);
         }
     }
+
+    public function tasks(Request $request)
+    {
+        try
+        {
+            $tasks = $this->taskRepository->getAssignedTaskOfEmployee($request->search);
+
+            return view('employee_dashboard.my_task', [
+                'tasks' => $tasks
+            ]);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("error", "Failed to show tasks", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show tasks.']);
+        }
+    }
 }

@@ -143,7 +143,7 @@
                         <a href="{{ route('user.dashboard') }}">
                             <!-- logo for regular state and mobile devices -->
                             <div class="d-flex align-items-center justify-content-center">
-                                <img src="/BackTheme/images/logo-dark.png" alt="">
+                                <img style="height: 30px; width: 50px" src="/FrontTheme/img/eGarage.png" alt="">
                                 <h3><b>{{ config('app.name') }}</b> User</h3>
                             </div>
                         </a>
