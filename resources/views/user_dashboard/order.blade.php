@@ -58,6 +58,7 @@
                                         <th>DeliveryMan</th>
                                         <th>contact</th>
                                         <th>status</th>
+                                        <th>Pay</th>
                                     </tr>
                                     @foreach ($processingOrders as $order)
                                         <tr>
@@ -67,6 +68,16 @@
                                             <td>{{ $order->employee->name }}</td>
                                             <td>{{ $order->employee->phone }}</td>
                                             <td>{{ $order->status }}</td>
+                                            @if ($order->payment != null)
+                                            <td>{{ $order->payment->txnid }}</td>
+                                            @else
+                                            <td>
+                                                <a class="btn btn-rounded btn-primary"
+                                                    href="{{ route('order.payment', ['id' => $order->id]) }}">
+                                                    Pay
+                                                </a>
+                                            </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </table>

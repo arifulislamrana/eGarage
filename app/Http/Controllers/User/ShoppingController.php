@@ -7,6 +7,7 @@ use App\Utility\ILogger;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateOrder;
+use App\Models\Payment;
 use App\Repository\OrderRepository\IOrderRepository;
 use Illuminate\Support\Facades\Auth;
 
@@ -128,6 +129,42 @@ class ShoppingController extends Controller
             $this->logger->write("Failed to show shopping list", "error", $e);
 
             return redirect()->back()->withErrors(['invalid' => 'Failed to show shopping list']);
+        }
+    }
+
+    public function payment($orderId)
+    {
+        try
+        {
+            return view('user_dashboard.payment', compact('orderId'));
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to show payment option", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to show payment option']);
+        }
+    }
+
+    public function savePayment(Request $request)
+    {
+        try
+        {
+            Payment::create([
+                'txnid' => $request->txnid,
+                'user_id' => Auth::id(),
+                'order_id' => $request->order_id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            return redirect()->route('order.index')->with(['message' => 'payment data stored for review']);
+        }
+        catch (Exception $e)
+        {
+            $this->logger->write("Failed to store payment data", "error", $e);
+
+            return redirect()->back()->withErrors(['invalid' => 'Failed to store payment data']);
         }
     }
 }

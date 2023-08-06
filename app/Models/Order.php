@@ -30,4 +30,9 @@ class Order extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
 }

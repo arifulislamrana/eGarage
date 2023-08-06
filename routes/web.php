@@ -133,6 +133,10 @@ Route::middleware(['auth', 'verify_email'])->group(function () {
     Route::put('/user/order/update/{id}', [ShoppingController::class, 'update'])->name('order.update');
 
     Route::delete('/user/order/delete/{id}', [ShoppingController::class, 'destroy'])->name('order.destroy');
+
+    Route::get('/user/payment/{id}', [ShoppingController::class, 'payment'])->name('order.payment');
+
+    Route::post('/user/payment/save', [ShoppingController::class, 'savePayment'])->name('order.payment.store');
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
